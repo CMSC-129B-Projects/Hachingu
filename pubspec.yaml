@@ -50,6 +50,20 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
+
+  fonts:
+    - family: Oswald
+      fonts:
+        - asset: assets/fonts/Oswald-Regular.ttf
+
+    - family: Oswald Bold
+      fonts:
+        - asset: assets/fonts/Oswald-Bold.ttf
+
+    - family: Oswald ExtraLight
+      fonts:
+        - asset: assets/fonts/Oswald-ExtraLight.ttf
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

@@ -4,11 +4,11 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.blue,
+      color: Color(0xfffAB316),
       child: Text(
         "Settings",
         style: TextStyle(
-            color: Colors.white, fontSize: 40, fontWeight: FontWeight.bold),
+            color: Colors.black, fontSize: 40, fontWeight: FontWeight.bold),
       ),
     );
   }
