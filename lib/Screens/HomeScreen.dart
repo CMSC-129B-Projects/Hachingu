@@ -31,7 +31,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                         Text(" Learn Korean\nwith Hachingu",
                             style:
-                                TextStyle(fontFamily: 'Oswald Bold', color: Colors.black, fontSize: 40, )),
+                                TextStyle(fontFamily: 'Oswald Bold', color: Colors.black, fontSize: 32, )),
                         Container(
                           width: sWidth,
                           height: sHeight * 0.66,
