@@ -22,26 +22,20 @@ class LearnScreen extends StatelessWidget {
             // color: Color(0xffF34F4E),
             color: Colors.white,
             child: Column(children: [
-              Positioned(
-                top: 0,
-                child: Column(children: [
-                  Container(
-                    width: sWidth,
-                    height: sHeight * 0.06,
-                  ),
-                  Text(
-                    "Lessons",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontFamily: 'Oswald',
-                        color: Colors.black,
-                        fontSize: 50,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ]),
+              Container(
+                alignment: Alignment.centerLeft,
+                padding: EdgeInsets.symmetric(horizontal: 24),
+                child: Text(
+                  "Lessons",
+                  style: TextStyle(
+                      fontFamily: 'Oswald',
+                      color: Colors.black,
+                      fontSize: 50,
+                      fontWeight: FontWeight.bold),
+                ),
               ),
               Container(
-                  height: sHeight * 0.73,
+                  height: sHeight * 0.79,
                   child: ListView(
                     padding: const EdgeInsets.all(8),
                     children: <Widget>[
@@ -49,7 +43,7 @@ class LearnScreen extends StatelessWidget {
                           "Learn to read and write hangul characters"),
                       LessonCard("assets/images/teach.png", "Parts of Speech",
                           "Learn about nouns, verbs, adjectives, and adverbs"),
-                      LessonCard("assets/images/learn.PNG", "Read & Write",
+                      LessonCard("assets/images/learn.PNG", "Sentences",
                           "Learn to read and write hangul characters"),
                       LessonCard("assets/images/learn.PNG", "Read & Write",
                           "Learn to read and write hangul characters")
