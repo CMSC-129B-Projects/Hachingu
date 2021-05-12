@@ -1,15 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:hachingu/Notifiers/dark_theme_provider.dart';
+import 'package:hachingu/Utils/styles.dart';
+import 'package:provider/provider.dart';
 import 'package:hachingu/Screens/LessonScreen.dart';
 
-class LearnScreen extends StatelessWidget {
+
+class LearnScreen extends StatefulWidget {
+  @override
+  _LearnScreenState createState() => _LearnScreenState();
+}
+
+class _LearnScreenState extends State<LearnScreen>{
   var sWidth, sHeight;
+
   @override
   Widget build(BuildContext context) {
     sWidth = MediaQuery.of(context).size.width;
     sHeight = MediaQuery.of(context).size.height;
+    final themeProvider = Provider.of<DarkThemeProvider>(context);
+    return HomeBody(themeProvider);
+  }
+
+  Widget HomeBody(DarkThemeProvider themeProvider){
     return new Scaffold(
+        backgroundColor: Theme.of(context).backgroundColor,
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: Theme.of(context).backgroundColor,
           elevation: 0,
           leading: IconButton(
               onPressed: () {
@@ -18,8 +34,7 @@ class LearnScreen extends StatelessWidget {
               icon: Icon(Icons.arrow_back, color: Colors.amber)),
         ),
         body: Container(
-            // color: Color(0xffF34F4E),
-            color: Colors.white,
+            color: Theme.of(context).backgroundColor,
             child: Column(children: [
               Container(
                 alignment: Alignment.centerLeft,
@@ -53,6 +68,7 @@ class LearnScreen extends StatelessWidget {
             ])));
   }
 }
+
 
 class LessonCard extends StatelessWidget {
   final String imageName;
