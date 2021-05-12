@@ -4,13 +4,12 @@ import 'package:hachingu/Utils/styles.dart';
 import 'package:provider/provider.dart';
 import 'package:hachingu/Screens/LessonScreen.dart';
 
-
 class LearnScreen extends StatefulWidget {
   @override
   _LearnScreenState createState() => _LearnScreenState();
 }
 
-class _LearnScreenState extends State<LearnScreen>{
+class _LearnScreenState extends State<LearnScreen> {
   var sWidth, sHeight;
 
   @override
@@ -21,7 +20,7 @@ class _LearnScreenState extends State<LearnScreen>{
     return HomeBody(themeProvider);
   }
 
-  Widget HomeBody(DarkThemeProvider themeProvider){
+  Widget HomeBody(DarkThemeProvider themeProvider) {
     return new Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
         appBar: AppBar(
@@ -43,17 +42,17 @@ class _LearnScreenState extends State<LearnScreen>{
                   "Lessons",
                   style: TextStyle(
                       fontFamily: 'OpenSans',
-                      color: Colors.black,
+                      color: Theme.of(context).primaryColor,
                       fontSize: 50,
                       fontWeight: FontWeight.bold),
                 ),
               ),
               Container(
-                  height: sHeight * 0.81,
+                  height: sHeight * 0.789,
                   child: ListView(
                     padding: const EdgeInsets.all(8),
                     children: <Widget>[
-                      LessonCard("assets/images/learn.PNG", "Reading",
+                      LessonCard("assets/images/read_aloud.png", "Reading",
                           "Learn to read hangul characters"),
                       LessonCard("assets/images/writing_hand.png", "Writing",
                           "Learn to write hangul characters"),
@@ -68,7 +67,6 @@ class _LearnScreenState extends State<LearnScreen>{
             ])));
   }
 }
-
 
 class LessonCard extends StatelessWidget {
   final String imageName;
