@@ -23,48 +23,49 @@ class _LearnScreenState extends State<LearnScreen> {
   Widget HomeBody(DarkThemeProvider themeProvider) {
     return new Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).backgroundColor,
-          elevation: 0,
-          leading: IconButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              icon: Icon(Icons.arrow_back, color: Colors.amber)),
-        ),
-        body: Container(
-            color: Theme.of(context).backgroundColor,
-            child: Column(children: [
-              Container(
-                alignment: Alignment.centerLeft,
-                padding: EdgeInsets.symmetric(horizontal: 24),
-                child: Text(
-                  "Lessons",
-                  style: TextStyle(
-                      fontFamily: 'OpenSans',
-                      color: Theme.of(context).primaryColor,
-                      fontSize: 50,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              Container(
-                  height: sHeight * 0.789,
-                  child: ListView(
-                    padding: const EdgeInsets.all(8),
-                    children: <Widget>[
-                      LessonCard("assets/images/read_aloud.png", "Reading",
-                          "Learn to read hangul characters"),
-                      LessonCard("assets/images/writing_hand.png", "Writing",
-                          "Learn to write hangul characters"),
-                      LessonCard(
-                          "assets/images/teach.png",
-                          "Sentence Structure",
-                          "Learn about vocabulary, sentence word order, and more..."),
-                      LessonCard("assets/images/discuss.png", "Conjugations",
-                          "Learn about basic conjugations of verbs, adjectives, and more...")
-                    ],
-                  )),
-            ])));
+        body: CustomScrollView(slivers: <Widget>[
+          SliverAppBar(
+            elevation: 0,
+            leading: IconButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                icon: Icon(Icons.arrow_back, color: Colors.amber)),
+            backgroundColor: Theme.of(context).backgroundColor,
+            pinned: true,
+            expandedHeight: 200,
+            flexibleSpace: LayoutBuilder(
+                builder: (BuildContext context, BoxConstraints constraints) {
+              return FlexibleSpaceBar(
+                title: Text("Lessons",
+                    style: TextStyle(
+                        color: Theme.of(context).primaryColor,
+                        height: 1,
+                        fontWeight: FontWeight.bold,
+                        fontSize: constraints.maxHeight < 100
+                            ? null
+                            : constraints.maxHeight / 6)),
+                titlePadding: constraints.maxHeight < 100
+                    ? null
+                    : EdgeInsetsDirectional.only(
+                        start: (200 / constraints.maxHeight) * 32,
+                        bottom: constraints.maxHeight / 12),
+              );
+            }),
+          ),
+          SliverList(
+            delegate: SliverChildListDelegate([
+              LessonCard("assets/images/read_aloud.png", "Reading",
+                  "Learn to read hangul characters"),
+              LessonCard("assets/images/writing_hand.png", "Writing",
+                  "Learn to write hangul characters"),
+              LessonCard("assets/images/teach.png", "Sentence Structure",
+                  "Learn about vocabulary, sentence word order, and more..."),
+              LessonCard("assets/images/discuss.png", "Conjugations",
+                  "Learn about basic conjugations of verbs, adjectives, and more...")
+            ]),
+          )
+        ]));
   }
 }
 
@@ -85,7 +86,8 @@ class LessonCard extends StatelessWidget {
         },
         child: Container(
           height: 200,
-          margin: const EdgeInsets.all(10),
+          margin:
+              const EdgeInsets.only(left: 20, right: 20, bottom: 15, top: 5),
           padding: const EdgeInsets.only(left: 10, right: 25),
           child: Row(
             children: <Widget>[
