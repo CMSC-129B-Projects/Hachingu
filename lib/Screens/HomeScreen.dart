@@ -6,6 +6,7 @@ import 'package:hachingu/Screens/SettingsScreen.dart';
 import 'package:hachingu/Screens/LearnScreen.dart';
 import 'package:hachingu/Screens/TrainScreen.dart';
 import 'package:hachingu/Notifiers/dark_theme_provider.dart';
+import 'package:hachingu/Notifiers/notifications_provider.dart';
 import 'package:hachingu/Utils/styles.dart';
 import 'package:provider/provider.dart';
 
@@ -45,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen>{
                         ),
                         Text(" Learn Korean\nwith Hachingu",
                             style:
-                            TextStyle(fontFamily: 'Oswald Bold', color: Theme.of(context).primaryColor, fontSize: 32, )),
+                            TextStyle(fontFamily: 'Open Sans', color: Theme.of(context).primaryColor, fontSize: 32, )),
                         Container(
                           width: sWidth,
                           height: sHeight * 0.66,
@@ -89,6 +90,7 @@ class _HomeScreenState extends State<HomeScreen>{
                                             style: TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 24,
+                                                fontFamily: 'OpenSans',
                                                 fontWeight: FontWeight.bold)),
                                       ],
                                     ),
@@ -148,6 +150,7 @@ class _HomeScreenState extends State<HomeScreen>{
                                           Text("Learn",
                                               style: TextStyle(
                                                   color: Colors.white,
+                                                  fontFamily: 'OpenSans',
                                                   fontSize: 24,
                                                   fontWeight: FontWeight.bold)),
                                         ],

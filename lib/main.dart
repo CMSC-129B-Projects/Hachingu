@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:hachingu/Notifiers/email_sender.dart';
+import 'package:hachingu/Notifiers/notifications_provider.dart';
 import 'Screens/HomeScreen.dart';
-import 'Screens/ThemeChanger.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:hachingu/Notifiers/dark_theme_provider.dart';
 import 'package:hachingu/Utils/styles.dart';
+import 'dart:math';
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
@@ -20,15 +22,15 @@ void main() async{
     requestSoundPermission: true,
     onDidReceiveLocalNotification:
     (int id, String title, String body, String payload) async{});
-  //var initializationSettings = InitializationSettings(
-  //    initializationSettingsAndroid, initializationSettingsIOS);
-  /*await flutterLocalNotificationsPlugin.initialize(initializationSettings,
+  var initializationSettings = InitializationSettings(
+      android: initializationSettingsAndroid,
+      iOS: initializationSettingsIOS);
+  await flutterLocalNotificationsPlugin.initialize(initializationSettings,
     onSelectNotification: (String payload) async {
       if (payload != null){
         debugPrint('notification payload: '+ payload);
       }
-    });*/
-
+    });
   runApp(Hachingu());
 }
 
@@ -39,10 +41,21 @@ class Hachingu extends StatefulWidget {
 
 class _HachinguState extends State<Hachingu> {
   DarkThemeProvider themeChangeProvider = new DarkThemeProvider();
+  NotificationsProvider notificationsChangeProvider = new NotificationsProvider();
+  EmailProvider emailChangeProvider = new EmailProvider();
+  FlutterLocalNotificationsPlugin localNotification;
+  TimeOfDay time;
+  TimeOfDay picked;
 
   @override
   void initState() {
     super.initState();
+    time = TimeOfDay.now();
+    var androidInitialize = new AndroidInitializationSettings('hachingu_logo');
+    var iOSInitialize = new IOSInitializationSettings();
+    var initializationSettings = new InitializationSettings(android: androidInitialize, iOS: iOSInitialize);
+    localNotification = new FlutterLocalNotificationsPlugin();
+    localNotification.initialize(initializationSettings);
     getCurrentAppTheme();
   }
   void getCurrentAppTheme() async {
@@ -54,10 +67,14 @@ class _HachinguState extends State<Hachingu> {
   Widget build(BuildContext context) {
     return MultiProvider(
         providers: [
-          ChangeNotifierProvider(
-            create: (_) {
-              return themeChangeProvider;
-            },
+          ChangeNotifierProvider<DarkThemeProvider>(
+            create: (_) => themeChangeProvider
+          ),
+          ChangeNotifierProvider<NotificationsProvider>(
+              create: (_) => notificationsChangeProvider
+          ),
+          ChangeNotifierProvider<EmailProvider>(
+            create: (_) => emailChangeProvider,
           )
         ],
         child: Consumer<DarkThemeProvider>(

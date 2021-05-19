@@ -12,14 +12,8 @@ class _TrainScreenState extends State<TrainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    sWidth = MediaQuery
-        .of(context)
-        .size
-        .width;
-    sHeight = MediaQuery
-        .of(context)
-        .size
-        .height;
+    sWidth = MediaQuery.of(context).size.width;
+    sHeight = MediaQuery.of(context).size.height;
     final themeProvider = Provider.of<DarkThemeProvider>(context);
     return TrainBody(themeProvider);
   }
@@ -34,7 +28,7 @@ class _TrainScreenState extends State<TrainScreen> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              icon: Icon(Icons.arrow_back, color: Colors.yellow)),
+              icon: Icon(Icons.arrow_back, color: Theme.of(context).primaryColor, size: 30)),
           shape:
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         ),
@@ -54,11 +48,9 @@ class _TrainScreenState extends State<TrainScreen> {
                             "Writing Challenges",
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                fontFamily: 'Oswald',
-                                color: Theme
-                                    .of(context)
-                                    .primaryColor,
-                                fontSize: 50,
+                                fontFamily: 'OpenSans',
+                                color: Theme.of(context).primaryColor,
+                                fontSize: 40,
                                 fontWeight: FontWeight.bold),
                           ),
                         ]
@@ -155,7 +147,7 @@ class ChallengeCard extends StatelessWidget {
         ],
       ),
       decoration: BoxDecoration(
-        color: Color(0xff3c3f41),
+        color: Color(0xff01AFE0),
         boxShadow: [
           BoxShadow(
               blurRadius: 8.0, offset: Offset(-3.0, 3.0), color: Colors.grey),
