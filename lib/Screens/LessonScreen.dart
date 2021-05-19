@@ -16,31 +16,27 @@ class _LessonScreenState extends State<LessonScreen> {
   Widget build(BuildContext context) {
     sWidth = MediaQuery.of(context).size.width;
     sHeight = MediaQuery.of(context).size.height;
+
     final themeProvider = Provider.of<DarkThemeProvider>(context);
     return LessonBody(themeProvider);
   }
 
   Widget LessonBody(DarkThemeProvider themeProvider) {
+
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         title: Text("Read & Write",
             style: TextStyle(
-              color: Colors.white,
                 fontFamily: 'OpenSans',
                 fontSize: 24,
+                color: Theme.of(context).primaryColor,
                 fontWeight: FontWeight.bold)),
-          leading: IconButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              icon: Icon(Icons.arrow_back,
-                  color: Colors.white, size: 30)),
         backgroundColor: Color(0xffF34F4E),
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20)),
-        ),
+                bottomRight: Radius.circular(20))),
       ),
       body: Center(
           child: ElevatedButton(
@@ -55,13 +51,3 @@ class _LessonScreenState extends State<LessonScreen> {
     );
   }
 }
-
-/*class LessonScreen extends StatelessWidget {
-  var sWidth, sHeight;
-  @override
-  Widget build(BuildContext context) {
-    sWidth = MediaQuery.of(context).size.width;
-    sHeight = MediaQuery.of(context).size.height;
-
-  }
-}*/
