@@ -36,22 +36,22 @@ class _LearnScreenState extends State<LearnScreen> {
             expandedHeight: 200,
             flexibleSpace: LayoutBuilder(
                 builder: (BuildContext context, BoxConstraints constraints) {
-                  return FlexibleSpaceBar(
-                    title: Text("Lessons",
-                        style: TextStyle(
-                            color: Theme.of(context).primaryColor,
-                            height: 1,
-                            fontWeight: FontWeight.bold,
-                            fontSize: constraints.maxHeight < 100
-                                ? null
-                                : constraints.maxHeight / 6)),
-                    titlePadding: constraints.maxHeight < 100
-                        ? null
-                        : EdgeInsetsDirectional.only(
+              return FlexibleSpaceBar(
+                title: Text("Lessons",
+                    style: TextStyle(
+                        color: Theme.of(context).primaryColor,
+                        height: 1,
+                        fontWeight: FontWeight.bold,
+                        fontSize: constraints.maxHeight < 100
+                            ? null
+                            : constraints.maxHeight / 6)),
+                titlePadding: constraints.maxHeight < 100
+                    ? null
+                    : EdgeInsetsDirectional.only(
                         start: (200 / constraints.maxHeight) * 32,
                         bottom: constraints.maxHeight / 12),
-                  );
-                }),
+              );
+            }),
           ),
           SliverList(
             delegate: SliverChildListDelegate([
@@ -87,7 +87,7 @@ class LessonCard extends StatelessWidget {
         child: Container(
           height: 200,
           margin:
-          const EdgeInsets.only(left: 20, right: 20, bottom: 15, top: 5),
+              const EdgeInsets.only(left: 20, right: 20, bottom: 15, top: 5),
           padding: const EdgeInsets.only(left: 10, right: 25),
           child: Row(
             children: <Widget>[

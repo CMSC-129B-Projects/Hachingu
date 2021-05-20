@@ -23,14 +23,14 @@ class _TrainScreenState extends State<TrainScreen> {
         backgroundColor: Theme.of(context).backgroundColor,
         appBar: AppBar(
           backgroundColor: Theme.of(context).backgroundColor,
-          elevation: 1,
+          elevation: 0,
           leading: IconButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              icon: Icon(Icons.arrow_back, color: Theme.of(context).primaryColor, size: 30)),
+              icon: Icon(Icons.arrow_back, color: Colors.amber)),
           shape:
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         ),
         body: Container(
             color: Theme.of(context).backgroundColor,
@@ -99,10 +99,7 @@ class _TrainScreenState extends State<TrainScreen> {
                         )
                       ]
                   )*/
-                ]
-            )
-        )
-    );
+            ])));
   }
 }
 
@@ -123,27 +120,28 @@ class ChallengeCard extends StatelessWidget {
           Image.asset(
             imageName,
             width: 150,
+            height: 150,
           ),
           Expanded(
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: <Widget>[
-                    Text(title,
-                        textAlign: TextAlign.right,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 26,
-                          fontWeight: FontWeight.bold,
-                        )),
-                    Text(description,
-                        textAlign: TextAlign.right,
-                        softWrap: true,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                        )),
-                  ])),
+                Text(title,
+                    textAlign: TextAlign.right,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 26,
+                      fontWeight: FontWeight.bold,
+                    )),
+                Text(description,
+                    textAlign: TextAlign.right,
+                    softWrap: true,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                    )),
+              ])),
         ],
       ),
       decoration: BoxDecoration(
