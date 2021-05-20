@@ -62,7 +62,8 @@ class _LearnScreenState extends State<LearnScreen> {
               LessonCard("assets/images/teach.png", "Sentence Structure",
                   "Learn about vocabulary, sentence word order, and more..."),
               LessonCard("assets/images/discuss.png", "Conjugations",
-                  "Learn about basic conjugations of verbs, adjectives, and more...")
+                  "Learn about basic conjugations of verbs, adjectives, and more..."),
+              Container(height: 10)
             ]),
           )
         ]));
@@ -87,7 +88,7 @@ class LessonCard extends StatelessWidget {
         child: Container(
           height: 200,
           margin:
-              const EdgeInsets.only(left: 20, right: 20, bottom: 15, top: 5),
+              const EdgeInsets.only(left: 20, right: 20, bottom: 10, top: 10),
           padding: const EdgeInsets.only(left: 10, right: 25),
           child: Row(
             children: <Widget>[
@@ -101,23 +102,23 @@ class LessonCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: <Widget>[
-                        Text(title,
-                            textAlign: TextAlign.right,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 26,
-                              fontFamily: 'OpenSans',
-                              fontWeight: FontWeight.bold,
-                            )),
-                        Text(description,
-                            textAlign: TextAlign.right,
-                            softWrap: true,
-                            style: TextStyle(
-                              fontFamily: 'OpenSans',
-                              color: Colors.white,
-                              fontSize: 18,
-                            )),
-                      ])),
+                    Text(title,
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 26,
+                          fontFamily: 'OpenSans',
+                          fontWeight: FontWeight.bold,
+                        )),
+                    Text(description,
+                        textAlign: TextAlign.right,
+                        softWrap: true,
+                        style: TextStyle(
+                          fontFamily: 'OpenSans',
+                          color: Colors.white,
+                          fontSize: 18,
+                        )),
+                  ])),
             ],
           ),
           decoration: BoxDecoration(
