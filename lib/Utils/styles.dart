@@ -77,7 +77,7 @@ abstract class Styles {
       //  fontFamily: Devfest.google_sans_family,
       primarySwatch: Colors.red,
       primaryColor: isDarkTheme ? Colors.white : Colors.black,
-
+      accentColor: isDarkTheme ? Color(0xff20212b) : Color(0xfffab316),
       backgroundColor: isDarkTheme ? Color(0xff20212b) : Color(0xffF1F5FB),
 
       indicatorColor: isDarkTheme ? Color(0xff0E1D36) : Color(0xffCBDCF8),
@@ -85,7 +85,7 @@ abstract class Styles {
 
       hintColor: isDarkTheme ? Color(0xff280C0B) : Color(0xffEECED3),
       shadowColor: isDarkTheme ? Color(0xff8f7027) : Colors.white,
-      splashColor: isDarkTheme ?  Color(0xffa19551) : Color(0xfff5edc9),
+      splashColor: isDarkTheme ?  Color(0xffa19551) : Color(0xfffff2cf),
       highlightColor: isDarkTheme ? Color(0xff372901) : Color(0xffFCE192),
       hoverColor: isDarkTheme ? Color(0xff3A3A3B) : Color(0xff4285F4),
       focusColor: isDarkTheme ? Color(0xff0B2512) : Color(0xffA8DAB5),

@@ -26,6 +26,7 @@ dependencies:
   flutter_local_notifications: ^5.0.0+4
   mailer: ^5.0.0
   fluttertoast: ^8.0.3
+  toast: ^0.1.5
   scoped_model: ^1.1.0
   provider: ^5.0.0
   shared_preferences: ^2.0.5

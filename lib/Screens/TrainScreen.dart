@@ -34,35 +34,44 @@ class _TrainScreenState extends State<TrainScreen> {
         ),
         body: Container(
             color: Theme.of(context).backgroundColor,
-            child: Column(children: [
-              Container(
-                alignment: Alignment.centerLeft,
-                padding: EdgeInsets.symmetric(horizontal: 24),
-                child: Text(
-                  "Writing Challenges",
-                  style: TextStyle(
-                      fontFamily: 'OpenSans',
-                      color: Theme.of(context).primaryColor,
-                      fontSize: 45,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              Container(
-                  height: sHeight * 0.789,
-                  child: ListView(
-                    padding: const EdgeInsets.all(8),
-                    children: <Widget>[
-                      ChallengeCard("assets/images/neural_network.png",
-                          "Random", "Answer characters, syllables, or words"),
-                      ChallengeCard("assets/images/writing_hand.png",
-                          "Character", "Test your character knowledge"),
-                      ChallengeCard("assets/images/business_meeting.png",
-                          "Syllable", "Test your syllable knowledge"),
-                      ChallengeCard("assets/images/discuss.png", "Word",
-                          "Test your word knowledge")
-                    ],
-                  )),
-              /*Stack(
+            child: Column(
+                children: [
+                  Positioned(
+                    top: 0,
+                    child: Column(
+                        children: [
+                          Container(
+                            width: sWidth,
+                            height: sHeight * 0.03,
+                          ),
+                          Text(
+                            "Writing Challenges",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'OpenSans',
+                                color: Theme.of(context).primaryColor,
+                                fontSize: 40,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ]
+                    ),
+                  ),
+                  Container(
+                      height: sHeight * 0.73,
+                      child: ListView(
+                        padding: const EdgeInsets.all(8),
+                        children: <Widget>[
+                          ChallengeCard("assets/images/learn.PNG", "Random",
+                              "Answer characters, syllables, or words"),
+                          ChallengeCard("assets/images/teach.png", "Character",
+                              "Test your character knowledge"),
+                          ChallengeCard("assets/images/learn.PNG", "Syllable",
+                              "Test your syllable knowledge"),
+                          ChallengeCard("assets/images/learn.PNG", "Word",
+                              "Test your word knowledge")
+                        ],
+                      )),
+                  /*Stack(
                       children: [
                         InkWell(
                             onTap: () {
