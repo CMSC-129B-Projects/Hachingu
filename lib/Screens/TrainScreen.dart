@@ -21,85 +21,50 @@ class _TrainScreenState extends State<TrainScreen> {
   Widget TrainBody(DarkThemeProvider themeProvider) {
     return new Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
-        appBar: AppBar(
-          backgroundColor: Theme.of(context).backgroundColor,
-          elevation: 0,
-          leading: IconButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              icon: Icon(Icons.arrow_back, color: Colors.amber)),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        ),
-        body: Container(
-            color: Theme.of(context).backgroundColor,
-            child: Column(
-                children: [
-                  Positioned(
-                    top: 0,
-                    child: Column(
-                        children: [
-                          Container(
-                            width: sWidth,
-                            height: sHeight * 0.03,
-                          ),
-                          Text(
-                            "Writing Challenges",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontFamily: 'OpenSans',
-                                color: Theme.of(context).primaryColor,
-                                fontSize: 40,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ]
-                    ),
-                  ),
-                  Container(
-                      height: sHeight * 0.73,
-                      child: ListView(
-                        padding: const EdgeInsets.all(8),
-                        children: <Widget>[
-                          ChallengeCard("assets/images/learn.PNG", "Random",
-                              "Answer characters, syllables, or words"),
-                          ChallengeCard("assets/images/teach.png", "Character",
-                              "Test your character knowledge"),
-                          ChallengeCard("assets/images/learn.PNG", "Syllable",
-                              "Test your syllable knowledge"),
-                          ChallengeCard("assets/images/learn.PNG", "Word",
-                              "Test your word knowledge")
-                        ],
-                      )),
-                  /*Stack(
-                      children: [
-                        InkWell(
-                            onTap: () {
-                              print("Tapped");
-                            },
-                            child: Container(
-                                height: 100,
-                                width: 100,
-                                child: Text(
-                                    "Character"
-                                )
-                            )
-                        ),
-                        InkWell(
-                            onTap: () {
-                              print("Tapped");
-                            },
-                            child: Container(
-                                height: 100,
-                                width: 100,
-                                child: Text(
-                                    "Word"
-                                )
-                            )
-                        )
-                      ]
-                  )*/
-            ])));
+        body: CustomScrollView(slivers: <Widget>[
+          SliverAppBar(
+            elevation: 0,
+            leading: IconButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                icon: Icon(Icons.arrow_back, color: Colors.amber)),
+            backgroundColor: Theme.of(context).backgroundColor,
+            pinned: true,
+            expandedHeight: 200,
+            flexibleSpace: LayoutBuilder(
+                builder: (BuildContext context, BoxConstraints constraints) {
+              return FlexibleSpaceBar(
+                title: Text("Writing Challenges",
+                    style: TextStyle(
+                        color: Theme.of(context).primaryColor,
+                        height: 1,
+                        fontWeight: FontWeight.bold,
+                        fontSize: constraints.maxHeight < 100
+                            ? null
+                            : constraints.maxHeight / 6)),
+                titlePadding: constraints.maxHeight < 100
+                    ? null
+                    : EdgeInsetsDirectional.only(
+                        start: (200 / constraints.maxHeight) * 32,
+                        bottom: constraints.maxHeight / 12),
+              );
+            }),
+          ),
+          SliverList(
+            delegate: SliverChildListDelegate([
+              ChallengeCard("assets/images/neural_network.png", "Random",
+                  "Answer characters, syllables, or words"),
+              ChallengeCard("assets/images/writing_hand.png", "Character",
+                  "Test your character knowledge"),
+              ChallengeCard("assets/images/read_aloud.png", "Syllable",
+                  "Test your syllable knowledge"),
+              ChallengeCard("assets/images/discuss.png", "Word",
+                  "Test your word knowledge"),
+              Container(height: 10)
+            ]),
+          )
+        ]));
   }
 }
 
@@ -113,7 +78,7 @@ class ChallengeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 200,
-      margin: const EdgeInsets.all(10),
+      margin: const EdgeInsets.only(left: 20, right: 20, bottom: 10, top: 10),
       padding: const EdgeInsets.only(left: 10, right: 25),
       child: Row(
         children: <Widget>[
@@ -155,13 +120,3 @@ class ChallengeCard extends StatelessWidget {
     );
   }
 }
-
-/*class TrainScreen extends StatelessWidget {
-  var sWidth, sHeight;
-  @override
-  Widget build(BuildContext context) {
-    sWidth = MediaQuery.of(context).size.width;
-    sHeight = MediaQuery.of(context).size.height;
-
-  }
-}*/
