@@ -82,7 +82,7 @@ class LessonCard extends StatelessWidget {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => LessonScreen()),
+            MaterialPageRoute(builder: (context) => LessonScreen(title)),
           );
         },
         child: Container(
