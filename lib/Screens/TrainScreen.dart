@@ -77,46 +77,54 @@ class ChallengeCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
-      margin: const EdgeInsets.only(left: 20, right: 20, bottom: 10, top: 10),
-      padding: const EdgeInsets.only(left: 10, right: 25),
-      child: Row(
-        children: <Widget>[
-          Image.asset(
-            imageName,
-            width: 150,
-            height: 150,
-          ),
-          Expanded(
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: <Widget>[
-                Text(title,
-                    textAlign: TextAlign.right,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 26,
-                      fontWeight: FontWeight.bold,
-                    )),
-                Text(description,
-                    textAlign: TextAlign.right,
-                    softWrap: true,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                    )),
-              ])),
-        ],
-      ),
-      decoration: BoxDecoration(
-        color: Color(0xff01AFE0),
-        boxShadow: [
-          BoxShadow(
-              blurRadius: 8.0, offset: Offset(-3.0, 3.0), color: Colors.grey),
-        ],
-        borderRadius: BorderRadius.all(Radius.circular(26)),
-      ),
-    );
+        decoration: BoxDecoration(
+          color: Color(0xff01AFE0),
+          boxShadow: [
+            BoxShadow(
+                blurRadius: 8.0, offset: Offset(-3.0, 3.0), color: Colors.grey),
+          ],
+          borderRadius: BorderRadius.all(Radius.circular(26)),
+        ),
+        margin: const EdgeInsets.only(left: 20, right: 20, bottom: 10, top: 10),
+        child: Material(
+            color: Colors.transparent,
+            child: InkWell(
+                onTap: () {},
+                customBorder: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(26),
+                ),
+                highlightColor: Color(0xff01AFE0).withOpacity(0.6),
+                child: Container(
+                    height: 200,
+                    padding: const EdgeInsets.only(left: 10, right: 25),
+                    child: Row(
+                      children: <Widget>[
+                        Image.asset(
+                          imageName,
+                          width: 150,
+                          height: 150,
+                        ),
+                        Expanded(
+                            child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: <Widget>[
+                              Text(title,
+                                  textAlign: TextAlign.right,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 26,
+                                    fontWeight: FontWeight.bold,
+                                  )),
+                              Text(description,
+                                  textAlign: TextAlign.right,
+                                  softWrap: true,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                  )),
+                            ])),
+                      ],
+                    )))));
   }
 }
