@@ -57,7 +57,7 @@ class _TrainScreenState extends State<TrainScreen> {
                   "Answer characters, syllables, or words"),
               ChallengeCard("assets/images/writing_hand.png", "Character",
                   "Test your character knowledge"),
-              ChallengeCard("assets/images/read_aloud.png", "Syllable",
+              ChallengeCard("assets/images/read_aloud_red.png", "Syllable",
                   "Test your syllable knowledge"),
               ChallengeCard("assets/images/discuss.png", "Word",
                   "Test your word knowledge"),
