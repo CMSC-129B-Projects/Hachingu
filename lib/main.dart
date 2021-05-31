@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:hachingu/Notifiers/dark_theme_provider.dart';
 import 'package:hachingu/Utils/styles.dart';
-import 'dart:math';
+import 'package:hachingu/Utils/preferences.dart';
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
@@ -14,7 +14,7 @@ final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
 
-  var initializationSettingsAndroid =
+  /*var initializationSettingsAndroid =
     AndroidInitializationSettings('hachingu_logo');
   var initializationSettingsIOS = IOSInitializationSettings(
     requestAlertPermission: true,
@@ -30,7 +30,8 @@ void main() async{
       if (payload != null){
         debugPrint('notification payload: '+ payload);
       }
-    });
+    });*/
+  await HachinguPreferences.init();
   runApp(Hachingu());
 }
 
@@ -44,13 +45,10 @@ class _HachinguState extends State<Hachingu> {
   NotificationsProvider notificationsChangeProvider = new NotificationsProvider();
   EmailProvider emailChangeProvider = new EmailProvider();
   FlutterLocalNotificationsPlugin localNotification;
-  TimeOfDay time;
-  TimeOfDay picked;
 
   @override
   void initState() {
     super.initState();
-    time = TimeOfDay.now();
     var androidInitialize = new AndroidInitializationSettings('hachingu_logo');
     var iOSInitialize = new IOSInitializationSettings();
     var initializationSettings = new InitializationSettings(android: androidInitialize, iOS: iOSInitialize);
@@ -59,8 +57,7 @@ class _HachinguState extends State<Hachingu> {
     getCurrentAppTheme();
   }
   void getCurrentAppTheme() async {
-    themeChangeProvider.darkTheme =
-    await themeChangeProvider.hachinguPreferences.getTheme();
+    themeChangeProvider.darkTheme = await themeChangeProvider.hachinguPreferences.getTheme();
   }
 
   @override
