@@ -1,9 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:hachingu/Utils/preferences.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'dart:math';
 
-class NotificationsProvider extends ChangeNotifier {
+class NotificationsProvider with ChangeNotifier {
   HachinguPreferences hachinguPreferences = HachinguPreferences();
   bool _notifications = false;
 
@@ -58,9 +57,9 @@ class NotificationsProvider extends ChangeNotifier {
   }
 
   //Scheduled Notifications
-  Future scheduledNotification() async{
+  Future scheduledNotification(Time scheduled) async{
     var scheduleNotificationDateTime =
-    DateTime.now().add(Duration(seconds: 10));
+    DateTime.now().add(Duration(seconds: 4));
     var bigPicture = BigPictureStyleInformation(
       DrawableResourceAndroidBitmap("hachingu_logo"),
       largeIcon: DrawableResourceAndroidBitmap("hachingu_logo"),
@@ -72,13 +71,16 @@ class NotificationsProvider extends ChangeNotifier {
     var android  = AndroidNotificationDetails("id", "channel", "description", styleInformation: bigPicture);
     var platform = new NotificationDetails(android: android);
 
-    await _flutterLocalNotificationsPlugin.schedule(
-      0, "This is your daily reminder", "Practice now!", scheduleNotificationDateTime, platform
+    await _flutterLocalNotificationsPlugin.showDailyAtTime(
+      0, "This is your daily reminder", "Practice now!", scheduled, platform
     );
+
   }
 
   //Cancel notifications
   Future cancelNotification() async{
     await _flutterLocalNotificationsPlugin.cancel(0);
   }
+
+
 }
