@@ -56,7 +56,7 @@ class _LearnScreenState extends State<LearnScreen> {
             delegate: SliverChildListDelegate([
               LessonCard("assets/images/read_aloud.png", "Reading",
                   "Learn to read hangul characters"),
-              LessonCard("assets/images/writing_hand.png", "Writing",
+              LessonCard("assets/images/writing_hand_blue.png", "Writing",
                   "Learn to write hangul characters"),
               LessonCard("assets/images/teach.png", "Sentence Structure",
                   "Learn about vocabulary, sentence word order, and more..."),
