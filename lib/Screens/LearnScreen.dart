@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hachingu/Notifiers/dark_theme_provider.dart';
-import 'package:hachingu/Utils/styles.dart';
 import 'package:provider/provider.dart';
 import 'package:hachingu/Screens/LessonScreen.dart';
 
