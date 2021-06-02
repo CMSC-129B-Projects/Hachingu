@@ -1,0 +1,113 @@
+[
+    {
+        "question": "Which of the following is the correct translation of “to eat”?",
+        "answer": "먹는다",
+        "choices": [
+            "읽는다 ",
+            "그녀",
+            "읽는다",
+            "먹는다"
+        ]
+    },
+    {
+        "question": "Which of the following is the correct translation of “to read”?",
+        "answer": "읽는다",
+        "choices": [
+            "읽는다 ",
+            "그녀",
+            "읽는다",
+            "먹는다"
+        ]
+    },
+    {
+        "question": "Which of the following is the correct translation of “ate”?",
+        "answer": "먹었다 ",
+        "choices": [
+            "먹었다 ",
+            "간다",
+            "공부한다",
+            "먹는다"
+        ]
+    },
+    {
+        "question": "Which of the following is the correct translation of “to study”?",
+        "answer": "공부한다 ",
+        "choices": [
+            "읽는다",
+            "간다 ",
+            "공부한다 ",
+            "먹는다 "
+        ]
+    },
+    {
+        "question": "Which of the following is the correct translation of “will eat”?",
+        "answer": "먹겠다",
+        "choices": [
+            "먹었다",
+            "d먹는다",
+            "먹겠다",
+            "먹는다 "
+        ]
+    },
+    {
+        "question": "Which of the following is the correct translation of “will walk”?",
+        "answer": "ch",
+        "choices": [
+            "가겠다",
+            "가다 겠",
+            "사겠다",
+            "먹겠다"
+        ]
+    },
+    {
+        "question": "In the future tense of verbs, what is added to the adjective stem.",
+        "answer": "겠",
+        "choices": [
+            "저",
+            "그녀",
+            "는다",
+            "겠"
+        ]
+    },
+    {
+        "question": "Which of the following is added to address people who need high respect?",
+        "answer": "습니다 ",
+        "choices": [
+            "습니다 ",
+            "는다",
+            "겠",
+            "가겠다"
+        ]
+    }
+    ,
+    {
+        "question": "Which of the following is the correct translation of “studied”?",
+        "answer": "공부했습니다 ",
+        "choices": [
+            "공부했습니다 ",
+            "갔습니다",
+            "괴여웠습니다",
+            "가겠다"
+        ]
+    },
+    {
+        "question": "Which of the following is the correct translation of “was pretty”?",
+        "answer": "괴여웠습니다 ",
+        "choices": [
+            "괴여웠습니다",
+            "갔습니다",
+            "공부했습니다",
+            "가겠다"
+        ]
+    },
+    {
+        "question": "Which of the following is the correct translation of “will study”?",
+        "answer": "공부하겠습니다",
+        "choices": [
+            "가겠습니다",
+            "갔습니다",
+            "공부하겠습니다",
+            "먹겠습니다"
+        ]
+    }
+]
