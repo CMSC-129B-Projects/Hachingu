@@ -36,11 +36,11 @@ Based on where the consonant is placed in a syllable (beginning, middle, or end)
 | ㅊ = ch/t, [aspirated J] looks like a **CH**urch | ![](resource:assets/images/LessonImages/consonant_13.png) |
 | ㅇ = *silent*/ng, looks like an O or zero  | **0** |
 
-There are compound characters, which are basically extended consonants
-ᄁ = kk
-ᄄ = tt
-ᄈ = pp
-ᄊ = ss
+There are compound characters, which are basically extended consonants\
+ᄁ = kk\
+ᄄ = tt\
+ᄈ = pp\
+ᄊ = ss\
 ᄍ = jj
 
 
@@ -49,29 +49,29 @@ There are compound characters, which are basically extended consonants
 
 There are ten vowels.
 
-*Vertically drawn vowels*
-ㅣ = i (ee), tall like a tree
-ㅏ = a (ah)
-ㅑ = ya
-ㅓ = eo (Romanized as “eo” but it sounds closer to “uh” in English)
+*Vertically drawn vowels*\
+ㅣ = i (ee), tall like a tree\
+ㅏ = a (ah)\
+ㅑ = ya\
+ㅓ = eo (Romanized as “eo” but it sounds closer to “uh” in English)\
 ㅕ = yeo
 
-*Horizontally drawn vowels*
-ㅡ = eu, long like a brook
-ㅜ = u (oo)
-ㅠ = yu 
-ㅗ = o (oh)
-ㅛ = yo
+*Horizontally drawn vowels*\
+ㅡ = eu, long like a brook\
+ㅜ = u (oo)\
+ㅠ = yu \
+ㅗ = o (oh)\
+ㅛ = yo 
 
-There are 11 complex vowels made up from basic letters
-ㅐ = ae
-ㅒ = yae
-ㅔ = e
-ㅖ = ye
-ㅘ = wa
-ㅙ = wae
-ㅚ = oe
-ㅝ = wo
-ㅞ = we
-ㅟ = wi
+There are 11 complex vowels made up from basic letters\
+ㅐ = ae\
+ㅒ = yae\
+ㅔ = e\
+ㅖ = ye\
+ㅘ = wa\
+ㅙ = wae\
+ㅚ = oe\
+ㅝ = wo\
+ㅞ = we\
+ㅟ = wi\
 ㅢ = ui
