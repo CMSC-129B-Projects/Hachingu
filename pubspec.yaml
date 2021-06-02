@@ -65,6 +65,15 @@ flutter:
     - assets/quizzes/
 
   fonts:
+    - family: Open Sans 
+      fonts:
+        - asset: assets/fonts/OpenSans-Light.ttf
+        - asset: assets/fonts/OpenSans-Regular.ttf
+        - asset: assets/fonts/OpenSans-SemiBold.ttf
+        - asset: assets/fonts/OpenSans-Bold.ttf
+        - asset: assets/fonts/OpenSans-ExtraBold.ttf
+
+
     - family: Oswald
       fonts:
         - asset: assets/fonts/Oswald-Regular.ttf
