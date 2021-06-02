@@ -40,6 +40,7 @@ class _LearnScreenState extends State<LearnScreen> {
                     style: TextStyle(
                         color: Theme.of(context).primaryColor,
                         height: 1,
+                        fontFamily: 'Open Sans',
                         fontWeight: FontWeight.bold,
                         fontSize: constraints.maxHeight < 100
                             ? null
