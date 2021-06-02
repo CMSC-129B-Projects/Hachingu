@@ -1,5 +1,25 @@
 [
     {
+        "question": "How many vowels are there in Korean language?",
+        "answer": "10",
+        "choices": [
+            "5",
+            "10",
+            "21",
+            "14"
+        ]
+    },
+    {
+        "question": "How many consonants are there in Korean language?",
+        "answer": "14",
+        "choices": [
+            "5",
+            "10",
+            "21",
+            "14"
+        ]
+    },
+    {
         "question": "The following sounds are not present in the Korean language except",
         "answer": "V",
         "choices": [
@@ -87,6 +107,16 @@
             "b",
             "p",
             "s"
+        ]
+    },
+    {
+        "question": "How many ways are there to write a block?",
+        "answer": "2",
+        "choices": [
+            "2",
+            "5",
+            "1",
+            "4"
         ]
     }
 ]

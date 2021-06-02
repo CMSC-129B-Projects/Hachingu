@@ -40,7 +40,7 @@ class _QuizScreenState extends State<QuizScreen> {
     final data = await json.decode(response);
     setState(() {
       _items = data..shuffle();
-      _items = _items.sublist(0, 10);
+      _items = _items.sublist(0, 11);
     });
   }
 
@@ -54,7 +54,8 @@ class _QuizScreenState extends State<QuizScreen> {
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
-              builder: (context) => QuizResultsScreen(widget.title, _items)),
+              builder: (context) =>
+                  QuizResultsScreen(widget.title, _items.sublist(0, 10))),
           (route) => false);
     }
   }
