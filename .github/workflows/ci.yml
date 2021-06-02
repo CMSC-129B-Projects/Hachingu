@@ -2,7 +2,6 @@ name: CI
 on:
   pull_requests:
     branches:
-      - master
       - other-pages
 
 jobs:
