@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hachingu/Notifiers/dark_theme_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:hachingu/Screens/LearnScreen.dart';
+import 'package:hachingu/Screens/QuizResultsScreen.dart';
 
 class QuizScreen extends StatefulWidget {
   @override
@@ -59,6 +59,16 @@ class _QuizScreenState extends State<QuizScreen> {
                       QuizCard("ᄀ"),
                       QuizCard("ᄂ"),
                       QuizCard("ᄃ"),
+                      ElevatedButton(
+                        child: Text("Results"),
+                        onPressed: () {
+                          Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => QuizResultsScreen()),
+                              (route) => false);
+                        },
+                      )
                     ],
                   )),
             ])));
