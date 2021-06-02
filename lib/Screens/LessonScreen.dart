@@ -86,7 +86,8 @@ class _LessonScreenState extends State<LessonScreen> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => QuizScreen()),
+                          MaterialPageRoute(
+                              builder: (context) => QuizScreen(widget.title)),
                         );
                       },
                     )

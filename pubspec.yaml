@@ -57,6 +57,7 @@ flutter:
     - assets/images/
     - assets/images/LessonImages/
     - assets/lessons/
+    - assets/quizzes/
 
   fonts:
     - family: Oswald
