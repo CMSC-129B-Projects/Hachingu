@@ -17,9 +17,9 @@ class HachinguPreferences {
 
   setDarkTheme(bool value) async => await prefs.setBool(THEME_STATUS, value);
 
-  setEmails(bool value) async => await prefs.setBool(EMAIL_STATUS, value);
+  setEmails(bool value) async => prefs.setBool(EMAIL_STATUS, value);
 
-  setNotifications(bool value) async => await prefs.setBool(NOTIFICATION_STATUS, value);
+  setNotifications(bool value) async => prefs.setBool(NOTIFICATION_STATUS, value);
 
   setLocalReminder(TimeOfDay time) async {
     final localreminder = time.toString();
@@ -31,9 +31,9 @@ class HachinguPreferences {
     prefs.setString(EMAIL_REMINDER_TIME, emailreminder);
   }
 
-  static Future setEmail(String user_email) async => await prefs.setString(USER_EMAIL, user_email);
+  static Future setUserEmail(String user_email) async => await prefs.setString(USER_EMAIL, user_email);
 
-  static String getUserEmail() => prefs.get(USER_EMAIL);
+  static String getUserEmail() => prefs.get(USER_EMAIL) ?? "sample@gmail.com";
 
   Future<bool> getTheme() async {
     return prefs.getBool(THEME_STATUS) ?? false;
@@ -49,11 +49,11 @@ class HachinguPreferences {
 
   static TimeOfDay getLocalReminder() {
     final reminder = prefs.getString(LOCAL_REMINDER_TIME);
-    String h = (reminder.split(":")[0]);
-    String m = (reminder.split(":")[1]);
-    h = (h.split("(")[1]);
-    m = (m.split(")")[0]);
     if (reminder != null){
+      String h = (reminder.split(":")[0]);
+      String m = (reminder.split(":")[1]);
+      h = (h.split("(")[1]);
+      m = (m.split(")")[0]);
       TimeOfDay rem = TimeOfDay(hour:int.parse(h), minute: int.parse(m));
       return rem;
     }
@@ -64,11 +64,11 @@ class HachinguPreferences {
 
   static TimeOfDay getEmailReminder() {
     final reminder = prefs.getString(EMAIL_REMINDER_TIME);
-    String h = (reminder.split(":")[0]);
-    String m = (reminder.split(":")[1]);
-    h = (h.split("(")[1]);
-    m = (m.split(")")[0]);
     if (reminder != null){
+      String h = (reminder.split(":")[0]);
+      String m = (reminder.split(":")[1]);
+      h = (h.split("(")[1]);
+      m = (m.split(")")[0]);
       TimeOfDay rem = TimeOfDay(hour:int.parse(h), minute: int.parse(m));
       return rem;
     }

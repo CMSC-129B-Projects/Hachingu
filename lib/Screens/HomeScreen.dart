@@ -6,8 +6,6 @@ import 'package:hachingu/Screens/SettingsScreen.dart';
 import 'package:hachingu/Screens/LearnScreen.dart';
 import 'package:hachingu/Screens/TrainScreen.dart';
 import 'package:hachingu/Notifiers/dark_theme_provider.dart';
-import 'package:hachingu/Notifiers/notifications_provider.dart';
-import 'package:hachingu/Utils/styles.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {

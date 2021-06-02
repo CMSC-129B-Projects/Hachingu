@@ -1,10 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hachingu/Notifiers/dark_theme_provider.dart';
 import 'package:hachingu/Notifiers/notifications_provider.dart';
 import 'package:hachingu/Notifiers/email_sender.dart';
 import 'package:hachingu/Utils/preferences.dart';
-import 'package:hachingu/main.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
@@ -18,8 +16,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   var sWidth, sHeight;
   final _formKey = GlobalKey<FormState>();
   bool showToggles = false;
-  TimeOfDay _timeLocal = TimeOfDay.now();
-  TimeOfDay _timeEmail = TimeOfDay.now();
+  TimeOfDay _timeLocal, _timeEmail;
   TimeOfDay pickedLocal, pickedEmail;
   Time converted;
   int _hour, _minute;
@@ -28,26 +25,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   void initState(){
     super.initState();
-
     user_email = HachinguPreferences.getUserEmail();
     _timeLocal = HachinguPreferences.getLocalReminder();
     _timeEmail = HachinguPreferences.getEmailReminder();
   }
 
-
   @override
-  //void initState(){
-  //  Provider.of<NotificationsProvider>(context, listen: false).initialize();
-  //}
   Widget build(BuildContext context) {
     sWidth = MediaQuery.of(context).size.width;
     sHeight = MediaQuery.of(context).size.height;
     final themeProvider = Provider.of<DarkThemeProvider>(context);
     final notificationsProvider = Provider.of<NotificationsProvider>(context);
     final emailProvider = Provider.of<EmailProvider>(context);
-    print("Dark ${themeProvider.darkTheme}");
-    print("Email ${emailProvider.email}");
-    print("Local ${notificationsProvider.notifications}");
     return settingsBody(themeProvider, notificationsProvider, emailProvider);
   }
 
@@ -179,7 +168,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
+                        Flexible(
+                        child: Container(
                             margin:
                             const EdgeInsets.only(
                                 left: 40.0, right: 20.0),
@@ -192,8 +182,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                 fontFamily: 'OpenSans',
                                 fontWeight: FontWeight.bold,
                               ),
-                            )),
-                        Container(
+                            ))),
+                        Flexible(
+                        child: Container(
                             margin: const EdgeInsets.only(
                                 left: 20.0, right: 20.0),
                             child: Transform.scale(
@@ -202,7 +193,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                   value: emailProvider.email,
                                   onChanged: (bool value) {
                                     emailProvider.email = value;
-                                    value ? model.EmailNotificationsEnabled(user_email, pickedEmail) : model.EmailNotificationsDisabled();
+                                    value ? model.EmailNotificationsEnabled(user_email, pickedEmail) : value;
                                   },
                                   activeColor: Colors.green,
                                   activeTrackColor: Colors.lightGreen,
@@ -210,7 +201,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                   inactiveTrackColor: Colors.white12,
                                 )
                             )
-                        )
+                        ))
                       ],
                     ),
                   ),
@@ -243,6 +234,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+                        //Flexible(
                         Container(
                             margin:
                             const EdgeInsets.only(
@@ -257,7 +249,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                 fontWeight: FontWeight.bold,
                               ),
                             )),
-                        Container(
+                        Flexible(
+                        child: Container(
                             margin: const EdgeInsets.only(
                                 left: 20.0, right: 20.0),
                             child: Transform.scale(
@@ -274,7 +267,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                   inactiveTrackColor: Colors.white12,
                                 )
                             )
-                        )
+                        ))
                       ],
                     ),
                   ),
@@ -309,7 +302,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             labelText: 'Email Address',
                           ),
                           onChanged: (String text) async {
-                            await HachinguPreferences.setEmail(text);
+                            await HachinguPreferences.setUserEmail(text);
                             EmailProvider().EmailNotificationsEnabled(text, pickedEmail);
                           },
                         ),
@@ -476,5 +469,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
       });
     }
   }
+
 
 }

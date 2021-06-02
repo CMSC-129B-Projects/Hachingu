@@ -61,8 +61,8 @@ class NotificationsProvider with ChangeNotifier {
     var scheduleNotificationDateTime =
     DateTime.now().add(Duration(seconds: 4));
     var bigPicture = BigPictureStyleInformation(
-      DrawableResourceAndroidBitmap("hachingu_logo"),
-      largeIcon: DrawableResourceAndroidBitmap("hachingu_logo"),
+      DrawableResourceAndroidBitmap("hachingu_notif"),
+      largeIcon: DrawableResourceAndroidBitmap("hachingu_notif"),
       contentTitle: "Hachingu Daily Reminder",
       summaryText: "Practice makes perfect",
       htmlFormatContent: true,
