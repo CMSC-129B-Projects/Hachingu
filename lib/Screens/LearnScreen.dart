@@ -120,7 +120,7 @@ class LessonCard extends StatelessWidget {
                                   textAlign: TextAlign.right,
                                   style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: 26,
+                                    fontSize: 24,
                                     fontFamily: 'OpenSans',
                                     fontWeight: FontWeight.bold,
                                   )),

@@ -28,7 +28,12 @@ class EmailProvider with ChangeNotifier {
       ..text = 'This is plain text'
       ..html = "<h1>Welcome to Hachingu!</h1><h2>You enabled email notifications!</h2><h2>From time to time, you'll get emails like this</h2>";
 
-    if (TimeOfDay.now() == scheduled) {
+    double sched = toDouble(scheduled);
+    print(sched);
+    double now = toDouble(TimeOfDay.now());
+    print(now);
+
+    if (sched >= now && sched <= (now+(1.0/60.0))) {
       try {
         final sendReport = await send(message, smtpServer);
         print('Message sent ' + sendReport.toString());
@@ -38,6 +43,8 @@ class EmailProvider with ChangeNotifier {
       }
     }
   }
+
+  double toDouble(TimeOfDay myTime) => myTime.hour + myTime.minute/60.0;
 
   EmailNotificationsDisabled() async {
     String username = 'hachinguemailtest@gmail.com';
