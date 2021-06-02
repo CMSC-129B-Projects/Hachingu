@@ -5,36 +5,23 @@ import 'package:hachingu/Screens/HomeScreen.dart';
 import 'package:hachingu/Screens/QuizScreen.dart';
 
 class QuizResultsScreen extends StatefulWidget {
+  final List items;
+
+  const QuizResultsScreen(this.items);
+
   @override
   _QuizResultsScreenState createState() => _QuizResultsScreenState();
 }
 
 class _QuizResultsScreenState extends State<QuizResultsScreen> {
   var sWidth, sHeight;
-  List _res = [
-    {'question': 'Question 1?', 'answer': 'answer1', 'userAnswer': 'answer1'},
-    {'question': 'Question 2?', 'answer': 'answer2', 'userAnswer': 'answer2'},
-    {'question': 'Question 3?', 'answer': 'answer3', 'userAnswer': 'answer3'},
-    {
-      'question': 'What is the closest Hangul character for ra?',
-      'answer': 'answer4',
-      'userAnswer': 'answer1'
-    },
-    {'question': 'Question 5?', 'answer': 'answer5', 'userAnswer': 'answer5'},
-    {'question': 'Question 6?', 'answer': 'answer6', 'userAnswer': 'answer6'},
-    {'question': 'Question 7?', 'answer': 'answer7', 'userAnswer': 'answer7'},
-    {
-      'question': 'Question 8?',
-      'answer': 'Subject-Object-Verb (SOV)',
-      'userAnswer': 'Subject-Verb (SV)'
-    },
-    {'question': 'Question 9?', 'answer': 'answer9', 'userAnswer': 'answer9'},
-    {
-      'question': 'The quick brown fox jumps over the lazy dog?',
-      'answer': 'answer10',
-      'userAnswer': 'answer10'
-    },
-  ];
+  List _res;
+
+  @override
+  void initState() {
+    super.initState();
+    _res = widget.items;
+  }
 
   int getScore() {
     int count = 0;
