@@ -41,24 +41,21 @@ class _QuizScreenState extends State<QuizScreen> {
     setState(() {
       _items = data..shuffle();
       _items = _items.sublist(0, 10);
-
-      // _items = _items.sublist(0, 10);
-      print(_items.length);
     });
   }
 
   void handleClick(description) {
-    if (indx == 9)
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => QuizResultsScreen(_items)),
-      );
-    else {
-      setState(() {
-        _items[indx]["userAnswer"] = description;
-        print(_items[indx]["userAnswer"]);
-        indx++;
-      });
+    setState(() {
+      _items[indx]["userAnswer"] = description;
+      print(_items[indx]["userAnswer"]);
+      indx++;
+    });
+    if (indx == 10) {
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+              builder: (context) => QuizResultsScreen(widget.title, _items)),
+          (route) => false);
     }
   }
 

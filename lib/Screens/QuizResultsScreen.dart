@@ -5,9 +5,10 @@ import 'package:hachingu/Screens/HomeScreen.dart';
 import 'package:hachingu/Screens/QuizScreen.dart';
 
 class QuizResultsScreen extends StatefulWidget {
+  final String title;
   final List items;
 
-  const QuizResultsScreen(this.items);
+  const QuizResultsScreen(this.title, this.items);
 
   @override
   _QuizResultsScreenState createState() => _QuizResultsScreenState();
@@ -16,12 +17,6 @@ class QuizResultsScreen extends StatefulWidget {
 class _QuizResultsScreenState extends State<QuizResultsScreen> {
   var sWidth, sHeight;
   List _res;
-
-  @override
-  void initState() {
-    super.initState();
-    _res = widget.items;
-  }
 
   int getScore() {
     int count = 0;
@@ -58,6 +53,7 @@ class _QuizResultsScreenState extends State<QuizResultsScreen> {
   @override
   void initState() {
     super.initState();
+    _res = widget.items;
     _res = _res
         .map((e) => {
               'question': e['question'],
@@ -115,7 +111,7 @@ class _QuizResultsScreenState extends State<QuizResultsScreen> {
         Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              InkButton('RETRY', Colors.grey, QuizScreen()),
+              InkButton('RETRY', Colors.grey, QuizScreen(widget.title)),
               InkButton('PROCEED', Color(0xfffab316), HomeScreen()),
             ]),
         Container(height: 20)
