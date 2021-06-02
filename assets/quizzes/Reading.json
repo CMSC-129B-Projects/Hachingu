@@ -1,0 +1,112 @@
+[
+    {
+        "question": "How many vowels are there in Korean language?",
+        "answer": "10",
+        "choices": [
+            "5",
+            "10",
+            "21",
+            "14"
+        ]
+    },
+    {
+        "question": "How many consonants are there in Korean language?",
+        "answer": "14",
+        "choices": [
+            "5",
+            "10",
+            "21",
+            "14"
+        ]
+    },
+    {
+        "question": "The following sounds are not present in the Korean language except",
+        "answer": "V",
+        "choices": [
+            "K",
+            "Z",
+            "V",
+            "R"
+        ]
+    },
+    {
+        "question": "Which of the following english characters corresponds to “ㅂ”?",
+        "answer": "b",
+        "choices": [
+            "p",
+            "k",
+            "b",
+            "g"
+        ]
+    },
+    {
+        "question": "Which of the following english characters corresponds to “ㄱ”?",
+        "answer": "g",
+        "choices": [
+            "g",
+            "d",
+            "m",
+            "j"
+        ]
+    },
+    {
+        "question": "Which of the following english characters corresponds to “ㅊ”?",
+        "answer": "ch",
+        "choices": [
+            "d",
+            "s",
+            "j",
+            "ch"
+        ]
+    },
+    {
+        "question": "Which of the following english characters corresponds to “ㅁ”?",
+        "answer": "m",
+        "choices": [
+            "m",
+            "b",
+            "p",
+            "k"
+        ]
+    },
+    {
+        "question": "Which of the following english characters corresponds to “ㄴ”?",
+        "answer": "n",
+        "choices": [
+            "k",
+            "n",
+            "p",
+            "s"
+        ]
+    },
+    {
+        "question": "Which of the following english characters corresponds to “ㅈ”?",
+        "answer": "j",
+        "choices": [
+            "k",
+            "j",
+            "p",
+            "s"
+        ]
+    },
+    {
+        "question": "Which of the following english characters corresponds to “ㄷ”?",
+        "answer": "d",
+        "choices": [
+            "k",
+            "b",
+            "p",
+            "d"
+        ]
+    },
+    {
+        "question": "Which of the following english characters corresponds to “ㄹ”?",
+        "answer": "r",
+        "choices": [
+            "r",
+            "b",
+            "p",
+            "s"
+        ]
+    }
+]

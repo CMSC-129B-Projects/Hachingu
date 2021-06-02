@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:hachingu/Screens/QuizScreen.dart';
 import 'package:hachingu/Notifiers/dark_theme_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:hachingu/Screens/QuizScreen.dart';
@@ -87,7 +86,8 @@ class _LessonScreenState extends State<LessonScreen> {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => QuizScreen()),
+                          MaterialPageRoute(
+                              builder: (context) => QuizScreen(widget.title)),
                         );
                       },
                     )

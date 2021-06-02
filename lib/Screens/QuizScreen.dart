@@ -1,15 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:hachingu/Notifiers/dark_theme_provider.dart';
+import 'package:hachingu/Screens/HomeScreen.dart';
 import 'package:provider/provider.dart';
+import 'package:hachingu/Screens/LearnScreen.dart';
+import 'dart:convert';
+import 'package:flutter/services.dart' show rootBundle;
+import 'dart:math';
 import 'package:hachingu/Screens/QuizResultsScreen.dart';
 
 class QuizScreen extends StatefulWidget {
+  final String title;
+
+  const QuizScreen(this.title);
   @override
   _QuizScreenState createState() => _QuizScreenState();
 }
 
 class _QuizScreenState extends State<QuizScreen> {
   var sWidth, sHeight;
+  List _items = [];
+  int indx = 0;
+  @override
+  void initState() {
+    super.initState();
+    readJson();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +34,37 @@ class _QuizScreenState extends State<QuizScreen> {
     return QuizBody(themeProvider);
   }
 
+  Future<void> readJson() async {
+    final String response =
+        await rootBundle.loadString('assets/quizzes/' + widget.title + '.json');
+    final data = await json.decode(response);
+    setState(() {
+      _items = data..shuffle();
+      _items = _items.sublist(0, 11);
+    });
+  }
+
+  void handleClick(description) {
+    setState(() {
+      _items[indx]["userAnswer"] = description;
+      print(_items[indx]["userAnswer"]);
+      indx++;
+    });
+    if (indx == 10) {
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  QuizResultsScreen(widget.title, _items.sublist(0, 10))),
+          (route) => false);
+    }
+  }
+
   Widget QuizBody(DarkThemeProvider themeProvider) {
     return Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
         appBar: AppBar(
-          title: Text("Quiz: Read & Write",
+          title: Text(widget.title,
               style: TextStyle(
                   fontFamily: 'OpenSans',
                   fontSize: 24,
@@ -42,7 +83,7 @@ class _QuizScreenState extends State<QuizScreen> {
                 alignment: Alignment.centerLeft,
                 padding: EdgeInsets.symmetric(horizontal: 24),
                 child: Text(
-                  "What is the closest Hangul character for ka?",
+                  _items[indx]["question"].toString(),
                   style: TextStyle(
                       fontFamily: 'OpenSans',
                       color: Theme.of(context).primaryColor,
@@ -55,20 +96,14 @@ class _QuizScreenState extends State<QuizScreen> {
                   child: ListView(
                     padding: const EdgeInsets.all(8),
                     children: <Widget>[
-                      QuizCard("ᄇ"),
-                      QuizCard("ᄀ"),
-                      QuizCard("ᄂ"),
-                      QuizCard("ᄃ"),
-                      ElevatedButton(
-                        child: Text("Results"),
-                        onPressed: () {
-                          Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => QuizResultsScreen()),
-                              (route) => false);
-                        },
-                      )
+                      QuizCard(
+                          _items[indx]["choices"][0].toString(), handleClick),
+                      QuizCard(
+                          _items[indx]["choices"][1].toString(), handleClick),
+                      QuizCard(
+                          _items[indx]["choices"][2].toString(), handleClick),
+                      QuizCard(
+                          _items[indx]["choices"][3].toString(), handleClick),
                     ],
                   )),
             ])));
@@ -77,16 +112,14 @@ class _QuizScreenState extends State<QuizScreen> {
 
 class QuizCard extends StatelessWidget {
   final String description;
+  final Function hClick;
 
-  const QuizCard(this.description);
+  const QuizCard(this.description, this.hClick);
   @override
   Widget build(BuildContext context) {
     return InkWell(
         onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => QuizScreen()),
-          );
+          hClick(description);
         },
         child: Container(
           height: 80,
