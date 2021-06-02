@@ -72,7 +72,7 @@ abstract class Styles {
   static ThemeData themeData(bool isDarkTheme, BuildContext context) {
     return ThemeData(
       //* Custom Google Font
-      //  fontFamily: Devfest.google_sans_family,
+      fontFamily: 'Open Sans',
       primarySwatch: Colors.red,
       primaryColor: isDarkTheme ? Colors.white : Colors.black,
       accentColor: isDarkTheme ? Color(0xff20212b) : Color(0xfffab316),
