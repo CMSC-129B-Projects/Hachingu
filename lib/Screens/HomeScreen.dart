@@ -14,9 +14,24 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
+  AnimationController _controller;
   var sWidth, sHeight;
   var currentFocus = "learn";
+
+  @override
+  void initState() {
+    _controller =
+        AnimationController(duration: Duration(milliseconds: 300), vsync: this);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   hover() {}
   @override
@@ -297,10 +312,17 @@ class _HomeScreenState extends State<HomeScreen> {
                     bottom: 0,
                     right: 0,
                     child: MaterialButton(
+                      splashColor: Colors.white.withAlpha(0),
+                      focusColor: Colors.white.withAlpha(0),
+                      highlightColor: Colors.white.withAlpha(0),
                       height: 77,
                       minWidth: 77,
                       color: Color(0xfffAB316),
-                      onPressed: () {
+                      onPressed: () async {
+                        await Future.delayed(Duration(milliseconds: 200));
+                        _controller.reset();
+                        _controller.forward();
+                        await Future.delayed(Duration(milliseconds: 100));
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (BuildContext context) =>
                                 SettingsScreen()));
@@ -311,9 +333,12 @@ class _HomeScreenState extends State<HomeScreen> {
                               bottomLeft: Radius.circular(38),
                               topRight: Radius.circular(38),
                               bottomRight: Radius.circular(42))),
-                      child: Image.asset(
-                        'assets/images/cog.png',
-                        width: 38,
+                      child: RotationTransition(
+                        turns: Tween(begin: 0.0, end: 1.0).animate(_controller),
+                        child: Image.asset(
+                          'assets/images/cog.png',
+                          width: 38,
+                        ),
                       ),
                     ),
                   ),
