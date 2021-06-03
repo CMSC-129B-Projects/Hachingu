@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hachingu/Notifiers/dark_theme_provider.dart';
-import 'package:hachingu/Screens/HomeScreen.dart';
 import 'package:provider/provider.dart';
-import 'package:hachingu/Screens/LearnScreen.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart' show rootBundle;
-import 'dart:math';
 import 'package:hachingu/Screens/QuizResultsScreen.dart';
 
 class QuizScreen extends StatefulWidget {
@@ -18,8 +15,15 @@ class QuizScreen extends StatefulWidget {
 
 class _QuizScreenState extends State<QuizScreen> {
   var sWidth, sHeight;
-  List _items = [];
+  List _items = [
+    {
+      "question": "Loading...",
+      "answer": "Loading...",
+      "choices": ["Loading...", "Loading...", "Loading...", "Loading..."]
+    }
+  ];
   int indx = 0;
+
   @override
   void initState() {
     super.initState();
