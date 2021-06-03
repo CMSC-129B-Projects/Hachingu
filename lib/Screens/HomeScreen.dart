@@ -8,22 +8,97 @@ import 'package:hachingu/Screens/TrainScreen.dart';
 import 'package:hachingu/Notifiers/dark_theme_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:toast/toast.dart';
+import 'dart:math' as math;
 
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen>
-    with SingleTickerProviderStateMixin {
+class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   AnimationController _controller;
+  AnimationController learnCardControllerRotate;
+  AnimationController trainCardControllerRotate;
+  AnimationController learnCardControllerTransform;
+  AnimationController trainCardControllerTransform;
+
+  double learnCardPosx = 0;
+  double trainCardPosx = 0;
+
+  double learnCardAngle = 0;
+  double trainCardAngle = 0;
   var sWidth, sHeight;
   var currentFocus = "learn";
 
   @override
   void initState() {
+    learnCardPosx = 0;
+    trainCardPosx = 0;
+
+    learnCardAngle = 0;
+    trainCardAngle = 0;
     _controller =
         AnimationController(duration: Duration(milliseconds: 300), vsync: this);
+
+    learnCardControllerRotate = AnimationController(
+        duration: Duration(milliseconds: 140),
+        vsync: this,
+        lowerBound: 0,
+        upperBound: 30);
+    learnCardControllerRotate.addListener(() {
+      if (learnCardControllerRotate.isCompleted) {
+        learnCardControllerRotate.reverse();
+      }
+      setState(() {
+        learnCardAngle = learnCardControllerRotate.value;
+      });
+    });
+
+    learnCardControllerTransform = AnimationController(
+        duration: Duration(milliseconds: 140),
+        vsync: this,
+        lowerBound: 0,
+        upperBound: 100);
+    learnCardControllerTransform.addListener(() {
+      if (learnCardControllerTransform.isCompleted) {
+        learnCardControllerTransform.reverse();
+      }
+      setState(() {
+        learnCardPosx = learnCardControllerTransform.value;
+      });
+    });
+
+    trainCardControllerRotate = AnimationController(
+        duration: Duration(milliseconds: 140),
+        vsync: this,
+        lowerBound: 0,
+        upperBound: 30);
+
+    trainCardControllerRotate.addListener(() {
+      if (trainCardControllerRotate.isCompleted) {
+        trainCardControllerRotate.reverse();
+      }
+
+      setState(() {
+        trainCardAngle = trainCardControllerRotate.value;
+      });
+    });
+
+    trainCardControllerTransform = AnimationController(
+        duration: Duration(milliseconds: 140),
+        vsync: this,
+        lowerBound: 0,
+        upperBound: 100);
+
+    trainCardControllerTransform.addListener(() {
+      if (trainCardControllerTransform.isCompleted) {
+        trainCardControllerTransform.reverse();
+      }
+
+      setState(() {
+        trainCardPosx = trainCardControllerTransform.value;
+      });
+    });
     super.initState();
   }
 
@@ -45,212 +120,359 @@ class _HomeScreenState extends State<HomeScreen>
   Widget HomeBody(DarkThemeProvider themeProvider) {
     List<Widget> stackChildren = [
       Positioned(
-        left: 20,
+        left: 20 - trainCardPosx,
         top: 85,
-        child: new InkWell(
-          onLongPress: () {
-            setState(() {
-              currentFocus = "write";
-            });
-          },
-          onTap: () async {
-            setState(() {
-              currentFocus = "write";
-            });
-
-            await Future.delayed(Duration(milliseconds: 300));
-
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (BuildContext context) => TrainScreen()));
-          },
-          child: Container(
-            width: sWidth / 2,
-            height: sHeight * 0.34,
-            decoration: BoxDecoration(
-                color: Color(0xff01AFE0),
-                boxShadow: [
-                  BoxShadow(
-                      blurRadius: 6.0,
-                      offset: Offset(-3.0, 3.0),
-                      color: Colors.grey),
-                ],
-                borderRadius: BorderRadius.all(Radius.circular(26))),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Image.asset(
-                  "assets/images/writing_hand.png",
-                  width: 105,
-                ),
-                SizedBox(
-                  height: 4,
-                ),
-                Text("Train",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontFamily: 'Open Sans',
-                        fontWeight: FontWeight.bold)),
-              ],
-            ),
-          ),
-        ),
-      ),
-      Positioned(
-          right: 20,
-          bottom: 40,
+        child: Transform.rotate(
+          angle: -1.2 * trainCardAngle * math.pi / 180,
           child: new InkWell(
-            onLongPress: () {
-              setState(() {
-                currentFocus = "learn";
-              });
+            onLongPress: () async {
+              if (currentFocus != "write") {
+                learnCardControllerRotate.animateTo(
+                    learnCardControllerRotate.upperBound,
+                    curve: Curves.easeIn);
+
+                learnCardControllerTransform.animateTo(
+                    learnCardControllerTransform.upperBound,
+                    curve: Curves.easeIn);
+                trainCardControllerRotate.animateTo(
+                    learnCardControllerRotate.upperBound,
+                    curve: Curves.easeIn);
+
+                trainCardControllerTransform.animateTo(
+                    trainCardControllerTransform.upperBound,
+                    curve: Curves.easeIn);
+                await Future.delayed(Duration(milliseconds: 150));
+                setState(() {
+                  currentFocus = "write";
+                });
+              }
             },
             onTap: () async {
-              setState(() {
-                currentFocus = "learn";
-              });
+              if (currentFocus != "write") {
+                learnCardControllerRotate.animateTo(
+                    learnCardControllerRotate.upperBound,
+                    curve: Curves.easeIn);
 
-              await Future.delayed(Duration(milliseconds: 300));
+                learnCardControllerTransform.animateTo(
+                    learnCardControllerTransform.upperBound,
+                    curve: Curves.easeIn);
+                trainCardControllerRotate.animateTo(
+                    learnCardControllerRotate.upperBound,
+                    curve: Curves.easeIn);
+
+                trainCardControllerTransform.animateTo(
+                    trainCardControllerTransform.upperBound,
+                    curve: Curves.easeIn);
+                await Future.delayed(Duration(milliseconds: 150));
+                setState(() {
+                  currentFocus = "write";
+                });
+              }
+              await Future.delayed(Duration(milliseconds: 200));
+
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context) => LearnScreen()));
+                  builder: (BuildContext context) => TrainScreen()));
             },
             child: Container(
-              height: sHeight * 0.34,
               width: sWidth / 2,
+              height: sHeight * 0.34,
               decoration: BoxDecoration(
-                color: Color(0xffF34F4E),
-                boxShadow: [
-                  BoxShadow(
-                      blurRadius: 6.0,
-                      offset: Offset(-3.0, 3.0),
-                      color: Colors.grey),
-                ],
-                borderRadius: BorderRadius.all(Radius.circular(26)),
-              ),
+                  color: Color(0xff01AFE0),
+                  boxShadow: [
+                    BoxShadow(
+                        blurRadius: 6.0,
+                        offset: Offset(-3.0, 3.0),
+                        color: Colors.grey),
+                  ],
+                  borderRadius: BorderRadius.all(Radius.circular(26))),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Image.asset(
-                    "assets/images/read_aloud.png",
-                    width: 155,
+                    "assets/images/writing_hand.png",
+                    width: 105,
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 4,
                   ),
-                  Text("Learn",
+                  Text("Train",
                       style: TextStyle(
                           color: Colors.white,
-                          fontFamily: 'Open Sans',
                           fontSize: 24,
+                          fontFamily: 'Open Sans',
                           fontWeight: FontWeight.bold)),
                 ],
+              ),
+            ),
+          ),
+        ),
+      ),
+      Positioned(
+          right: 20 - this.learnCardPosx,
+          bottom: 40,
+          child: Transform.rotate(
+            angle: 1.2 * learnCardAngle * math.pi / 180,
+            child: new InkWell(
+              onLongPress: () async {
+                if (currentFocus != "learn") {
+                  learnCardControllerRotate.animateTo(
+                      learnCardControllerRotate.upperBound,
+                      curve: Curves.easeIn);
+
+                  learnCardControllerTransform.animateTo(
+                      learnCardControllerTransform.upperBound,
+                      curve: Curves.easeIn);
+                  trainCardControllerRotate.animateTo(
+                      learnCardControllerRotate.upperBound,
+                      curve: Curves.easeIn);
+
+                  trainCardControllerTransform.animateTo(
+                      trainCardControllerTransform.upperBound,
+                      curve: Curves.easeIn);
+
+                  await Future.delayed(Duration(milliseconds: 150));
+                  setState(() {
+                    currentFocus = "learn";
+                  });
+                }
+              },
+              onTap: () async {
+                if (currentFocus != "learn") {
+                  learnCardControllerRotate.animateTo(
+                      learnCardControllerRotate.upperBound,
+                      curve: Curves.easeIn);
+
+                  learnCardControllerTransform.animateTo(
+                      learnCardControllerTransform.upperBound,
+                      curve: Curves.easeIn);
+                  trainCardControllerRotate.animateTo(
+                      learnCardControllerRotate.upperBound,
+                      curve: Curves.easeIn);
+
+                  trainCardControllerTransform.animateTo(
+                      trainCardControllerTransform.upperBound,
+                      curve: Curves.easeIn);
+                  await Future.delayed(Duration(milliseconds: 150));
+                  setState(() {
+                    currentFocus = "learn";
+                  });
+                }
+
+                await Future.delayed(Duration(milliseconds: 200));
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => LearnScreen()));
+              },
+              child: Container(
+                height: sHeight * 0.34,
+                width: sWidth / 2,
+                decoration: BoxDecoration(
+                  color: Color(0xffF34F4E),
+                  boxShadow: [
+                    BoxShadow(
+                        blurRadius: 6.0,
+                        offset: Offset(-3.0, 3.0),
+                        color: Colors.grey),
+                  ],
+                  borderRadius: BorderRadius.all(Radius.circular(26)),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      "assets/images/read_aloud.png",
+                      width: 155,
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text("Learn",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'Open Sans',
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold)),
+                  ],
+                ),
               ),
             ),
           ))
     ];
     List<Widget> stackChildren2 = [
       Positioned(
-          right: 20,
+          right: 20 - learnCardPosx,
           bottom: 40,
+          child: Transform.rotate(
+            angle: 1.2 * learnCardAngle * math.pi / 180,
+            child: new InkWell(
+              onLongPress: () async {
+                if (currentFocus != "learn") {
+                  learnCardControllerRotate.animateTo(
+                      learnCardControllerRotate.upperBound,
+                      curve: Curves.easeIn);
+
+                  learnCardControllerTransform.animateTo(
+                      learnCardControllerTransform.upperBound,
+                      curve: Curves.easeIn);
+                  trainCardControllerRotate.animateTo(
+                      learnCardControllerRotate.upperBound,
+                      curve: Curves.easeIn);
+
+                  trainCardControllerTransform.animateTo(
+                      trainCardControllerTransform.upperBound,
+                      curve: Curves.easeIn);
+                  await Future.delayed(Duration(milliseconds: 150));
+                  setState(() {
+                    currentFocus = "learn";
+                  });
+                }
+              },
+              onTap: () async {
+                if (currentFocus != "learn") {
+                  learnCardControllerRotate.animateTo(
+                      learnCardControllerRotate.upperBound,
+                      curve: Curves.easeIn);
+
+                  learnCardControllerTransform.animateTo(
+                      learnCardControllerTransform.upperBound,
+                      curve: Curves.easeIn);
+                  trainCardControllerRotate.animateTo(
+                      learnCardControllerRotate.upperBound,
+                      curve: Curves.easeIn);
+
+                  trainCardControllerTransform.animateTo(
+                      trainCardControllerTransform.upperBound,
+                      curve: Curves.easeIn);
+                  await Future.delayed(Duration(milliseconds: 150));
+                  setState(() {
+                    currentFocus = "learn";
+                  });
+                }
+                await Future.delayed(Duration(milliseconds: 200));
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (BuildContext context) => LearnScreen()));
+              },
+              child: Container(
+                height: sHeight * 0.34,
+                width: sWidth / 2,
+                decoration: BoxDecoration(
+                  color: Color(0xffF34F4E),
+                  boxShadow: [
+                    BoxShadow(
+                        blurRadius: 6.0,
+                        offset: Offset(-3.0, 3.0),
+                        color: Colors.grey),
+                  ],
+                  borderRadius: BorderRadius.all(Radius.circular(26)),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      "assets/images/read_aloud.png",
+                      width: 155,
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text("Learn",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontFamily: 'Open Sans',
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold)),
+                  ],
+                ),
+              ),
+            ),
+          )),
+      Positioned(
+        left: 20 - trainCardPosx,
+        top: 85,
+        child: Transform.rotate(
+          angle: -1.2 * trainCardAngle * math.pi / 180,
           child: new InkWell(
-            onLongPress: () {
-              setState(() {
-                currentFocus = "learn";
-              });
+            onLongPress: () async {
+              if (currentFocus != "write") {
+                learnCardControllerRotate.animateTo(
+                    learnCardControllerRotate.upperBound,
+                    curve: Curves.easeIn);
+
+                learnCardControllerTransform.animateTo(
+                    learnCardControllerTransform.upperBound,
+                    curve: Curves.easeIn);
+                trainCardControllerRotate.animateTo(
+                    learnCardControllerRotate.upperBound,
+                    curve: Curves.easeIn);
+
+                trainCardControllerTransform.animateTo(
+                    trainCardControllerTransform.upperBound,
+                    curve: Curves.easeIn);
+                await Future.delayed(Duration(milliseconds: 150));
+                setState(() {
+                  currentFocus = "write";
+                });
+              }
             },
             onTap: () async {
-              setState(() {
-                currentFocus = "learn";
-              });
+              if (currentFocus != "write") {
+                learnCardControllerRotate.animateTo(
+                    learnCardControllerRotate.upperBound,
+                    curve: Curves.easeIn);
 
-              await Future.delayed(Duration(milliseconds: 300));
+                learnCardControllerTransform.animateTo(
+                    learnCardControllerTransform.upperBound,
+                    curve: Curves.easeIn);
+                trainCardControllerRotate.animateTo(
+                    learnCardControllerRotate.upperBound,
+                    curve: Curves.easeIn);
+
+                trainCardControllerTransform.animateTo(
+                    trainCardControllerTransform.upperBound,
+                    curve: Curves.easeIn);
+                await Future.delayed(Duration(milliseconds: 150));
+                setState(() {
+                  currentFocus = "write";
+                });
+              }
+
+              await Future.delayed(Duration(milliseconds: 200));
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (BuildContext context) => LearnScreen()));
+                  builder: (BuildContext context) => TrainScreen()));
             },
             child: Container(
-              height: sHeight * 0.34,
               width: sWidth / 2,
+              height: sHeight * 0.34,
               decoration: BoxDecoration(
-                color: Color(0xffF34F4E),
-                boxShadow: [
-                  BoxShadow(
-                      blurRadius: 6.0,
-                      offset: Offset(-3.0, 3.0),
-                      color: Colors.grey),
-                ],
-                borderRadius: BorderRadius.all(Radius.circular(26)),
-              ),
+                  color: Color(0xff01AFE0),
+                  boxShadow: [
+                    BoxShadow(
+                        blurRadius: 6.0,
+                        offset: Offset(-3.0, 3.0),
+                        color: Colors.grey),
+                  ],
+                  borderRadius: BorderRadius.all(Radius.circular(26))),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Image.asset(
-                    "assets/images/read_aloud.png",
-                    width: 155,
+                    "assets/images/writing_hand.png",
+                    width: 105,
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 4,
                   ),
-                  Text("Learn",
+                  Text("Train",
                       style: TextStyle(
                           color: Colors.white,
-                          fontFamily: 'Open Sans',
                           fontSize: 24,
+                          fontFamily: 'Open Sans',
                           fontWeight: FontWeight.bold)),
                 ],
               ),
-            ),
-          )),
-      Positioned(
-        left: 20,
-        top: 85,
-        child: new InkWell(
-          onLongPress: () {
-            setState(() {
-              currentFocus = "write";
-            });
-          },
-          onTap: () async {
-            setState(() {
-              currentFocus = "write";
-            });
-
-            await Future.delayed(Duration(milliseconds: 300));
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (BuildContext context) => TrainScreen()));
-          },
-          child: Container(
-            width: sWidth / 2,
-            height: sHeight * 0.34,
-            decoration: BoxDecoration(
-                color: Color(0xff01AFE0),
-                boxShadow: [
-                  BoxShadow(
-                      blurRadius: 6.0,
-                      offset: Offset(-3.0, 3.0),
-                      color: Colors.grey),
-                ],
-                borderRadius: BorderRadius.all(Radius.circular(26))),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Image.asset(
-                  "assets/images/writing_hand.png",
-                  width: 105,
-                ),
-                SizedBox(
-                  height: 4,
-                ),
-                Text("Train",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontFamily: 'Open Sans',
-                        fontWeight: FontWeight.bold)),
-              ],
             ),
           ),
         ),
