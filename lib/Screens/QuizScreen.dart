@@ -69,7 +69,7 @@ class _QuizScreenState extends State<QuizScreen> {
         appBar: AppBar(
           title: Text('Quiz: ${widget.title}',
               style: TextStyle(
-                  fontFamily: 'OpenSans',
+                  fontFamily: 'Open Sans',
                   fontSize: 24,
                   color: Theme.of(context).backgroundColor,
                   fontWeight: FontWeight.bold)),
@@ -86,7 +86,7 @@ class _QuizScreenState extends State<QuizScreen> {
               child: Text(
                 _items[indx]["question"].toString(),
                 style: TextStyle(
-                    fontFamily: 'OpenSans',
+                    fontFamily: 'Open Sans',
                     color: Theme.of(context).primaryColor,
                     fontSize: 32,
                     fontWeight: FontWeight.bold),
@@ -106,6 +106,7 @@ class QuizCard extends StatelessWidget {
   const QuizCard(this.description, this.hClick);
   @override
   Widget build(BuildContext context) {
+
     return Container(
       height: 80,
       margin: const EdgeInsets.symmetric(vertical: 10),
