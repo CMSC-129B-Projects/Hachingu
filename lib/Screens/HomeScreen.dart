@@ -7,6 +7,7 @@ import 'package:hachingu/Screens/LearnScreen.dart';
 import 'package:hachingu/Screens/TrainScreen.dart';
 import 'package:hachingu/Notifiers/dark_theme_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:toast/toast.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -15,7 +16,9 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   var sWidth, sHeight;
+  var currentFocus = "learn";
 
+  hover() {}
   @override
   Widget build(BuildContext context) {
     sWidth = MediaQuery.of(context).size.width;
@@ -25,6 +28,220 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget HomeBody(DarkThemeProvider themeProvider) {
+    List<Widget> stackChildren = [
+      Positioned(
+        left: 20,
+        top: 85,
+        child: new InkWell(
+          onLongPress: () {
+            setState(() {
+              currentFocus = "write";
+            });
+          },
+          onTap: () async {
+            setState(() {
+              currentFocus = "write";
+            });
+
+            await Future.delayed(Duration(milliseconds: 300));
+
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (BuildContext context) => TrainScreen()));
+          },
+          child: Container(
+            width: sWidth / 2,
+            height: sHeight * 0.34,
+            decoration: BoxDecoration(
+                color: Color(0xff01AFE0),
+                boxShadow: [
+                  BoxShadow(
+                      blurRadius: 6.0,
+                      offset: Offset(-3.0, 3.0),
+                      color: Colors.grey),
+                ],
+                borderRadius: BorderRadius.all(Radius.circular(26))),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(
+                  "assets/images/writing_hand.png",
+                  width: 105,
+                ),
+                SizedBox(
+                  height: 4,
+                ),
+                Text("Train",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontFamily: 'Open Sans',
+                        fontWeight: FontWeight.bold)),
+              ],
+            ),
+          ),
+        ),
+      ),
+      Positioned(
+          right: 20,
+          bottom: 40,
+          child: new InkWell(
+            onLongPress: () {
+              setState(() {
+                currentFocus = "learn";
+              });
+            },
+            onTap: () async {
+              setState(() {
+                currentFocus = "learn";
+              });
+
+              await Future.delayed(Duration(milliseconds: 300));
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => LearnScreen()));
+            },
+            child: Container(
+              height: sHeight * 0.34,
+              width: sWidth / 2,
+              decoration: BoxDecoration(
+                color: Color(0xffF34F4E),
+                boxShadow: [
+                  BoxShadow(
+                      blurRadius: 6.0,
+                      offset: Offset(-3.0, 3.0),
+                      color: Colors.grey),
+                ],
+                borderRadius: BorderRadius.all(Radius.circular(26)),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    "assets/images/read_aloud.png",
+                    width: 155,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text("Learn",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: 'Open Sans',
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold)),
+                ],
+              ),
+            ),
+          ))
+    ];
+    List<Widget> stackChildren2 = [
+      Positioned(
+          right: 20,
+          bottom: 40,
+          child: new InkWell(
+            onLongPress: () {
+              setState(() {
+                currentFocus = "learn";
+              });
+            },
+            onTap: () async {
+              setState(() {
+                currentFocus = "learn";
+              });
+
+              await Future.delayed(Duration(milliseconds: 300));
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => LearnScreen()));
+            },
+            child: Container(
+              height: sHeight * 0.34,
+              width: sWidth / 2,
+              decoration: BoxDecoration(
+                color: Color(0xffF34F4E),
+                boxShadow: [
+                  BoxShadow(
+                      blurRadius: 6.0,
+                      offset: Offset(-3.0, 3.0),
+                      color: Colors.grey),
+                ],
+                borderRadius: BorderRadius.all(Radius.circular(26)),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    "assets/images/read_aloud.png",
+                    width: 155,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text("Learn",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: 'Open Sans',
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold)),
+                ],
+              ),
+            ),
+          )),
+      Positioned(
+        left: 20,
+        top: 85,
+        child: new InkWell(
+          onLongPress: () {
+            setState(() {
+              currentFocus = "write";
+            });
+          },
+          onTap: () async {
+            setState(() {
+              currentFocus = "write";
+            });
+
+            await Future.delayed(Duration(milliseconds: 300));
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (BuildContext context) => TrainScreen()));
+          },
+          child: Container(
+            width: sWidth / 2,
+            height: sHeight * 0.34,
+            decoration: BoxDecoration(
+                color: Color(0xff01AFE0),
+                boxShadow: [
+                  BoxShadow(
+                      blurRadius: 6.0,
+                      offset: Offset(-3.0, 3.0),
+                      color: Colors.grey),
+                ],
+                borderRadius: BorderRadius.all(Radius.circular(26))),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(
+                  "assets/images/writing_hand.png",
+                  width: 105,
+                ),
+                SizedBox(
+                  height: 4,
+                ),
+                Text("Train",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                        fontFamily: 'Open Sans',
+                        fontWeight: FontWeight.bold)),
+              ],
+            ),
+          ),
+        ),
+      ),
+    ];
+
     return ScopedModel<AppModel>(
         model: AppModel(),
         child:
@@ -62,129 +279,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                     fontSize: 40,
                                   ))
                             ])),
-                        // Text(" Learn Korean\nwith Hachingu!",
-                        //     style: TextStyle(
-                        //       fontFamily: 'Open Sans',
-                        //       fontWeight: FontWeight.w600,
-                        //       letterSpacing: 0.,
-                        //       color: Theme.of(context).primaryColor,
-                        //       fontSize: 40,
-                        //     )),
                         Container(
                           width: sWidth,
                           height: sHeight * 0.62,
                           child: Stack(
-                            children: [
-                              Positioned(
-                                left: 20,
-                                top: 85,
-                                child: new InkWell(
-                                  onTap: () {
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (BuildContext context) =>
-                                                TrainScreen()));
-                                  },
-                                  child: Container(
-                                    width: sWidth / 2,
-                                    height: sHeight * 0.34,
-                                    decoration: BoxDecoration(
-                                        color: Color(0xff01AFE0),
-                                        boxShadow: [
-                                          BoxShadow(
-                                              blurRadius: 6.0,
-                                              offset: Offset(-3.0, 3.0),
-                                              color: Colors.grey),
-                                        ],
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(26))),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: [
-                                        Image.asset(
-                                          "assets/images/write.PNG",
-                                          width: 105,
-                                        ),
-                                        SizedBox(
-                                          height: 4,
-                                        ),
-                                        Text("Train",
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 24,
-                                                fontFamily: 'Open Sans',
-                                                fontWeight: FontWeight.bold)),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Positioned(
-                                  right: 20,
-                                  bottom: 40,
-                                  child: new InkWell(
-                                    onTap: () {
-                                      Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                              builder: (BuildContext context) =>
-                                                  LearnScreen()));
-                                    },
-                                    child: Container(
-                                      height: sHeight * 0.34,
-                                      width: sWidth / 2,
-
-                                      decoration: BoxDecoration(
-                                        color: Color(0xffF34F4E),
-                                        boxShadow: [
-                                          BoxShadow(
-                                              blurRadius: 6.0,
-                                              offset: Offset(-3.0, 3.0),
-                                              color: Colors.grey),
-                                        ],
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(26)),
-                                      ),
-
-                                      // child: Container(
-                                      //   width: sWidth / 2,
-                                      //   height: sHeight * 0.34,
-                                      //   decoration: BoxDecoration(
-                                      //       color: Color(0xffF34F4E),
-                                      //       boxShadow: [
-                                      //         BoxShadow(
-                                      //             blurRadius: 8.0,
-                                      //             offset: Offset(-3.0, 3.0),
-                                      //             color: Colors.grey),
-                                      //       ],
-                                      //       borderRadius: BorderRadius.all(
-                                      //           Radius.circular(26))),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Image.asset(
-                                            "assets/images/learn.PNG",
-                                            width: 155,
-                                          ),
-                                          SizedBox(
-                                            height: 20,
-                                          ),
-                                          Text("Learn",
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontFamily: 'Open Sans',
-                                                  fontSize: 24,
-                                                  fontWeight: FontWeight.bold)),
-                                        ],
-                                      ),
-                                    ),
-                                  ))
-                            ],
+                            children: this.currentFocus == "write"
+                                ? stackChildren2
+                                : stackChildren,
                           ),
                         )
                       ],
@@ -203,8 +304,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (BuildContext context) =>
                                 SettingsScreen()));
-                        // Fluttertoast.showToast(msg: "Hellow");
-                        // model.increment();
                       },
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.only(

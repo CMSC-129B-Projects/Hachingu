@@ -66,7 +66,7 @@ class _QuizScreenState extends State<QuizScreen> {
         appBar: AppBar(
           title: Text(widget.title,
               style: TextStyle(
-                  fontFamily: 'OpenSans',
+                  fontFamily: 'Open Sans',
                   fontSize: 24,
                   color: Theme.of(context).primaryColor,
                   fontWeight: FontWeight.bold)),
@@ -85,7 +85,7 @@ class _QuizScreenState extends State<QuizScreen> {
                 child: Text(
                   _items[indx]["question"].toString(),
                   style: TextStyle(
-                      fontFamily: 'OpenSans',
+                      fontFamily: 'Open Sans',
                       color: Theme.of(context).primaryColor,
                       fontSize: 32,
                       fontWeight: FontWeight.bold),
@@ -136,7 +136,7 @@ class QuizCard extends StatelessWidget {
                         textAlign: TextAlign.center,
                         softWrap: true,
                         style: TextStyle(
-                            fontFamily: 'OpenSans',
+                            fontFamily: 'Open Sans',
                             color: Color(0xFF424242),
                             fontSize: 24,
                             fontWeight: FontWeight.bold)),
