@@ -95,6 +95,7 @@ abstract class Styles {
       buttonTheme: Theme.of(context).buttonTheme.copyWith(
           colorScheme: isDarkTheme ? ColorScheme.dark() : ColorScheme.light()),
       appBarTheme: AppBarTheme(
+        titleTextStyle: TextStyle(fontFamily: 'Open Sans'),
         elevation: 0.0,
       ),
     );

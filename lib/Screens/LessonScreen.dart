@@ -75,14 +75,16 @@ class _LessonScreenState extends State<LessonScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                     Text("Ready to test your mastery?",
-                        softWrap: true,
+                        // softWrap: true,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 24,
                             fontWeight: FontWeight.bold)),
                     TextButton(
-                      child: Text("Take Quiz!"),
+                      child: Text("Take Quiz!",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w700, fontSize: 16)),
                       onPressed: () {
                         Navigator.push(
                           context,
