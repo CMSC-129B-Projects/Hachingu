@@ -1,8 +1,8 @@
 name: CI
 on:
-  pull_request:
+  push:
     branches:
-      - other-pages
+      - master
 
 jobs:
   flutter_test:
@@ -18,4 +18,3 @@ jobs:
           channel: "stable"
       - run: flutter pub get
       - run: flutter analyze
-      - run: flutter test
