@@ -40,6 +40,7 @@ class _LearnScreenState extends State<LearnScreen> {
                     style: TextStyle(
                         color: Theme.of(context).primaryColor,
                         height: 1,
+                        fontFamily: 'Open Sans',
                         fontWeight: FontWeight.bold,
                         fontSize: constraints.maxHeight < 100
                             ? null
@@ -58,10 +59,10 @@ class _LearnScreenState extends State<LearnScreen> {
                   "Learn to read hangul characters"),
               LessonCard("assets/images/writing_hand_yellow.png", "Writing",
                   "Learn to write hangul characters"),
-              LessonCard("assets/images/teach.png", "Sentence Structure",
-                  "Learn about vocabulary, sentence word order, and more..."),
-              LessonCard("assets/images/discuss.png", "Conjugations",
-                  "Learn about basic conjugations of verbs, adjectives, and more..."),
+              LessonCard("assets/images/teach.png", "Sentences",
+                  "Learn about vocabulary, and word order"),
+              LessonCard("assets/images/discuss.png", "Conjugate",
+                  "Learn about conjugation of verbs and adjectives"),
               Container(height: 10)
             ]),
           )
@@ -121,14 +122,14 @@ class LessonCard extends StatelessWidget {
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 24,
-                                    fontFamily: 'OpenSans',
+                                    fontFamily: 'Open Sans',
                                     fontWeight: FontWeight.bold,
                                   )),
                               Text(description,
                                   textAlign: TextAlign.right,
                                   softWrap: true,
                                   style: TextStyle(
-                                    fontFamily: 'OpenSans',
+                                    fontFamily: 'Open Sans',
                                     color: Colors.white,
                                     fontSize: 18,
                                   )),

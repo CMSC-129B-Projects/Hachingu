@@ -1,11 +1,11 @@
 name: CI
+
 on:
   pull_request:
-    branches:
-      - other-pages
+    branches: [other-pages]
 
 jobs:
-  flutter_test:
+  flutter-test:
     name: Run flutter test and analyze
     runs-on: ubuntu-latest
     steps:
@@ -14,8 +14,9 @@ jobs:
         with:
           java-version: "12.x"
       - uses: subosito/flutter-action@v1
-        with: 
+        with:
           channel: "stable"
+          
       - run: flutter pub get
       - run: flutter analyze
       - run: flutter test
