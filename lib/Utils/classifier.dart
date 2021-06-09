@@ -20,9 +20,9 @@ abstract class Classifier {
 
   TfLiteType _outputType = TfLiteType.uint8;
 
-  final String _labelsFileName = 'assets/model-labels/labels.txt';
+  final String _labelsFileName = 'assets/model-labels/character-labels.txt';
 
-  final int _labelsLength = 1001;
+  final int _labelsLength = 30;
 
   var _probabilityProcessor;
 
@@ -73,6 +73,7 @@ abstract class Classifier {
 
   TensorImage _preProcess() {
     int cropSize = min(_inputImage.height, _inputImage.width);
+    print(cropSize);
     return ImageProcessorBuilder()
         .add(ResizeWithCropOrPadOp(cropSize, cropSize))
         .add(ResizeOp(
@@ -89,6 +90,7 @@ abstract class Classifier {
     final pres = DateTime.now().millisecondsSinceEpoch;
     _inputImage = TensorImage.fromImage(image);
     _inputImage = _preProcess();
+
     final pre = DateTime.now().millisecondsSinceEpoch - pres;
 
     print('Time to load image: $pre ms');
