@@ -20,7 +20,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
   TimeOfDay _timeLocal, _timeEmail;
   TimeOfDay pickedLocal, pickedEmail;
   Time converted;
-  int _hour, _minute, alarmID=0;
+  int _hour,
+      _minute,
+      alarmID = 0;
   String user_email;
 
   @override
@@ -33,20 +35,27 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    sWidth = MediaQuery.of(context).size.width;
-    sHeight = MediaQuery.of(context).size.height;
+    sWidth = MediaQuery
+        .of(context)
+        .size
+        .width;
+    sHeight = MediaQuery
+        .of(context)
+        .size
+        .height;
     final themeProvider = Provider.of<DarkThemeProvider>(context);
     final notificationsProvider = Provider.of<NotificationsProvider>(context);
     final emailProvider = Provider.of<EmailProvider>(context);
     return settingsBody(themeProvider, notificationsProvider, emailProvider);
   }
 
-  Widget settingsBody(
-      DarkThemeProvider themeProvider,
+  Widget settingsBody(DarkThemeProvider themeProvider,
       NotificationsProvider notificationsProvider,
       EmailProvider emailProvider) {
     return Scaffold(
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: Theme
+            .of(context)
+            .backgroundColor,
         appBar: AppBar(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
@@ -54,7 +63,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     topRight: Radius.circular(24),
                     bottomLeft: Radius.circular(36),
                     bottomRight: Radius.circular(10))),
-            backgroundColor: Theme.of(context).accentColor,
+            backgroundColor: Theme
+                .of(context)
+                .accentColor,
             elevation: 1,
             title: new Text(
               "Settings",
@@ -74,7 +85,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
             child: ListView(children: [
               Container(
                 height: 80,
-                color: Theme.of(context).splashColor,
+                color: Theme
+                    .of(context)
+                    .splashColor,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -111,13 +124,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
               Column(children: [
                 Container(
                   height: 80,
-                  color: Theme.of(context).shadowColor,
+                  color: Theme
+                      .of(context)
+                      .shadowColor,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
                           margin:
-                              const EdgeInsets.only(left: 20.0, right: 20.0),
+                          const EdgeInsets.only(left: 20.0, right: 20.0),
                           child: Text(
                             "Notifications",
                             textAlign: TextAlign.left,
@@ -130,13 +145,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           )),
                       Container(
                           margin:
-                              const EdgeInsets.only(left: 20.0, right: 20.0),
+                          const EdgeInsets.only(left: 20.0, right: 20.0),
                           child: IconButton(
                             icon: showToggles
                                 ? Icon(Icons.keyboard_arrow_up_rounded)
                                 : Icon(Icons.keyboard_arrow_down_rounded),
                             iconSize: 40,
-                            color: Theme.of(context).accentColor,
+                            color: Theme
+                                .of(context)
+                                .accentColor,
                             onPressed: () {
                               setState(() {
                                 showToggles = !showToggles;
@@ -155,18 +172,83 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Consumer showEmailToggle(bool val, EmailProvider emailProvider) {
     if (val == true) {
       return Consumer<EmailProvider>(
-        builder: (context, model, _) => Column(children: [
-          Container(
-            height: 80,
-            color: Theme.of(context).shadowColor,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Flexible(
-                    child: Container(
+        builder: (context, model, _) =>
+            Column(children: [
+              Container(
+                height: 80,
+                color: Theme
+                    .of(context)
+                    .shadowColor,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Flexible(
+                        child: Container(
+                            margin: const EdgeInsets.only(
+                                left: 40.0, right: 20.0),
+                            child: Text(
+                              "Receive Emails",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 17,
+                                color: Colors.black,
+                                fontFamily: 'Open Sans',
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ))),
+                    Flexible(
+                        child: Container(
+                            margin: const EdgeInsets.only(
+                                left: 20.0, right: 20.0),
+                            child: Transform.scale(
+                                scale: 1.2,
+                                child: Switch(
+                                  value: emailProvider.email,
+                                  onChanged: (bool value) {
+                                    emailProvider.email = value;
+                                    value
+                                        ? model.EmailNotificationsEnabled(user_email, _timeEmail, false) : value;
+                                  },
+                                  activeColor: Colors.green,
+                                  activeTrackColor: Colors.lightGreen,
+                                  inactiveThumbColor: Colors.white70,
+                                  inactiveTrackColor: Colors.white12,
+                                ))))
+                  ],
+                ),
+              ),
+              showEmailAddress(emailProvider.email, user_email),
+              showEmailNotificationTime(emailProvider.email),
+            ]),
+      );
+    } else {
+      return Consumer<EmailProvider>(
+          builder: (context, model, _) =>
+              Container(
+                height: 0,
+              ));
+    }
+  }
+
+  Consumer showAlertToggle(bool val,
+      NotificationsProvider notificationsProvider) {
+    if (val == true) {
+      return Consumer<NotificationsProvider>(
+        builder: (context, model, _) =>
+            Column(children: [
+              Container(
+                height: 80,
+                color: Theme
+                    .of(context)
+                    .shadowColor,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    //Flexible(
+                    Container(
                         margin: const EdgeInsets.only(left: 40.0, right: 20.0),
                         child: Text(
-                          "Receive Emails",
+                          "Receive App Alerts",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 17,
@@ -174,88 +256,35 @@ class _SettingsScreenState extends State<SettingsScreen> {
                             fontFamily: 'Open Sans',
                             fontWeight: FontWeight.bold,
                           ),
-                        ))),
-                Flexible(
-                    child: Container(
-                        margin: const EdgeInsets.only(left: 20.0, right: 20.0),
-                        child: Transform.scale(
-                            scale: 1.2,
-                            child: Switch(
-                              value: emailProvider.email,
-                              onChanged: (bool value) {
-                                emailProvider.email = value;
-                                value
-                                    ? model.EmailNotificationsEnabled(user_email, pickedEmail) : value;
-                              },
-                              activeColor: Colors.green,
-                              activeTrackColor: Colors.lightGreen,
-                              inactiveThumbColor: Colors.white70,
-                              inactiveTrackColor: Colors.white12,
-                            ))))
-              ],
-            ),
-          ),
-          showEmailAddress(emailProvider.email, user_email),
-          showEmailNotificationTime(emailProvider.email),
-        ]),
-      );
-    } else {
-      return Consumer<EmailProvider>(
-          builder: (context, model, _) => Container(
-                height: 0,
-              ));
-    }
-  }
-
-  Consumer showAlertToggle(
-      bool val, NotificationsProvider notificationsProvider) {
-    if (val == true) {
-      return Consumer<NotificationsProvider>(
-        builder: (context, model, _) => Column(children: [
-          Container(
-            height: 80,
-            color: Theme.of(context).shadowColor,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                //Flexible(
-                Container(
-                    margin: const EdgeInsets.only(left: 40.0, right: 20.0),
-                    child: Text(
-                      "Receive App Alerts",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 17,
-                        color: Colors.black,
-                        fontFamily: 'Open Sans',
-                        fontWeight: FontWeight.bold,
-                      ),
-                    )),
-                Flexible(
-                    child: Container(
-                        margin: const EdgeInsets.only(left: 20.0, right: 20.0),
-                        child: Transform.scale(
-                            scale: 1.2,
-                            child: Switch(
-                              value: notificationsProvider.notifications,
-                              onChanged: (bool value) {
-                                notificationsProvider.notifications = value;
-                                value ? model.scheduledNotification(converted) : model.cancelNotification();
-                              },
-                              activeColor: Colors.green,
-                              activeTrackColor: Colors.lightGreen,
-                              inactiveThumbColor: Colors.white70,
-                              inactiveTrackColor: Colors.white12,
-                            ))))
-              ],
-            ),
-          ),
-          showLocalNotificationTime(notificationsProvider.notifications),
-        ]),
+                        )),
+                    Flexible(
+                        child: Container(
+                            margin: const EdgeInsets.only(
+                                left: 20.0, right: 20.0),
+                            child: Transform.scale(
+                                scale: 1.2,
+                                child: Switch(
+                                  value: notificationsProvider.notifications,
+                                  onChanged: (bool value) {
+                                    notificationsProvider.notifications = value;
+                                    value ? model.scheduledNotification(
+                                        converted) : model.cancelNotification();
+                                  },
+                                  activeColor: Colors.green,
+                                  activeTrackColor: Colors.lightGreen,
+                                  inactiveThumbColor: Colors.white70,
+                                  inactiveTrackColor: Colors.white12,
+                                ))))
+                  ],
+                ),
+              ),
+              showLocalNotificationTime(notificationsProvider.notifications),
+            ]),
       );
     } else {
       return Consumer<NotificationsProvider>(
-          builder: (context, model, _) => Container(
+          builder: (context, model, _) =>
+              Container(
                 height: 0,
               ));
     }
@@ -265,7 +294,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
     if (value == true) {
       return Container(
         height: 60,
-        color: Theme.of(context).shadowColor,
+        color: Theme
+            .of(context)
+            .shadowColor,
         //child: Row(
         //mainAxisAlignment: MainAxisAlignment.spaceBetween,
         //children: [
@@ -278,7 +309,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
             ),
             onChanged: (String text) async {
               await HachinguPreferences.setUserEmail(text);
-              EmailProvider().EmailNotificationsEnabled(text, pickedEmail);
+              user_email = text;
+              EmailProvider().EmailNotificationsEnabled(user_email, _timeEmail, false);
             },
           ),
         ),
@@ -292,9 +324,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
     if (value == true) {
       return Container(
           height: 60,
-          color: Theme.of(context).shadowColor,
+          color: Theme
+              .of(context)
+              .shadowColor,
           child:
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             Container(
                 margin: const EdgeInsets.only(left: 50.0, right: 20.0),
                 child: Text(
@@ -333,9 +367,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
     if (value == true) {
       return Container(
           height: 60,
-          color: Theme.of(context).shadowColor,
+          color: Theme
+              .of(context)
+              .shadowColor,
           child:
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             Container(
                 margin: const EdgeInsets.only(left: 50.0, right: 20.0),
                 child: Text(
@@ -412,7 +448,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
   }
 
 
-
   Future<Null> selectEmailTime(BuildContext context) async {
     final TimeOfDay pickedEmail = await showTimePicker(
       context: context,
@@ -422,7 +457,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
       setState(() {
         _timeEmail = pickedEmail;
         HachinguPreferences().setEmailReminder(_timeEmail);
-        EmailProvider().EmailNotificationsEnabled(user_email, _timeEmail);
+        EmailProvider().EmailNotificationsEnabled(user_email, _timeEmail, false);
       });
     }
   }
+}
