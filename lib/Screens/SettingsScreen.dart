@@ -1,3 +1,4 @@
+import 'package:android_alarm_manager/android_alarm_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:hachingu/Notifiers/dark_theme_provider.dart';
 import 'package:hachingu/Notifiers/notifications_provider.dart';
@@ -5,6 +6,7 @@ import 'package:hachingu/Notifiers/email_sender.dart';
 import 'package:hachingu/Utils/preferences.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:workmanager/workmanager.dart';
 
 
 class SettingsScreen extends StatefulWidget {
@@ -19,12 +21,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
   TimeOfDay _timeLocal, _timeEmail;
   TimeOfDay pickedLocal, pickedEmail;
   Time converted;
-  int _hour, _minute;
+  int _hour, _minute, alarmID=0;
   String user_email;
 
   @override
   void initState(){
     super.initState();
+    //Workmanager.initialize(callbackDispatcher);
     user_email = HachinguPreferences.getUserEmail();
     _timeLocal = HachinguPreferences.getLocalReminder();
     _timeEmail = HachinguPreferences.getEmailReminder();
@@ -193,7 +196,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                   value: emailProvider.email,
                                   onChanged: (bool value) {
                                     emailProvider.email = value;
-                                    value ? model.EmailNotificationsEnabled(user_email, pickedEmail) : value;
+                                    //value ? AndroidAlarmManager.periodic(Duration(seconds:5), alarmID, callEmailSender) : value;
+                                    value ? model.EmailNotificationsEnabled(user_email, _timeEmail) : value;
                                   },
                                   activeColor: Colors.green,
                                   activeTrackColor: Colors.lightGreen,
@@ -259,6 +263,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                   value: notificationsProvider.notifications,
                                   onChanged: (bool value) {
                                     notificationsProvider.notifications = value;
+                                    _hour = _timeLocal.hour;
+                                    _minute = _timeLocal.minute;
+                                    converted = Time(_hour, _minute, 0);
                                     value ? model.scheduledNotification(converted) : model.cancelNotification();
                                   },
                                   activeColor: Colors.green,
@@ -303,7 +310,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           ),
                           onChanged: (String text) async {
                             await HachinguPreferences.setUserEmail(text);
-                            EmailProvider().EmailNotificationsEnabled(text, pickedEmail);
+                            user_email = text;
+                            //Workmanager.registerPeriodicTask();
+                            EmailProvider().EmailNotificationsEnabled(text, _timeEmail);
+                            //AndroidAlarmManager.periodic(Duration(minutes:1), 0, );
                           },
                         ),
                 ),
@@ -456,6 +466,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
     }
   }
 
+
+
   Future<Null> selectEmailTime(BuildContext context) async {
     final TimeOfDay pickedEmail = await showTimePicker(
       context: context,
@@ -466,9 +478,25 @@ class _SettingsScreenState extends State<SettingsScreen> {
         _timeEmail = pickedEmail;
         HachinguPreferences().setEmailReminder(_timeEmail);
         EmailProvider().EmailNotificationsEnabled(user_email, _timeEmail);
+        //AndroidAlarmManager.periodic(Duration(seconds:5), alarmID, callEmailSender);
       });
     }
   }
 
+  void printSample(){
+    print("It is here");
+  }
 
+  void callEmailSender(){
+    EmailProvider().EmailNotificationsEnabled(user_email, _timeEmail);
+  }
+
+}
+
+void printHello(){
+  print("Hello ${DateTime.now()}");
+}
+
+void printSample(){
+  print("It is here");
 }

@@ -35,11 +35,10 @@ class _TrainScreenState extends State<TrainScreen> {
             flexibleSpace: LayoutBuilder(
                 builder: (BuildContext context, BoxConstraints constraints) {
               return FlexibleSpaceBar(
-                title: Text("Challenges",
+                title: Text("Writing Challenges",
                     style: TextStyle(
                         color: Theme.of(context).primaryColor,
                         height: 1,
-                        fontFamily: 'Open Sans',
                         fontWeight: FontWeight.bold,
                         fontSize: constraints.maxHeight < 100
                             ? null

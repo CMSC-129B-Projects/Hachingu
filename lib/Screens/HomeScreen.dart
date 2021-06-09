@@ -13,7 +13,7 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen>{
   var sWidth, sHeight;
 
   @override
@@ -24,11 +24,11 @@ class _HomeScreenState extends State<HomeScreen> {
     return HomeBody(themeProvider);
   }
 
-  Widget HomeBody(DarkThemeProvider themeProvider) {
+  Widget HomeBody(DarkThemeProvider themeProvider){
     return ScopedModel<AppModel>(
         model: AppModel(),
         child:
-            ScopedModelDescendant<AppModel>(builder: (context, child, model) {
+        ScopedModelDescendant<AppModel>(builder: (context, child, model) {
           return Scaffold(
             body: Container(
               color: Theme.of(context).backgroundColor,
@@ -42,37 +42,12 @@ class _HomeScreenState extends State<HomeScreen> {
                           width: sWidth,
                           height: sHeight * 0.12,
                         ),
-                        Text.rich(TextSpan(
-                            text: "   Learn Korean\n with",
-                            style: TextStyle(
-                              fontFamily: 'Open Sans',
-                              fontWeight: FontWeight.w600,
-                              // letterSpacing: 0.7,
-                              color: Theme.of(context).primaryColor,
-                              fontSize: 40,
-                            ),
-                            children: <InlineSpan>[
-                              TextSpan(
-                                  text: " Hachingu!",
-                                  style: TextStyle(
-                                    fontFamily: 'Open Sans',
-                                    fontWeight: FontWeight.w700,
-                                    // letterSpacing: 0.6,
-                                    color: Theme.of(context).primaryColor,
-                                    fontSize: 40,
-                                  ))
-                            ])),
-                        // Text(" Learn Korean\nwith Hachingu!",
-                        //     style: TextStyle(
-                        //       fontFamily: 'Open Sans',
-                        //       fontWeight: FontWeight.w600,
-                        //       letterSpacing: 0.,
-                        //       color: Theme.of(context).primaryColor,
-                        //       fontSize: 40,
-                        //     )),
+                        Text(" Learn Korean\nwith Hachingu",
+                            style:
+                            TextStyle(fontFamily: 'Open Sans', color: Theme.of(context).primaryColor, fontSize: 32, )),
                         Container(
                           width: sWidth,
-                          height: sHeight * 0.62,
+                          height: sHeight * 0.66,
                           child: Stack(
                             children: [
                               Positioned(
@@ -80,10 +55,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 top: 85,
                                 child: new InkWell(
                                   onTap: () {
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (BuildContext context) =>
-                                                TrainScreen()));
+                                    Navigator.of(context).push(MaterialPageRoute(
+                                        builder: (BuildContext context) =>
+                                            TrainScreen()));
                                   },
                                   child: Container(
                                     width: sWidth / 2,
@@ -92,17 +66,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                         color: Color(0xff01AFE0),
                                         boxShadow: [
                                           BoxShadow(
-                                              blurRadius: 6.0,
+                                              blurRadius: 8.0,
                                               offset: Offset(-3.0, 3.0),
                                               color: Colors.grey),
                                         ],
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(26))),
                                     child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.center,
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.center,
+                                      CrossAxisAlignment.center,
                                       children: [
                                         Image.asset(
                                           "assets/images/write.PNG",
@@ -115,32 +88,30 @@ class _HomeScreenState extends State<HomeScreen> {
                                             style: TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 24,
-                                                fontFamily: 'Open Sans',
+                                                fontFamily: 'OpenSans',
                                                 fontWeight: FontWeight.bold)),
                                       ],
                                     ),
                                   ),
-                                ),
-                              ),
+                                ),),
                               Positioned(
                                   right: 20,
                                   bottom: 40,
                                   child: new InkWell(
                                     onTap: () {
-                                      Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                              builder: (BuildContext context) =>
-                                                  LearnScreen()));
+                                      Navigator.of(context).push(MaterialPageRoute(
+                                          builder: (BuildContext context) =>
+                                              LearnScreen()));
                                     },
                                     child: Container(
-                                      height: sHeight * 0.34,
+                                      height:sHeight * 0.34,
                                       width: sWidth / 2,
 
                                       decoration: BoxDecoration(
                                         color: Color(0xffF34F4E),
                                         boxShadow: [
                                           BoxShadow(
-                                              blurRadius: 6.0,
+                                              blurRadius: 8.0,
                                               offset: Offset(-3.0, 3.0),
                                               color: Colors.grey),
                                         ],
@@ -162,10 +133,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                       //       borderRadius: BorderRadius.all(
                                       //           Radius.circular(26))),
                                       child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
+                                        mainAxisAlignment: MainAxisAlignment.center,
                                         crossAxisAlignment:
-                                            CrossAxisAlignment.center,
+                                        CrossAxisAlignment.center,
+
                                         children: [
                                           Image.asset(
                                             "assets/images/learn.PNG",
@@ -177,14 +148,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                           Text("Learn",
                                               style: TextStyle(
                                                   color: Colors.white,
-                                                  fontFamily: 'Open Sans',
+                                                  fontFamily: 'OpenSans',
                                                   fontSize: 24,
                                                   fontWeight: FontWeight.bold)),
                                         ],
                                       ),
                                     ),
-                                  ))
-                            ],
+                                  )
+                              )],
                           ),
                         )
                       ],
@@ -196,8 +167,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     bottom: 0,
                     right: 0,
                     child: MaterialButton(
-                      height: 77,
-                      minWidth: 77,
+                      height: 85,
                       color: Color(0xfffAB316),
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
@@ -208,13 +178,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(30),
-                              bottomLeft: Radius.circular(38),
-                              topRight: Radius.circular(38),
-                              bottomRight: Radius.circular(42))),
-                      child: Image.asset(
-                        'assets/images/cog.png',
-                        width: 38,
+                              topLeft: Radius.circular(33),
+                              bottomLeft: Radius.circular(40),
+                              topRight: Radius.circular(40),
+                              bottomRight: Radius.circular(45))),
+                      child: Icon(
+                        Icons.settings,
+                        size: 45,
+                        color: Colors.white,
                       ),
                     ),
                   ),

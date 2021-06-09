@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server/gmail.dart';
+import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:hachingu/Utils/preferences.dart';
 
 class EmailProvider with ChangeNotifier {
@@ -16,8 +17,12 @@ class EmailProvider with ChangeNotifier {
   }
 
   EmailNotificationsEnabled(String user_email, TimeOfDay scheduled) async {
+    //List<String> attachments = [];
+    //bool isHTML = false;
     String username = 'hachinguemailtest@gmail.com';
     String password = 'hachingu123';
+    //username = 'aabontilao@up.edu.ph';
+    //password = 'Play_freak20137';
 
     final smtpServer = gmail(username, password);
 
@@ -33,15 +38,36 @@ class EmailProvider with ChangeNotifier {
     double now = toDouble(TimeOfDay.now());
     print(now);
 
-    if (sched >= now && sched <= (now+(1.0/60.0))) {
-      try {
-        final sendReport = await send(message, smtpServer);
-        print('Message sent ' + sendReport.toString());
-        //Toast.show('You have turned on email notifications', context, duration: 3, gravity: Toast.CENTER);
-      } on MailerException catch (e) {
-        print('Message not sent');
+    int hourDifference = scheduled.hour-TimeOfDay.now().hour;
+    int minuteDifference = scheduled.minute-TimeOfDay.now().minute;
+
+    if (minuteDifference<0){
+      minuteDifference = minuteDifference+60;
+      if (hourDifference == 0){
+        hourDifference = 23;
       }
+      else{
+        hourDifference = hourDifference+24;
+      }
+
     }
+    print(hourDifference);
+    print(minuteDifference);
+
+    await Future.delayed(Duration(hours: hourDifference, minutes: minuteDifference));
+    //if (sched >= now && sched <= (now+(1.0/60.0))) {
+      try {
+        print('Sending...');
+        final sendReport = await send(message, smtpServer);
+        print('Message sent: ' + sendReport.toString());
+      } on MailerException catch (e) {
+        print('Message not sent.');
+        for (var p in e.problems) {
+          print('Problem: ${p.code}: ${p.msg}');
+        }
+      }
+    //}
+    EmailNotificationsEnabled(user_email, scheduled);
   }
 
   double toDouble(TimeOfDay myTime) => myTime.hour + myTime.minute/60.0;
