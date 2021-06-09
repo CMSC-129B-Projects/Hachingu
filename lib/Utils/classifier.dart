@@ -20,7 +20,7 @@ abstract class Classifier {
 
   TfLiteType _outputType = TfLiteType.uint8;
 
-  final String _labelsFileName = 'assets/model-labels/character-labels.txt';
+  final String _labelsFileName = 'assets/model-labels/labels.txt';
 
   final int _labelsLength = 1001;
 
