@@ -8,7 +8,6 @@ import 'package:provider/provider.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:workmanager/workmanager.dart';
 
-
 class SettingsScreen extends StatefulWidget {
   @override
   _SettingsScreenState createState() => _SettingsScreenState();
@@ -25,9 +24,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
   String user_email;
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
-    //Workmanager.initialize(callbackDispatcher);
     user_email = HachinguPreferences.getUserEmail();
     _timeLocal = HachinguPreferences.getLocalReminder();
     _timeEmail = HachinguPreferences.getEmailReminder();
@@ -43,286 +41,250 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return settingsBody(themeProvider, notificationsProvider, emailProvider);
   }
 
-  Widget settingsBody(DarkThemeProvider themeProvider,
+  Widget settingsBody(
+      DarkThemeProvider themeProvider,
       NotificationsProvider notificationsProvider,
       EmailProvider emailProvider) {
     return Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
         appBar: AppBar(
-            shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(24),
+                    topRight: Radius.circular(24),
+                    bottomLeft: Radius.circular(36),
+                    bottomRight: Radius.circular(10))),
             backgroundColor: Theme.of(context).accentColor,
             elevation: 1,
             title: new Text(
               "Settings",
               style: TextStyle(
                   color: Colors.white,
-                  fontSize: 30,
-                  fontFamily: 'OpenSans',
+                  fontSize: 26,
+                  fontFamily: 'Open Sans',
                   fontWeight: FontWeight.bold),
             ),
             leading: IconButton(
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                icon: Icon(Icons.arrow_back,
-                    color: Colors.white, size: 30)
-            )
-        ),
+                icon: Icon(Icons.arrow_back, color: Colors.white, size: 30))),
         body: Container(
             padding: EdgeInsets.only(left: 1, top: 25, right: 1, bottom: 25),
-            child: ListView(
-                children: [
-                  Container(
-                    height: 80,
-                    color: Theme.of(context).splashColor,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                            margin:
-                            const EdgeInsets.only(left: 20.0, right: 20.0),
-                            child: Text(
-                              "Dark Mode",
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.black,
-                                fontFamily: 'OpenSans',
-                                fontWeight: FontWeight.bold,
-                              ),
-                            )),
-                        Container(
-                          margin: const EdgeInsets.only(
-                              left: 20.0, right: 20.0),
-                          child: Transform.scale(
-                              scale: 1.2,
-                              child: Switch(
-                                value: themeProvider.darkTheme,
-                                onChanged: (bool value) {
-                                  themeProvider.darkTheme = value;
-                                },
-                                activeColor: Colors.green,
-                                activeTrackColor: Colors.lightGreen,
-                                inactiveThumbColor: Colors.white70,
-                                inactiveTrackColor: Colors.white12,
-                              )),
-                        )
-                      ],
-                    ),
-                  ),
-                  Column(
-                      children: [
-                        Container(
-                          height: 80,
-                          color: Theme.of(context).shadowColor,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Container(
-                                  margin:
-                                  const EdgeInsets.only(
-                                      left: 20.0, right: 20.0),
-                                  child: Text(
-                                    "Notifications",
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      color: Colors.black,
-                                      fontFamily: 'OpenSans',
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  )),
-                              Container(
-                                  margin: const EdgeInsets.only(
-                                      left: 20.0, right: 20.0
-                                  ),
-                                  child: IconButton(
-                                    icon: showToggles ? Icon(Icons.keyboard_arrow_up_rounded) : Icon(Icons.keyboard_arrow_down_rounded),
-                                    iconSize: 40,
-                                    color: Colors.black,
-                                    onPressed: () {
-                                      setState(() {
-                                        showToggles = !showToggles;
-                                      });
-                                    },
-                                  )
-                              )
-                            ],
+            child: ListView(children: [
+              Container(
+                height: 80,
+                color: Theme.of(context).splashColor,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                        margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+                        child: Text(
+                          "Dark Mode",
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.black,
+                            fontFamily: 'Open Sans',
+                            fontWeight: FontWeight.bold,
                           ),
-                        ),
-                        showEmailToggle(showToggles, emailProvider),
-                        showAlertToggle(showToggles, notificationsProvider),
-                      ]
+                        )),
+                    Container(
+                      margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+                      child: Transform.scale(
+                          scale: 1.2,
+                          child: Switch(
+                            value: themeProvider.darkTheme,
+                            onChanged: (bool value) {
+                              themeProvider.darkTheme = value;
+                            },
+                            activeColor: Colors.green,
+                            activeTrackColor: Colors.lightGreen,
+                            inactiveThumbColor: Colors.white70,
+                            inactiveTrackColor: Colors.white12,
+                          )),
+                    )
+                  ],
+                ),
+              ),
+              Column(children: [
+                Container(
+                  height: 80,
+                  color: Theme.of(context).shadowColor,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                          margin:
+                              const EdgeInsets.only(left: 20.0, right: 20.0),
+                          child: Text(
+                            "Notifications",
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.black,
+                              fontFamily: 'Open Sans',
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )),
+                      Container(
+                          margin:
+                              const EdgeInsets.only(left: 20.0, right: 20.0),
+                          child: IconButton(
+                            icon: showToggles
+                                ? Icon(Icons.keyboard_arrow_up_rounded)
+                                : Icon(Icons.keyboard_arrow_down_rounded),
+                            iconSize: 40,
+                            color: Theme.of(context).accentColor,
+                            onPressed: () {
+                              setState(() {
+                                showToggles = !showToggles;
+                              });
+                            },
+                          ))
+                    ],
                   ),
-                ])
-        ));
+                ),
+                showEmailToggle(showToggles, emailProvider),
+                showAlertToggle(showToggles, notificationsProvider),
+              ]),
+            ])));
   }
 
   Consumer showEmailToggle(bool val, EmailProvider emailProvider) {
     if (val == true) {
       return Consumer<EmailProvider>(
-        builder: (context, model, _) =>
-            Column(
-                children: [
-                  Container(
-                    height: 80,
-                    color: Theme.of(context).shadowColor,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Flexible(
-                        child: Container(
-                            margin:
-                            const EdgeInsets.only(
-                                left: 40.0, right: 20.0),
-                            child: Text(
-                              "Receive Emails",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 17,
-                                color: Colors.black,
-                                fontFamily: 'OpenSans',
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ))),
-                        Flexible(
-                        child: Container(
-                            margin: const EdgeInsets.only(
-                                left: 20.0, right: 20.0),
-                            child: Transform.scale(
-                                scale: 1.2,
-                                child: Switch(
-                                  value: emailProvider.email,
-                                  onChanged: (bool value) {
-                                    emailProvider.email = value;
-                                    //value ? AndroidAlarmManager.periodic(Duration(seconds:5), alarmID, callEmailSender) : value;
-                                    value ? model.EmailNotificationsEnabled(user_email, _timeEmail) : value;
-                                  },
-                                  activeColor: Colors.green,
-                                  activeTrackColor: Colors.lightGreen,
-                                  inactiveThumbColor: Colors.white70,
-                                  inactiveTrackColor: Colors.white12,
-                                )
-                            )
-                        ))
-                      ],
-                    ),
-                  ),
-                  showEmailAddress(emailProvider.email, user_email),
-                  showEmailNotificationTime(emailProvider.email),
-                  //showNotificationTime(emailProvider.email),
-                ]
+        builder: (context, model, _) => Column(children: [
+          Container(
+            height: 80,
+            color: Theme.of(context).shadowColor,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Flexible(
+                    child: Container(
+                        margin: const EdgeInsets.only(left: 40.0, right: 20.0),
+                        child: Text(
+                          "Receive Emails",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 17,
+                            color: Colors.black,
+                            fontFamily: 'Open Sans',
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ))),
+                Flexible(
+                    child: Container(
+                        margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+                        child: Transform.scale(
+                            scale: 1.2,
+                            child: Switch(
+                              value: emailProvider.email,
+                              onChanged: (bool value) {
+                                emailProvider.email = value;
+                                value
+                                    ? model.EmailNotificationsEnabled(user_email, pickedEmail) : value;
+                              },
+                              activeColor: Colors.green,
+                              activeTrackColor: Colors.lightGreen,
+                              inactiveThumbColor: Colors.white70,
+                              inactiveTrackColor: Colors.white12,
+                            ))))
+              ],
             ),
+          ),
+          showEmailAddress(emailProvider.email, user_email),
+          showEmailNotificationTime(emailProvider.email),
+        ]),
       );
-    }
-    else {
+    } else {
       return Consumer<EmailProvider>(
-          builder: (context, model, _) =>
-              Container(
+          builder: (context, model, _) => Container(
                 height: 0,
-              )
-      );
+              ));
     }
   }
 
-  Consumer showAlertToggle(bool val, NotificationsProvider notificationsProvider) {
+  Consumer showAlertToggle(
+      bool val, NotificationsProvider notificationsProvider) {
     if (val == true) {
       return Consumer<NotificationsProvider>(
-        builder: (context, model, _) =>
-            Column(
-                children: [
-                  Container(
-                    height: 80,
-                    color: Theme.of(context).shadowColor,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        //Flexible(
-                        Container(
-                            margin:
-                            const EdgeInsets.only(
-                                left: 40.0, right: 20.0),
-                            child: Text(
-                              "Receive App Alerts",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 17,
-                                color: Colors.black,
-                                fontFamily: 'OpenSans',
-                                fontWeight: FontWeight.bold,
-                              ),
-                            )),
-                        Flexible(
-                        child: Container(
-                            margin: const EdgeInsets.only(
-                                left: 20.0, right: 20.0),
-                            child: Transform.scale(
-                                scale: 1.2,
-                                child: Switch(
-                                  value: notificationsProvider.notifications,
-                                  onChanged: (bool value) {
-                                    notificationsProvider.notifications = value;
-                                    _hour = _timeLocal.hour;
-                                    _minute = _timeLocal.minute;
-                                    converted = Time(_hour, _minute, 0);
-                                    value ? model.scheduledNotification(converted) : model.cancelNotification();
-                                  },
-                                  activeColor: Colors.green,
-                                  activeTrackColor: Colors.lightGreen,
-                                  inactiveThumbColor: Colors.white70,
-                                  inactiveTrackColor: Colors.white12,
-                                )
-                            )
-                        ))
-                      ],
-                    ),
-                  ),
-                  showLocalNotificationTime(notificationsProvider.notifications),
-                ]
+        builder: (context, model, _) => Column(children: [
+          Container(
+            height: 80,
+            color: Theme.of(context).shadowColor,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                //Flexible(
+                Container(
+                    margin: const EdgeInsets.only(left: 40.0, right: 20.0),
+                    child: Text(
+                      "Receive App Alerts",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 17,
+                        color: Colors.black,
+                        fontFamily: 'Open Sans',
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )),
+                Flexible(
+                    child: Container(
+                        margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+                        child: Transform.scale(
+                            scale: 1.2,
+                            child: Switch(
+                              value: notificationsProvider.notifications,
+                              onChanged: (bool value) {
+                                notificationsProvider.notifications = value;
+                                value ? model.scheduledNotification(converted) : model.cancelNotification();
+                              },
+                              activeColor: Colors.green,
+                              activeTrackColor: Colors.lightGreen,
+                              inactiveThumbColor: Colors.white70,
+                              inactiveTrackColor: Colors.white12,
+                            ))))
+              ],
             ),
+          ),
+          showLocalNotificationTime(notificationsProvider.notifications),
+        ]),
       );
-    }
-    else {
+    } else {
       return Consumer<NotificationsProvider>(
-          builder: (context, model, _) =>
-              Container(
+          builder: (context, model, _) => Container(
                 height: 0,
-              )
-      );
+              ));
     }
   }
 
-  Container showEmailAddress(bool value, String email){
+  Container showEmailAddress(bool value, String email) {
     if (value == true) {
       return Container(
-          height: 60,
-          color: Theme.of(context).shadowColor,
-          //child: Row(
-              //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //children: [
-                child: Container(
-                        child: TextFormField(
-                          initialValue: email,
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'Email Address',
-                          ),
-                          onChanged: (String text) async {
-                            await HachinguPreferences.setUserEmail(text);
-                            user_email = text;
-                            //Workmanager.registerPeriodicTask();
-                            EmailProvider().EmailNotificationsEnabled(text, _timeEmail);
-                            //AndroidAlarmManager.periodic(Duration(minutes:1), 0, );
-                          },
-                        ),
-                ),
+        height: 60,
+        color: Theme.of(context).shadowColor,
+        //child: Row(
+        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //children: [
+        child: Container(
+          child: TextFormField(
+            initialValue: email,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: 'Email Address',
+            ),
+            onChanged: (String text) async {
+              await HachinguPreferences.setUserEmail(text);
+              EmailProvider().EmailNotificationsEnabled(text, pickedEmail);
+            },
+          ),
+        ),
       );
-    }
-    else {
-      return Container(
-          height: 0
-      );
+    } else {
+      return Container(height: 0);
     }
   }
 
@@ -331,47 +293,39 @@ class _SettingsScreenState extends State<SettingsScreen> {
       return Container(
           height: 60,
           color: Theme.of(context).shadowColor,
-          child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                    margin: const EdgeInsets.only(left: 50.0, right: 20.0),
+          child:
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            Container(
+                margin: const EdgeInsets.only(left: 50.0, right: 20.0),
+                child: Text(
+                  "Daily Email",
+                  textAlign: TextAlign.right,
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.black,
+                    fontFamily: 'Open Sans',
+                    fontWeight: FontWeight.bold,
+                  ),
+                )),
+            Container(
+                margin: const EdgeInsets.only(left: 20.0, right: 10.0),
+                child: FlatButton(
+                    onPressed: () {
+                      selectEmailTime(context);
+                    },
                     child: Text(
-                      "Daily Email",
-                      textAlign: TextAlign.right,
+                      timeFormatString(_timeEmail),
+                      textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 24,
                         color: Colors.black,
                         fontFamily: 'OpenSans',
                         fontWeight: FontWeight.bold,
                       ),
-                    )
-                ),
-                Container(
-                    margin: const EdgeInsets.only(left: 20.0, right: 10.0),
-                    child: FlatButton(
-                        onPressed: () {
-                          selectEmailTime(context);
-                        },
-                        child: Text(
-                          timeFormatString(_timeEmail),
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 24,
-                            color: Colors.black,
-                            fontFamily: 'OpenSans',
-                            fontWeight: FontWeight.bold,
-                          ),
-                        )
-                    )),
-              ]
-          )
-      );
-    }
-    else {
-      return Container(
-          height: 0
-      );
+                    ))),
+          ]));
+    } else {
+      return Container(height: 0);
     }
   }
 
@@ -380,69 +334,60 @@ class _SettingsScreenState extends State<SettingsScreen> {
       return Container(
           height: 60,
           color: Theme.of(context).shadowColor,
-          child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                    margin: const EdgeInsets.only(left: 50.0, right: 20.0),
+          child:
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            Container(
+                margin: const EdgeInsets.only(left: 50.0, right: 20.0),
+                child: Text(
+                  "Daily Reminder",
+                  textAlign: TextAlign.right,
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.black,
+                    fontFamily: 'Open Sans',
+                    fontWeight: FontWeight.bold,
+                  ),
+                )),
+            Container(
+                margin: const EdgeInsets.only(left: 20.0, right: 10.0),
+                child: FlatButton(
+                    onPressed: () {
+                      selectLocalTime(context);
+                    },
                     child: Text(
-                      "Daily Reminder",
-                      textAlign: TextAlign.right,
+                      timeFormatString(_timeLocal),
+                      textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 24,
                         color: Colors.black,
-                        fontFamily: 'OpenSans',
+                        fontFamily: 'Open Sans',
                         fontWeight: FontWeight.bold,
                       ),
-                    )
-                ),
-                Container(
-                    margin: const EdgeInsets.only(left: 20.0, right: 10.0),
-                    child: FlatButton(
-                        onPressed: () {
-                          selectLocalTime(context);
-                        },
-                        child: Text(
-                          timeFormatString(_timeLocal),
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 24,
-                            color: Colors.black,
-                            fontFamily: 'OpenSans',
-                            fontWeight: FontWeight.bold,
-                          ),
-                        )
-                    )),
-              ]
-          )
-      );
-    }
-    else {
-      return Container(
-          height: 0
-      );
+                    ))),
+          ]));
+    } else {
+      return Container(height: 0);
     }
   }
 
-  String timeFormatString(TimeOfDay time){
+  String timeFormatString(TimeOfDay time) {
     String hour, minute, formatted, period;
-    
+
     hour = time.hour.toString();
     minute = time.minute.toString();
-    if (time.minute<10){
-      minute = '0'+minute;
+    if (time.minute < 10) {
+      minute = '0' + minute;
     }
-    if (time.hour==0){
+    if (time.hour == 0) {
       hour = '12';
     }
-    if (time.hour>=12){
+    if (time.hour >= 12) {
       period = 'PM';
-      if (time.hour>12) {
+      if (time.hour > 12) {
         int newhour = time.hour - 12;
         hour = newhour.toString();
       }
-    }
-    else{
+    } else {
       period = 'AM';
     }
     formatted = hour + ":" + minute + " " + period;
@@ -478,25 +423,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
         _timeEmail = pickedEmail;
         HachinguPreferences().setEmailReminder(_timeEmail);
         EmailProvider().EmailNotificationsEnabled(user_email, _timeEmail);
-        //AndroidAlarmManager.periodic(Duration(seconds:5), alarmID, callEmailSender);
       });
     }
   }
-
-  void printSample(){
-    print("It is here");
-  }
-
-  void callEmailSender(){
-    EmailProvider().EmailNotificationsEnabled(user_email, _timeEmail);
-  }
-
-}
-
-void printHello(){
-  print("Hello ${DateTime.now()}");
-}
-
-void printSample(){
-  print("It is here");
-}

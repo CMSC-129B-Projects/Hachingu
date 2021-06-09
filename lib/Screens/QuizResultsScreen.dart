@@ -77,8 +77,15 @@ class _QuizResultsScreenState extends State<QuizResultsScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
-        backgroundColor: getColor(),
-      ),
+          backgroundColor: getColor(),
+          leading: IconButton(
+              icon: Icon(Icons.arrow_back, color: Colors.white),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()),
+                );
+              })),
       body: ListView(children: <Widget>[
         Container(
             alignment: Alignment.center,
@@ -155,7 +162,6 @@ class _ReviewCardState extends State<ReviewCard> {
           ShowTab(_markerPos),
           Container(
             alignment: Alignment.topLeft,
-            // height: 200,
             padding: EdgeInsets.all(20),
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
