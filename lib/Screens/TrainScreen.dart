@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hachingu/Screens/ModelTestScreen.dart';
+import 'package:hachingu/Screens/WritingScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:hachingu/Notifiers/dark_theme_provider.dart';
 
@@ -94,7 +95,7 @@ class ChallengeCard extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => ModelTestScreen()),
+                    MaterialPageRoute(builder: (context) => WritingScreen()),
                   );
                 },
                 customBorder: RoundedRectangleBorder(
