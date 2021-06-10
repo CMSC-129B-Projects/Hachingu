@@ -36,7 +36,7 @@ class _WritingScreenState extends State<WritingScreen> {
     return controller;
   }
 
-  void _predict(imgg) async {
+  void _predict(Uint8List imgg) async {
     img.Image imageInput = img.decodeImage(imgg);
     var pred = _classifier.predict(imageInput);
 
@@ -44,49 +44,16 @@ class _WritingScreenState extends State<WritingScreen> {
       this.category = pred;
     });
     print(category.label);
-    print("sulod here");
+    print(category.score);
   }
 
-  void _show(PictureDetails picture, BuildContext context) {
+  void _show(PictureDetails picture) async {
     setState(() {
       _finished = true;
     });
-    Navigator.of(context)
-        .push(new MaterialPageRoute(builder: (BuildContext context) {
-      return new Scaffold(
-        appBar: new AppBar(
-          title: const Text('View your image'),
-        ),
-        body: new Container(
-            alignment: Alignment.center,
-            child: new FutureBuilder<Uint8List>(
-              future: picture.toPNG(),
-              builder:
-                  (BuildContext context, AsyncSnapshot<Uint8List> snapshot) {
-                switch (snapshot.connectionState) {
-                  case ConnectionState.done:
-                    if (snapshot.hasError) {
-                      return new Text('Error: ${snapshot.error}');
-                    } else {
-                      // print(snapshot.data.toString());
-                      _predict(snapshot.data);
-                      return Image.memory(snapshot.data);
-                    }
-                    break;
-                  default:
-                    return new Container(
-                        child: new FractionallySizedBox(
-                      widthFactor: 0.1,
-                      child: new AspectRatio(
-                          aspectRatio: 1.0,
-                          child: new CircularProgressIndicator()),
-                      alignment: Alignment.center,
-                    ));
-                }
-              },
-            )),
-      );
-    }));
+    _predict((await picture.toPNG()));
+
+    _controller = _newController();
   }
 
   @override
@@ -130,7 +97,7 @@ class _WritingScreenState extends State<WritingScreen> {
                       })
                     ]),
                     ActionBtn(Icons.arrow_forward, Color(0xff47be02),
-                        () => _show(_controller.finish(), context)),
+                        () => _show(_controller.finish())),
                   ]),
               Container(
                 height: 360,
