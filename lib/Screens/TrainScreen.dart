@@ -95,7 +95,8 @@ class ChallengeCard extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => WritingScreen()),
+                    MaterialPageRoute(
+                        builder: (context) => WritingScreen(title)),
                   );
                 },
                 customBorder: RoundedRectangleBorder(

@@ -68,6 +68,7 @@ flutter:
     - assets/images/LessonImages/
     - assets/lessons/
     - assets/quizzes/
+    - assets/challenges/
     - assets/model-labels/
     - assets/tflite-models/
 
