@@ -30,12 +30,28 @@ abstract class Classifier {
 
   List<String> labels;
 
-  String get modelName;
+  String modelName;
 
   NormalizeOp get preProcessNormalizeOp;
   NormalizeOp get postProcessNormalizeOp;
 
-  Classifier({int numThreads, String labelsDir, int labelsLength}) {
+  Classifier({int numThreads, String modelType}) {
+    String labelsDir;
+    int labelsLength = 0;
+
+    if (modelType == "character") {
+      modelName = 'tflite-models/character-model.tflite';
+      labelsDir = 'assets/model-labels/character-labels.txt';
+      labelsLength = 30;
+      print("character");
+      print(modelName);
+    } else if (modelType == "syllable") {
+      modelName = 'tflite-models/syllable-model.tflite';
+      labelsDir = 'assets/model-labels/syllable-labels.txt';
+      labelsLength = 2350;
+      print("syllable");
+    }
+
     _interpreterOptions = InterpreterOptions();
 
     if (numThreads != null) {
