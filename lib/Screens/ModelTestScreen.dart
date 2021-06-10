@@ -27,13 +27,13 @@ class _ModelTestScreenState extends State<ModelTestScreen> {
   Image _imageWidget;
 
   img.Image fox;
-
   Category category;
+  String modelType = "character";
 
   @override
   void initState() {
     super.initState();
-    _classifier = ClassifierQuant();
+    _classifier = ClassifierQuant(numThreads: 1, modelType: "character");
   }
 
   Future getImage() async {
@@ -65,6 +65,22 @@ class _ModelTestScreenState extends State<ModelTestScreen> {
       ),
       body: Column(
         children: <Widget>[
+          Text("$modelType",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+          MaterialButton(
+              color: Colors.red,
+              child: Text(
+                  '${modelType == "character" ? "syllable" : "character"}'),
+              onPressed: () {
+                if (modelType == "character")
+                  modelType = "syllable";
+                else
+                  modelType = "character";
+                setState(() {});
+
+                _classifier =
+                    ClassifierQuant(numThreads: 1, modelType: modelType);
+              }),
           Center(
             child: _image == null
                 ? Text('No image selected.')
