@@ -1,4 +1,6 @@
+import 'dart:ffi';
 import 'dart:math';
+import 'dart:typed_data';
 
 import 'package:image/image.dart';
 import 'package:collection/collection.dart';
@@ -83,20 +85,88 @@ abstract class Classifier {
         .process(_inputImage);
   }
 
+  Uint8List rgb2gray(List<int> image) {
+    Uint8 zero;
+    Uint8List gray_image = Uint8List(_inputShape[1] * _inputShape[2]);
+    // List.filled(_inputShape[1] * _inputShape[2], zero) as Uint8List;
+    // .map((e) => Uint8(e))
+    // .toList();
+
+    for (int i = 0; i < gray_image.length; i += 1) {
+      gray_image[i] =
+          ((image[i * 3] + image[(i * 3) + 1] + image[(i * 3) + 2]) ~/
+              (3 * 255));
+    }
+
+    return gray_image;
+  }
+
+  Float32List rgb2grayf(List<int> image) {
+    Float32List gray_image = Float32List(_inputShape[1] * _inputShape[2]);
+    // List.filled(_inputShape[1] * _inputShape[2], zero) as Uint8List;
+    // .map((e) => Uint8(e))
+    // .toList();
+
+    for (int i = 0; i < gray_image.length; i += 1) {
+      gray_image[i] =
+          ((image[i * 3] + image[(i * 3) + 1] + image[(i * 3) + 2]) /
+              (3 * 255));
+    }
+
+    return gray_image;
+  }
+
   Category predict(Image image) {
     if (interpreter == null) {
       throw StateError('Cannot run inference, Intrepreter is null');
     }
+    image = grayscale(image);
     final pres = DateTime.now().millisecondsSinceEpoch;
     _inputImage = TensorImage.fromImage(image);
     _inputImage = _preProcess();
+    // print('buffer');
+    // print(_inputImage.tensorBuffer.buffer.asUint8List().toString());
+    // print(_inputImage.tensorBuffer.buffer.asUint8List().length);
+    // _inputImage.loadRgbPixels(
+    //     rgb2gray(_inputImage.tensorBuffer.buffer.asUint8List()), [28, 28, 1]);
+    // _inputImage.loadRgbPixels(_inputImage., [28,28,1])
+    // _inputImage.loadTensorBuffer(_inputImage.getTensorBuffer());
 
     final pre = DateTime.now().millisecondsSinceEpoch - pres;
 
-    print('Time to load image: $pre ms');
+    print('Time to load image: $pre ms ');
+    print(_inputShape);
+    print(_inputImage.width);
+    print(_inputImage.height);
+    // print(_inputImage.buffer.toString());
+    print(rgb2gray(_inputImage.tensorBuffer.buffer.asUint8List())
+        .buffer
+        .asUint8List()
+        .toString());
+    print(rgb2gray(_inputImage.tensorBuffer.buffer.asUint8List())
+        .buffer
+        .lengthInBytes
+        .toString());
+    print("lizt");
+    print(_inputImage.buffer.asUint8List());
 
+    print('types');
+    print(_inputImage.buffer);
+    print(rgb2gray(_inputImage.tensorBuffer.buffer.asUint8List()).buffer);
+    // print()
+    print(_inputImage.buffer.lengthInBytes);
+    print(_outputShape);
     final runs = DateTime.now().millisecondsSinceEpoch;
-    interpreter.run(_inputImage.buffer, _outputBuffer.getBuffer());
+    interpreter.run(
+        // _inputImage.buffer,
+        rgb2grayf(_inputImage.tensorBuffer.buffer.asUint8List())
+            .buffer
+            .asFloat32List()
+            .reshape([1, 28, 28, 1]),
+        _outputBuffer.getBuffer()
+        // List.filled(30, 0).reshape([1, 30])
+
+        );
     final run = DateTime.now().millisecondsSinceEpoch - runs;
 
     print('Time to run inference: $run ms');
