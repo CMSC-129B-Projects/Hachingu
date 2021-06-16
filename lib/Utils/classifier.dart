@@ -106,21 +106,33 @@ abstract class Classifier {
   Float32List rgb2grayf(List<int> image) {
     Float32List gray_image = Float32List(_inputShape[1] * _inputShape[2]);
 
-    // for (int i = 0; i < gray_image.length; i += 1) {
-    //   gray_image[i] =
-    //       ((image[i * 3] + image[(i * 3) + 1] + image[(i * 3) + 2]) /
-    //           (3 * 255));
-    // }
     for (int i = 0; i < gray_image.length; i += 1) {
-      gray_image[i] = ((image[i * 3] * 0.3 +
-              image[(i * 3) + 1] * 0.59 +
-              image[(i * 3) + 2] * 0.11) /
-          (255));
+      gray_image[i] =
+          ((image[i * 3] + image[(i * 3) + 1] + image[(i * 3) + 2]) /
+              (3 * 255));
     }
-    print("grayed");
-    print(gray_image);
+    // for (int i = 0; i < gray_image.length; i += 1) {
+    //   gray_image[i] = ((image[i * 3] * 0.3 +
+    //           image[(i * 3) + 1] * 0.59 +
+    //           image[(i * 3) + 2] * 0.11) /
+    //       (255));
+    // }
+    // print("grayed");
+    // print(gray_image);
 
     return gray_image;
+  }
+
+  List<int> gray2rgb(Float32List gray_image) {
+    List<int> rgb_image = Int8List(_inputShape[1] * _inputShape[2] * 3);
+
+    for (int i = 0; i < gray_image.length; i += 1) {
+      rgb_image[i * 3] = 255 * gray_image[i] / 3 as int;
+      rgb_image[1 + (i * 3)] = 255 * gray_image[i] / 3 as int;
+      rgb_image[2 + (i * 3)] = 255 * gray_image[i] / 3 as int;
+    }
+
+    return rgb_image;
   }
 
   Category predict(Image image) {
@@ -154,6 +166,15 @@ abstract class Classifier {
     var maxi = argmax(_outputBuffer.buffer.asFloat32List());
     return Category(labels[maxi], _outputBuffer.buffer.asFloat32List()[maxi]);
     return Category(pred.key, pred.value);
+  }
+
+  Future<Uint8List> process_debug_image(Image image) async {
+    // image = grayscale(image);
+    var _inputImage = TensorImage.fromImage(image);
+    _inputImage = _preProcess();
+
+    return await _inputImage.getBuffer().asUint8List();
+    // gray2rgb(rgb2grayf(_inputImage.tensorBuffer.buffer.asUint8List())));
   }
 
   void close() {
