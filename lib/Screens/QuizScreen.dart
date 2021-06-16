@@ -74,10 +74,13 @@ class _QuizScreenState extends State<QuizScreen> {
                   color: Theme.of(context).backgroundColor,
                   fontWeight: FontWeight.bold)),
           backgroundColor: Color(0xff47be02),
+          elevation: 3,
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20))),
+                  topLeft: Radius.circular(24),
+                  topRight: Radius.circular(24),
+                  bottomLeft: Radius.circular(36),
+                  bottomRight: Radius.circular(16))),
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -123,7 +126,7 @@ class QuizCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 76,
-      margin: const EdgeInsets.symmetric(vertical: 10),
+      margin: const EdgeInsets.symmetric(vertical: 8),
       child: Material(
           color: Colors.transparent,
           elevation: 0,

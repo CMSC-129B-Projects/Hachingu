@@ -46,14 +46,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
         appBar: AppBar(
+            backgroundColor: Theme.of(context).accentColor,
+            elevation: 3,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(24),
                     topRight: Radius.circular(24),
                     bottomLeft: Radius.circular(36),
-                    bottomRight: Radius.circular(10))),
-            backgroundColor: Theme.of(context).accentColor,
-            elevation: 1,
+                    bottomRight: Radius.circular(16))),
             title: new Text(
               "Settings",
               style: TextStyle(
