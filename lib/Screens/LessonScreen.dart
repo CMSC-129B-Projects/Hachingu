@@ -44,18 +44,24 @@ class _LessonScreenState extends State<LessonScreen> {
   Widget LessonBody(DarkThemeProvider themeProvider) {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-      appBar: AppBar(
-        title: Text(widget.title,
-            style: TextStyle(
-                fontFamily: 'OpenSans',
-                fontSize: 24,
-                color: Theme.of(context).backgroundColor,
-                fontWeight: FontWeight.bold)),
-        backgroundColor: Color(0xffF34F4E),
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20))),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(60),
+        child: AppBar(
+          title: Text(widget.title,
+              style: TextStyle(
+                  fontFamily: 'OpenSans',
+                  fontSize: 24,
+                  color: Theme.of(context).backgroundColor,
+                  fontWeight: FontWeight.bold)),
+          backgroundColor: Color(0xffF34F4E),
+          elevation: 3,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(24),
+                  topRight: Radius.circular(24),
+                  bottomLeft: Radius.circular(36),
+                  bottomRight: Radius.circular(16))),
+        ),
       ),
       body: ListView(padding: const EdgeInsets.all(24), children: <Widget>[
         MarkdownBody(data: _mdContent),
