@@ -79,23 +79,38 @@ class _QuizScreenState extends State<QuizScreen> {
                   bottomLeft: Radius.circular(20),
                   bottomRight: Radius.circular(20))),
         ),
-        body: ListView(padding: EdgeInsets.all(20), children: <Widget>[
-          Container(
-              alignment: Alignment.centerLeft,
-              margin: EdgeInsets.only(bottom: 20),
-              child: Text(
-                _items[indx]["question"].toString(),
-                style: TextStyle(
-                    fontFamily: 'Open Sans',
-                    color: Theme.of(context).primaryColor,
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold),
-              )),
-          QuizCard(_items[indx]["choices"][0].toString(), handleClick),
-          QuizCard(_items[indx]["choices"][1].toString(), handleClick),
-          QuizCard(_items[indx]["choices"][2].toString(), handleClick),
-          QuizCard(_items[indx]["choices"][3].toString(), handleClick)
-        ]));
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          child: Flex(direction: Axis.vertical, children: <Widget>[
+            Expanded(
+              flex: 4,
+              child: Container(
+                  // height: ,
+                  alignment: Alignment.centerLeft,
+                  padding: EdgeInsets.symmetric(vertical: 30, horizontal: 10),
+                  margin: EdgeInsets.only(bottom: 20),
+                  child: Text(
+                    _items[indx]["question"].toString(),
+                    style: TextStyle(
+                        fontFamily: 'Open Sans',
+                        color: Theme.of(context).primaryColor,
+                        fontSize: 28,
+                        fontWeight: FontWeight.w600),
+                  )),
+            ),
+            Expanded(
+              flex: 6,
+              child: Column(
+                children: [
+                  QuizCard(_items[indx]["choices"][0].toString(), handleClick),
+                  QuizCard(_items[indx]["choices"][1].toString(), handleClick),
+                  QuizCard(_items[indx]["choices"][2].toString(), handleClick),
+                  QuizCard(_items[indx]["choices"][3].toString(), handleClick)
+                ],
+              ),
+            )
+          ]),
+        ));
   }
 }
 
@@ -106,18 +121,18 @@ class QuizCard extends StatelessWidget {
   const QuizCard(this.description, this.hClick);
   @override
   Widget build(BuildContext context) {
-
     return Container(
-      height: 80,
+      height: 76,
       margin: const EdgeInsets.symmetric(vertical: 10),
       child: Material(
           color: Colors.transparent,
+          elevation: 0,
           child: InkWell(
               onTap: () {
                 hClick(description);
               },
               customBorder: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(26),
+                borderRadius: BorderRadius.circular(22),
               ),
               highlightColor: Color(0xff47be02).withOpacity(0.6),
               splashColor: Color(0xff47be02),
@@ -127,18 +142,18 @@ class QuizCard extends StatelessWidget {
                     textAlign: TextAlign.center,
                     softWrap: true,
                     style: TextStyle(
-                        fontFamily: 'OpenSans',
+                        fontFamily: 'Open Sans',
                         color: Color(0xFF424242),
                         fontSize: 24,
                         fontWeight: FontWeight.bold)),
               ))),
       decoration: BoxDecoration(
-        color: Color(0xFFC5E1A5),
-        boxShadow: [
-          BoxShadow(
-              blurRadius: 8.0, offset: Offset(-3.0, 3.0), color: Colors.grey),
-        ],
-        borderRadius: BorderRadius.all(Radius.circular(26)),
+        color: Color(0xFFDBF0C8),
+        // boxShadow: [
+        //   BoxShadow(
+        //       blurRadius: 8.0, offset: Offset(-3.0, 3.0), color: Colors.grey),
+        // ],
+        borderRadius: BorderRadius.all(Radius.circular(23)),
       ),
     );
   }
