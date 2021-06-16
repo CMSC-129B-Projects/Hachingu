@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:hachingu/Notifiers/dark_theme_provider.dart';
 import 'package:provider/provider.dart';
@@ -8,14 +9,26 @@ import '../Utils/classifier_quant.dart';
 import 'package:tflite_flutter_helper/tflite_flutter_helper.dart';
 import 'package:painter/painter.dart';
 import 'dart:typed_data';
+import 'package:flutter/services.dart' show rootBundle;
 
 class WritingScreen extends StatefulWidget {
   @override
+  final String title;
+
+  const WritingScreen(this.title);
   _WritingScreenState createState() => _WritingScreenState();
 }
 
 class _WritingScreenState extends State<WritingScreen> {
   var sWidth, sHeight;
+  List _items = [
+    {
+      "question": "Loading...",
+      "answer": "Loading...",
+      "choices": ["Loading...", "Loading...", "Loading...", "Loading..."]
+    }
+  ];
+  int indx = 0;
 
   Classifier _classifier;
   Category category;
@@ -26,7 +39,18 @@ class _WritingScreenState extends State<WritingScreen> {
   @override
   void initState() {
     super.initState();
-    _classifier = ClassifierQuant(numThreads: 1, modelType: "character");
+    _classifier = ClassifierQuant(numThreads: 1, modelType: "syllable");
+    readJson();
+  }
+
+  Future<void> readJson() async {
+    final String response = await rootBundle
+        .loadString('assets/challenges/' + widget.title + '.json');
+    final data = await json.decode(response);
+    setState(() {
+      _items = data..shuffle();
+      _items = _items.sublist(0, 11);
+    });
   }
 
   static PainterController _newController() {
@@ -36,7 +60,7 @@ class _WritingScreenState extends State<WritingScreen> {
     return controller;
   }
 
-  void _predict(imgg) async {
+  void _predict(Uint8List imgg) async {
     img.Image imageInput = img.decodeImage(imgg);
     var pred = _classifier.predict(imageInput);
 
@@ -44,49 +68,23 @@ class _WritingScreenState extends State<WritingScreen> {
       this.category = pred;
     });
     print(category.label);
-    print("sulod here");
+    print(category.score);
   }
 
-  void _show(PictureDetails picture, BuildContext context) {
+  void _show(PictureDetails picture) async {
     setState(() {
       _finished = true;
     });
-    Navigator.of(context)
-        .push(new MaterialPageRoute(builder: (BuildContext context) {
-      return new Scaffold(
-        appBar: new AppBar(
-          title: const Text('View your image'),
-        ),
-        body: new Container(
-            alignment: Alignment.center,
-            child: new FutureBuilder<Uint8List>(
-              future: picture.toPNG(),
-              builder:
-                  (BuildContext context, AsyncSnapshot<Uint8List> snapshot) {
-                switch (snapshot.connectionState) {
-                  case ConnectionState.done:
-                    if (snapshot.hasError) {
-                      return new Text('Error: ${snapshot.error}');
-                    } else {
-                      // print(snapshot.data.toString());
-                      _predict(snapshot.data);
-                      return Image.memory(snapshot.data);
-                    }
-                    break;
-                  default:
-                    return new Container(
-                        child: new FractionallySizedBox(
-                      widthFactor: 0.1,
-                      child: new AspectRatio(
-                          aspectRatio: 1.0,
-                          child: new CircularProgressIndicator()),
-                      alignment: Alignment.center,
-                    ));
-                }
-              },
-            )),
-      );
-    }));
+    _predict((await picture.toPNG()));
+
+    _controller = _newController();
+    setState(() {
+      // _items[indx]["hangul"] = description;
+      indx++;
+      if (indx == 10) {
+        print("osho bayot");
+      }
+    });
   }
 
   @override
@@ -113,7 +111,7 @@ class _WritingScreenState extends State<WritingScreen> {
                 Text("Write: ",
                     style:
                         TextStyle(fontSize: 36, fontWeight: FontWeight.bold)),
-                Text("ㅎ",
+                Text(_items[indx]["roman"].toString(),
                     style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold))
               ]),
               Container(height: 28),
@@ -130,7 +128,7 @@ class _WritingScreenState extends State<WritingScreen> {
                       })
                     ]),
                     ActionBtn(Icons.arrow_forward, Color(0xff47be02),
-                        () => _show(_controller.finish(), context)),
+                        () => _show(_controller.finish())),
                   ]),
               Container(
                 height: 360,
