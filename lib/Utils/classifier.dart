@@ -96,10 +96,9 @@ abstract class Classifier {
     int cropSize = min(_inputImage.height, _inputImage.width);
     print(cropSize);
     return ImageProcessorBuilder()
-        .add(ResizeWithCropOrPadOp(cropSize, cropSize))
-        .add(ResizeOp(
-            _inputShape[1], _inputShape[2], ResizeMethod.NEAREST_NEIGHBOUR))
-        .add(preProcessNormalizeOp)
+        // .add(ResizeWithCropOrPadOp(cropSize, cropSize))
+        .add(ResizeOp(_inputShape[1], _inputShape[2], ResizeMethod.BILINEAR))
+        // .add(preProcessNormalizeOp)
         .build()
         .process(_inputImage);
   }
@@ -107,11 +106,19 @@ abstract class Classifier {
   Float32List rgb2grayf(List<int> image) {
     Float32List gray_image = Float32List(_inputShape[1] * _inputShape[2]);
 
+    // for (int i = 0; i < gray_image.length; i += 1) {
+    //   gray_image[i] =
+    //       ((image[i * 3] + image[(i * 3) + 1] + image[(i * 3) + 2]) /
+    //           (3 * 255));
+    // }
     for (int i = 0; i < gray_image.length; i += 1) {
-      gray_image[i] =
-          ((image[i * 3] + image[(i * 3) + 1] + image[(i * 3) + 2]) /
-              (3 * 255));
+      gray_image[i] = ((image[i * 3] * 0.3 +
+              image[(i * 3) + 1] * 0.59 +
+              image[(i * 3) + 2] * 0.11) /
+          (255));
     }
+    print("grayed");
+    print(gray_image);
 
     return gray_image;
   }
@@ -144,7 +151,8 @@ abstract class Classifier {
             labels, _probabilityProcessor.process(_outputBuffer))
         .getMapWithFloatValue();
     final pred = getTopProbability(labeledProb);
-
+    var maxi = argmax(_outputBuffer.buffer.asFloat32List());
+    return Category(labels[maxi], _outputBuffer.buffer.asFloat32List()[maxi]);
     return Category(pred.key, pred.value);
   }
 
@@ -152,6 +160,19 @@ abstract class Classifier {
     if (interpreter != null) {
       interpreter.close();
     }
+  }
+
+  int argmax(var arr) {
+    double max = 0;
+    var maxi = 0;
+    for (int i = 0; i < arr.length; i += 1) {
+      if (arr[i] > max) {
+        max = arr[i];
+        maxi = i;
+      }
+    }
+
+    return maxi;
   }
 }
 
