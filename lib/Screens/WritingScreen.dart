@@ -31,10 +31,12 @@ class _WritingScreenState extends State<WritingScreen> {
   int indx = 0;
 
   Classifier _classifier;
-  Category category;
+  Category category = Category("", 0);
 
   bool _finished = false;
   PainterController _controller = _newController();
+
+  Uint8List test_image;
 
   @override
   void initState() {
@@ -57,6 +59,9 @@ class _WritingScreenState extends State<WritingScreen> {
     PainterController controller = new PainterController();
     controller.thickness = 16.0;
     controller.backgroundColor = Colors.white;
+    // controller.
+    // controller.backgroundColor = Color(0xfffcedbf);
+
     return controller;
   }
 
@@ -64,6 +69,7 @@ class _WritingScreenState extends State<WritingScreen> {
     img.Image imageInput = img.decodeImage(imgg);
     var pred = _classifier.predict(imageInput);
 
+    test_image = await _classifier.process_debug_image(imageInput);
     setState(() {
       this.category = pred;
     });
@@ -110,9 +116,10 @@ class _WritingScreenState extends State<WritingScreen> {
               Row(children: <Widget>[
                 Text("Write: ",
                     style:
-                        TextStyle(fontSize: 36, fontWeight: FontWeight.bold)),
+                        TextStyle(fontSize: 36, fontWeight: FontWeight.w600)),
                 Text(_items[indx]["roman"].toString(),
-                    style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold))
+                    style:
+                        TextStyle(fontSize: 36, fontWeight: FontWeight.bold)),
               ]),
               Container(height: 28),
               Row(
@@ -135,7 +142,23 @@ class _WritingScreenState extends State<WritingScreen> {
                 child: ClipRRect(
                     borderRadius: BorderRadius.all(Radius.circular(8)),
                     child: new Painter(_controller)),
-              )
+              ),
+              Text(
+                  indx - 1 >= 0
+                      ? "real: " + _items[indx - 1]["hangul"].toString()
+                      : "",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w200)),
+              Text(
+                  this.category.label != null
+                      ? "pred: " + this.category.label
+                      : "",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w200)),
+              Text(
+                  this.category.score.toString() != null
+                      ? this.category.score.toString()
+                      : "",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w200)),
+              // test_image != null ? Image.memory(test_image) : SizedBox()
             ])));
   }
 }

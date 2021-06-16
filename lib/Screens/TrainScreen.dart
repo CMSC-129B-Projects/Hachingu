@@ -62,8 +62,8 @@ class _TrainScreenState extends State<TrainScreen> {
                   "Test your character knowledge"),
               ChallengeCard("assets/images/read_aloud_red.png", "Syllable",
                   "Test your syllable knowledge"),
-              ChallengeCard("assets/images/discuss.png", "Word",
-                  "Test your word knowledge"),
+              // ChallengeCard("assets/images/discuss.png", "Word",
+              //     "Test your word knowledge"),
               Container(height: 10)
             ]),
           )
