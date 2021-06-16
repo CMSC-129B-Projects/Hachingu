@@ -56,7 +56,7 @@ class _WritingScreenState extends State<WritingScreen> {
   static PainterController _newController() {
     PainterController controller = new PainterController();
     controller.thickness = 16.0;
-    controller.backgroundColor = Color(0xfffcedbf);
+    controller.backgroundColor = Colors.white;
     return controller;
   }
 
