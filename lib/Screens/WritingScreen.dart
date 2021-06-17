@@ -10,6 +10,7 @@ import 'package:tflite_flutter_helper/tflite_flutter_helper.dart';
 import 'package:painter/painter.dart';
 import 'dart:typed_data';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:hachingu/Screens/ChallengeResultsScreen.dart';
 
 class WritingScreen extends StatefulWidget {
   @override
@@ -22,18 +23,14 @@ class WritingScreen extends StatefulWidget {
 class _WritingScreenState extends State<WritingScreen> {
   var sWidth, sHeight;
   List _items = [
-    {
-      "question": "Loading...",
-      "answer": "Loading...",
-      "choices": ["Loading...", "Loading...", "Loading...", "Loading..."]
-    }
+    {"roman": "Loading...", "hangul": "Loading...", "type": "Loading..."}
   ];
   int indx = 0;
 
-  Classifier _classifier;
+  Classifier _classifierSyll, _classifierChar;
   Category category = Category("", 0);
 
-  bool _finished = false;
+  // bool _finished = false;
   PainterController _controller = _newController();
 
   Uint8List test_image;
@@ -41,7 +38,8 @@ class _WritingScreenState extends State<WritingScreen> {
   @override
   void initState() {
     super.initState();
-    _classifier = ClassifierQuant(numThreads: 1, modelType: "syllable");
+    _classifierChar = ClassifierQuant(numThreads: 1, modelType: "character");
+    _classifierSyll = ClassifierQuant(numThreads: 1, modelType: "syllable");
     readJson();
   }
 
@@ -67,30 +65,36 @@ class _WritingScreenState extends State<WritingScreen> {
 
   void _predict(Uint8List imgg) async {
     img.Image imageInput = img.decodeImage(imgg);
-    var pred = _classifier.predict(imageInput);
+    var pred = _items[indx]["type"] == "character"
+        ? _classifierChar.predict(imageInput)
+        : _classifierSyll.predict(imageInput);
 
-    test_image = await _classifier.process_debug_image(imageInput);
+    test_image = _items[indx]["type"] == "character"
+        ? await _classifierChar.process_debug_image(imageInput)
+        : await _classifierSyll.process_debug_image(imageInput);
     setState(() {
       this.category = pred;
+      print(category.label);
+      print(category.score);
+      _items[indx]["score"] = category.score;
+      _items[indx]["img"] = imgg;
+      indx++;
+
+      if (indx == 10) {
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(
+                builder: (context) => ChallengeResultsScreen(
+                    widget.title, _items.sublist(0, 10))),
+            (route) => false);
+      }
     });
-    print(category.label);
-    print(category.score);
   }
 
   void _show(PictureDetails picture) async {
-    setState(() {
-      _finished = true;
-    });
     _predict((await picture.toPNG()));
 
     _controller = _newController();
-    setState(() {
-      // _items[indx]["hangul"] = description;
-      indx++;
-      if (indx == 10) {
-        print("osho bayot");
-      }
-    });
   }
 
   @override
