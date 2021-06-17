@@ -1,98 +1,120 @@
 [
     {
         "roman": "b",
-        "hangul": "ㅂ"
+        "hangul": "ㅂ",
+        "type":"character"
     },
     {
         "roman": "ch",
-        "hangul": "ㅊ"
+        "hangul": "ㅊ",
+        "type":"character"
     },
     {
         "roman": "d",
-        "hangul": "ㄷ"
+        "hangul": "ㄷ",
+        "type":"character"
     },
     {
         "roman": "g",
-        "hangul": "ㄱ"
+        "hangul": "ㄱ",
+        "type":"character"
     },
     {
         "roman": "j",
-        "hangul": "ㅈ"
+        "hangul": "ㅈ",
+        "type":"character"
     },
     {
         "roman": "k",
-        "hangul": "ㅋ"
+        "hangul": "ㅋ",
+        "type":"character"
     },
     {
         "roman": "r",
-        "hangul": "ㄹ"
+        "hangul": "ㄹ",
+        "type":"character"
     },
     {
         "roman": "m",
-        "hangul": "ㅁ"
+        "hangul": "ㅁ",
+        "type":"character"
     },
     {
         "roman": "n",
-        "hangul": "ㄴ"
+        "hangul": "ㄴ",
+        "type":"character"
     },
     {
         "roman": "ng",
-        "hangul": "ㅇ"
+        "hangul": "ㅇ",
+        "type":"character"
     },
     {
         "roman": "p",
-        "hangul": "ㅍ"
+        "hangul": "ㅍ",
+        "type":"character"
     },
     {
         "roman": "s",
-        "hangul": "ㅅ"
+        "hangul": "ㅅ",
+        "type":"character"
     },
     {
         "roman": "t",
-        "hangul": "ㅌ"
+        "hangul": "ㅌ",
+        "type":"character"
     },
     {
         "roman": "a",
-        "hangul": "ㅏ"
+        "hangul": "ㅏ",
+        "type":"character"
     },
 
     {
         "roman": "ya",
-        "hangul": "ㅑ"
+        "hangul": "ㅑ",
+        "type":"character"
     },
 
     {
         "roman": "eo",
-        "hangul": "ㅓ"
+        "hangul": "ㅓ",
+        "type":"character"
     },
 
     {
         "roman": "yeo",
-        "hangul": "ㅕ"
+        "hangul": "ㅕ",
+        "type":"character"
     },
 
     {
         "roman": "eu",
-        "hangul": "ㅡ"
+        "hangul": "ㅡ",
+        "type":"character"
     },
 
     {
         "roman": "i",
-        "hangul": "ㅣ"
+        "hangul": "ㅣ",
+        "type":"character"
     },
 
     {
         "roman": "o",
-        "hangul": "ㅗ"
+        "hangul": "ㅗ",
+        "type":"character"
     },
 
     {
         "roman": "yo",
-        "hangul": "ㅛ"
+        "hangul": "ㅛ",
+        "type":"character"
     },
 
     {
         "roman": "u",
-        "hangul": "ㅜ"
+        "hangul": "ㅜ",
+        "type":"character"
     }
 ]
