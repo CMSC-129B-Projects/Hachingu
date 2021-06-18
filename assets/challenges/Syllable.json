@@ -1,479 +1,472 @@
-[
-{
-    "roman": "yu",
-    "hangul": "ㅠ",
-    "type":"syllable"
-}, 
-{
-    "roman": "ba",
-    "hangul": "바",
-    "type":"syllable" 
-},
-{
-    "roman": "bi",
-    "hangul": "비",
-    "type":"syllable"
-},
-{
-    "roman": "bo",
-    "hangul": "보",
-    "type":"syllable"
-},
-{
-    "roman": "byo",
-    "hangul": "뵤",
-    "type":"syllable"
-},
-{
-    "roman": "bu",
-    "hangul": "부",
-    "type":"syllable"
-},
-{
-    "roman": "byu",
-    "hangul": "뷰",
-    "type":"syllable"
-},
-{
-    "roman": "am",
-    "hangul": "암",
-    "type":"syllable"
-},
-{
-    "roman": "an",
-    "hangul": "안",
-    "type":"syllable"
-},
-{
-    "roman": "ap",
-    "hangul": "앞",
-    "type":"syllable"
-},
-{
-    "roman": "ho",
-    "hangul": "호",
-    "type":"syllable"
-},
-{
-    "roman": "yu",
-    "hangul": "유",
-    "type":"syllable"
-},
-{
-    "roman": "gi",
-    "hangul": "기"
-},
-{
-    "roman": "te",
-    "hangul": "테",
-    "type":"syllable"
-},
-{
-    "roman": "ka",
-    "hangul": "카",
-    "type":"syllable"
-},
-
-{
-    "roman": "li",
-    "hangul": "리",
-    "type":"syllable"
-},
-
-{
-    "roman": "ryu",
-    "hangul": "류",
-    "type":"syllable"
-},
-
-{
-    "roman": "cha",
-    "hangul": "차",
-    "type":"syllable"
-},
-
-{
-    "roman": "pya",
-    "hangul": "퍄",
-    "type":"syllable"
-},
-
-{
-    "roman": "eum",
-    "hangul": "음",
-    "type":"syllable"
-},
-
-{
-    "roman": "da",
-    "hangul": "다",
-    "type":"syllable"
-},
-
-{
-    "roman": "악",
-    "hangul": "ak",
-    "type":"syllable"
-},
-
-{
-    "roman": "go",
-    "hangul": "고",
-    "type":"syllable"
-},
-
-{
-    "roman": "su",
-    "hangul": "수",
-    "type":"syllable"
-},
-
-{
-    "roman": "ku",
-    "hangul": "구",
-    "type":"syllable"
-},
-
-{
-    "roman": "yab",
-    "hangul": "얍",
-    "type":"syllable"
-},
-
-{
-    "roman": "yok",
-    "hangul": "욕",
-    "type":"syllable"
-},
-
-{
-    "roman": "aeng",
-    "hangul": "앵",
-    "type":"syllable"
-},
-
-{
-    "roman": "geos",
-    "hangul": "것",
-    "type":"syllable"
-},
-
-{
-    "roman": "jib",
-    "hangul": "집",
-    "type":"syllable"
-},
-
-{
-    "roman": "hag",
-    "hangul": "학",
-    "type":"syllable"
-},
-
-{
-    "roman": "gyo",
-    "hangul": "교",
-    "type":"syllable"
-},
-
-{
-    "roman": "chim",
-    "hangul": "침",
-    "type":"syllable"
-},
-
-{
-    "roman": "dae",
-    "hangul": "대",
-    "type":"syllable"
-},
-
-{
-    "roman": "ja",
-    "hangul": "자",
-    "type":"syllable"
-},
-
-{
-    "roman": "chang",
-    "hangul": "창",
-    "type":"syllable"
-},
-
-{
-    "roman": "mun",
-    "hangul": "문",
-    "type":"syllable"
-},
-
-{
-    "roman": "mul",
-    "hangul": "물",
-    "type":"syllable"
-},
-
-{
-    "roman": "gil",
-    "hangul": "길",
-    "type":"syllable"
-},
-
-{
-    "roman": "eom",
-    "hangul": "엄",
-    "type":"syllable"
-},
-
-{
-    "roman": "sang",
-    "hangul": "생",
-    "type":"syllable"
-},
-
-{
-    "roman": "lam",
-    "hangul": "람",
-    "type":"syllable"
-},
-
-{
-    "roman": "gwa",
-    "hangul": "과",
-    "type":"syllable"
-},
-
-{
-    "roman": "jeom",
-    "hangul": "점",
-    "type":"syllable"
-},
-
-{
-    "roman": "nyeog",
-    "hangul": "녁",
-    "type":"syllable"
-},
-
-{
-    "roman": "gan",
-    "hangul": "간",
-    "type":"syllable"
-},
-
-{
-    "roman": "meog",
-    "hangul": "먹",
-    "type":"syllable"
-},
-
-{
-    "roman": "jal",
-    "hangul": "잘",
-    "type":"syllable"
-},
-
-{
-    "roman": "dab",
-    "hangul": "답",
-    "type":"syllable"
-},
-
-{
-    "roman": "mas",
-    "hangul": "맛",
-    "type":"syllable"
-},
-
-{
-    "roman": "so",
-    "hangul": "소",
-    "type":"syllable"
-},
-
-{
-    "roman": "chi",
-    "hangul": "치",
-    "type":"syllable"
-},
-
-{
-    "roman": "yok",
-    "hangul": "역",
-    "type":"syllable"
-},
-
-{
-    "roman": "ols",
-    "hangul": "옰",
-    "type":"syllable"
-},
-
-{
-    "roman": "nyuk",
-    "hangul": "뉵",
-    "type":"syllable"
-},
-
-{
-    "roman": "nas",
-    "hangul": "낫",
-    "type":"syllable"
-},
-
-{
-    "roman": "he",
-    "hangul": "헤",
-    "type":"syllable"
-},
-
-{
-    "roman": "jit",
-    "hangul": "짖",
-    "type":"syllable"
-},
-
-{
-    "roman": "gem",
-    "hangul": "겜",
-    "type":"syllable"
-},
-
-{
-    "roman": "jjwong",
-    "hangul": "쭹",
-    "type":"syllable"
-},
-
-{
-    "roman": "ppah",
-    "hangul": "빻",
-    "type":"syllable"
-},
-
-{
-    "roman": "kkom",
-    "hangul": "꼼",
-    "type":"syllable"
-},
-
-{
-    "roman": "ppuk",
-    "hangul": "뿍",
-    "type":"syllable"
-},
-
-{
-    "roman": "nat",
-    "hangul": "낟",
-    "type":"syllable"
-},
-
-{
-    "roman": "pyep",
-    "hangul": "폡",
-    "type":"syllable"
-},
-
-{
-    "roman": "bwa",
-    "hangul": "봐",
-    "type":"syllable"
-},
-
-{
-    "roman": "chae",
-    "hangul": "채",
-    "type":"syllable"
-},
-
-{
-    "roman": "gi",
-    "hangul": "기",
-    "type":"syllable"
-},
-
-{
-    "roman": "kyeong",
-    "hangul": "켱",
-    "type":"syllable"
-},
-
-{
-    "roman": "ppak",
-    "hangul": "빡",
-    "type":"syllable"
-},
-
-{
-    "roman": "eog",
-    "hangul": "왹",
-    "type":"syllable"
-},
-
-{
-    "roman": "gyes",
-    "hangul": "곗",
-    "type":"syllable"
-},
-
-{
-    "roman": "baeg",
-    "hangul": "백",
-    "type":"syllable"
-},
-
-{
-    "roman": "swil",
-    "hangul": "쉴",
-    "type":"syllable"
-},
-
-{
-    "roman": "hab",
-    "hangul": "합",
-    "type":"syllable"
-},
-
-{
-    "roman": "gat",
-    "hangul": "같",
-    "type":"syllable"
-},
-
-{
-    "roman": "kkwae",
-    "hangul": "꽤",
-    "type":"syllable"
-},
-
-{
-    "roman": "jjwi",
-    "hangul": "쮜",
-    "type":"syllable"
-},
-
-{
-    "roman": "kyeol",
-    "hangul": "켤",
-    "type":"syllable"
-},
-
-{
-    "roman": "il",
-    "hangul": "일",
-    "type":"syllable"
-},
-
-{
-    "roman": "kaess",
-    "hangul": "캤",
-    "type":"syllable"
-},
-
-{
-    "roman": "lig",
-    "hangul": "릭",
-    "type":"syllable"
-}
+[{
+        "roman": "yu",
+        "hangul": "ㅠ",
+        "type": "syllable"
+    },
+    {
+        "roman": "ba",
+        "hangul": "바",
+        "type": "syllable"
+    },
+    {
+        "roman": "bi",
+        "hangul": "비",
+        "type": "syllable"
+    },
+    {
+        "roman": "bo",
+        "hangul": "보",
+        "type": "syllable"
+    },
+    {
+        "roman": "byo",
+        "hangul": "뵤",
+        "type": "syllable"
+    },
+    {
+        "roman": "bu",
+        "hangul": "부",
+        "type": "syllable"
+    },
+    {
+        "roman": "byu",
+        "hangul": "뷰",
+        "type": "syllable"
+    },
+    {
+        "roman": "am",
+        "hangul": "암",
+        "type": "syllable"
+    },
+    {
+        "roman": "an",
+        "hangul": "안",
+        "type": "syllable"
+    },
+    {
+        "roman": "ap",
+        "hangul": "앞",
+        "type": "syllable"
+    },
+    {
+        "roman": "ho",
+        "hangul": "호",
+        "type": "syllable"
+    },
+    {
+        "roman": "yu",
+        "hangul": "유",
+        "type": "syllable"
+    },
+    {
+        "roman": "gi",
+        "hangul": "기"
+    },
+    {
+        "roman": "te",
+        "hangul": "테",
+        "type": "syllable"
+    },
+    {
+        "roman": "ka",
+        "hangul": "카",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "li",
+        "hangul": "리",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "ryu",
+        "hangul": "류",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "cha",
+        "hangul": "차",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "pya",
+        "hangul": "퍄",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "eum",
+        "hangul": "음",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "da",
+        "hangul": "다",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "악",
+        "hangul": "ak",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "go",
+        "hangul": "고",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "su",
+        "hangul": "수",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "gu",
+        "hangul": "구",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "yab",
+        "hangul": "얍",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "yok",
+        "hangul": "욕",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "aeng",
+        "hangul": "앵",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "geos",
+        "hangul": "것",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "jib",
+        "hangul": "집",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "hag",
+        "hangul": "학",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "gyo",
+        "hangul": "교",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "chim",
+        "hangul": "침",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "dae",
+        "hangul": "대",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "ja",
+        "hangul": "자",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "chang",
+        "hangul": "창",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "mun",
+        "hangul": "문",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "mul",
+        "hangul": "물",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "gil",
+        "hangul": "길",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "eom",
+        "hangul": "엄",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "saeng",
+        "hangul": "생",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "lam",
+        "hangul": "람",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "gwa",
+        "hangul": "과",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "jeom",
+        "hangul": "점",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "nyeog",
+        "hangul": "녁",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "gan",
+        "hangul": "간",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "meog",
+        "hangul": "먹",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "jal",
+        "hangul": "잘",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "dab",
+        "hangul": "답",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "mas",
+        "hangul": "맛",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "so",
+        "hangul": "소",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "chi",
+        "hangul": "치",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "yeok",
+        "hangul": "역",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "ols",
+        "hangul": "옰",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "nyug",
+        "hangul": "뉵",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "nas",
+        "hangul": "낫",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "he",
+        "hangul": "헤",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "jit",
+        "hangul": "짙",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "gem",
+        "hangul": "겜",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "jjwong",
+        "hangul": "쭹",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "ppah",
+        "hangul": "빻",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "kkom",
+        "hangul": "꼼",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "ppuk",
+        "hangul": "뿍",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "nad",
+        "hangul": "낟",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "pyep",
+        "hangul": "폡",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "bwa",
+        "hangul": "봐",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "chae",
+        "hangul": "채",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "gi",
+        "hangul": "기",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "kyeong",
+        "hangul": "켱",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "ppak",
+        "hangul": "빡",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "gyes",
+        "hangul": "곗",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "baeg",
+        "hangul": "백",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "swil",
+        "hangul": "쉴",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "hab",
+        "hangul": "합",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "gat",
+        "hangul": "같",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "kkwae",
+        "hangul": "꽤",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "jjwi",
+        "hangul": "쮜",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "kyeol",
+        "hangul": "켤",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "il",
+        "hangul": "일",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "kaess",
+        "hangul": "캤",
+        "type": "syllable"
+    },
+
+    {
+        "roman": "lig",
+        "hangul": "릭",
+        "type": "syllable"
+    }
 
 ]
