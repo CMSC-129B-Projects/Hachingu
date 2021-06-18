@@ -98,6 +98,7 @@ class _TrainScreenState extends State<TrainScreen> {
                   onPressed: () async {
                     showDialog(
                       context: context,
+                      barrierColor: Colors.black.withAlpha(50),
                       builder: (BuildContext context) {
                         return TipsPopup(tips[Random().nextInt(tips.length)]);
                       },
