@@ -177,11 +177,15 @@ class _ReviewCardState extends State<ReviewCard> {
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(
-                      _res[_markerPos]['roman'] +
-                          " - " +
-                          _res[_markerPos]['hangul'],
-                      style: TextStyle(fontSize: 24)),
+                  Row(children: <Widget>[
+                    Text(_res[_markerPos]['roman'],
+                        style: TextStyle(
+                            fontSize: 24, fontWeight: FontWeight.bold)),
+                    Text(" in Hangul is ", style: TextStyle(fontSize: 24)),
+                    Text(_res[_markerPos]['hangul'],
+                        style: TextStyle(
+                            fontSize: 24, fontWeight: FontWeight.bold))
+                  ]),
                   Container(height: 8),
                   ClipRRect(
                       borderRadius: BorderRadius.all(Radius.circular(8)),
@@ -219,7 +223,7 @@ class AnswerPill extends StatelessWidget {
                   style: TextStyle(color: Colors.white)),
               correctAns
                   ? Icon(Icons.check, color: Colors.white)
-                  : Icon(Icons.insights, color: Colors.white)
+                  : Icon(Icons.assessment, color: Colors.white)
             ]),
         padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         margin: EdgeInsets.all(8),
