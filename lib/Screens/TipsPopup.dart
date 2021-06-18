@@ -35,7 +35,7 @@ class _TipsPopupState extends State<TipsPopup> {
               alignment: Alignment.bottomCenter,
               child: Container(
                 width: sWidth * 0.92,
-                height: sHeight * 0.35,
+                height: sHeight * 0.5,
                 child: Stack(
                   children: [
                     Positioned(
@@ -57,7 +57,7 @@ class _TipsPopupState extends State<TipsPopup> {
                         alignment: Alignment.bottomCenter,
                         child: Container(
                           width: sWidth * 0.92,
-                          height: sHeight * 0.35,
+                          height: sHeight * 0.5,
                           decoration: BoxDecoration(
                               color: Color(0xfffAB316),
                               borderRadius:
@@ -67,14 +67,39 @@ class _TipsPopupState extends State<TipsPopup> {
                             child: Center(
                               child: Material(
                                 color: Colors.white.withAlpha(0),
-                                child: Text(
-                                  this.tip,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      // fontFamily: 'Open Sans',
-                                      fontSize: 20,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w600),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      child: Opacity(
+                                        opacity: 0.8,
+                                        child: Center(
+                                          child: Image.asset(
+                                            'assets/images/light-bulb.png',
+                                            width: 80,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 8),
+                                      child: Center(
+                                        child: Text(
+                                          this.tip,
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              // fontFamily: 'Open Sans',
+                                              fontSize: 20,
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),

@@ -97,10 +97,11 @@ class _TrainScreenState extends State<TrainScreen> {
                   color: Color(0xfffAB316),
                   onPressed: () async {
                     showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return TipsPopup(tips[Random().nextInt(tips.length)]);
-                        });
+                      context: context,
+                      builder: (BuildContext context) {
+                        return TipsPopup(tips[Random().nextInt(tips.length)]);
+                      },
+                    );
                   },
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
