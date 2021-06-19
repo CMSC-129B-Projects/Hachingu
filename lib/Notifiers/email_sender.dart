@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mailer/mailer.dart';
 import 'package:mailer/smtp_server/gmail.dart';
-import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:hachingu/Utils/preferences.dart';
 
 class EmailProvider with ChangeNotifier {
