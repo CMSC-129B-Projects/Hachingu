@@ -29,7 +29,9 @@ abstract class Styles {
 
   //Strings
   static const TextStyle defaultTextStyle = TextStyle(
-      color: Styles.purpleColor, fontSize: 20.0, fontFamily: 'Open Sans');
+    color: Styles.purpleColor,
+    fontSize: 20.0,
+  );
   static const TextStyle defaultTextStyleBlack = TextStyle(
     color: Styles.blackColor,
     fontSize: 20.0,
@@ -55,7 +57,7 @@ abstract class Styles {
     fontSize: 16.0,
   );
   static const TextStyle defaultButtonTextStyle =
-      TextStyle(color: Styles.whiteColor, fontSize: 20);
+  TextStyle(color: Styles.whiteColor, fontSize: 20);
 
   static const TextStyle profileTextStyleBlack = TextStyle(
     color: Styles.blackColor,
@@ -72,7 +74,7 @@ abstract class Styles {
   static ThemeData themeData(bool isDarkTheme, BuildContext context) {
     return ThemeData(
       //* Custom Google Font
-      fontFamily: 'Open Sans',
+      //  fontFamily: Devfest.google_sans_family,
       primarySwatch: Colors.red,
       primaryColor: isDarkTheme ? Colors.white : Colors.black,
       accentColor: isDarkTheme ? Color(0xff20212b) : Color(0xfffab316),
@@ -83,7 +85,7 @@ abstract class Styles {
 
       hintColor: isDarkTheme ? Color(0xff280C0B) : Color(0xffEECED3),
       shadowColor: isDarkTheme ? Color(0xff8f7027) : Colors.white,
-      splashColor: isDarkTheme ? Color(0xffa19551) : Color(0xfffff2cf),
+      splashColor: isDarkTheme ?  Color(0xffa19551) : Color(0xfffff2cf),
       highlightColor: isDarkTheme ? Color(0xff372901) : Color(0xffFCE192),
       hoverColor: isDarkTheme ? Color(0xff3A3A3B) : Color(0xff4285F4),
       focusColor: isDarkTheme ? Color(0xff0B2512) : Color(0xffA8DAB5),

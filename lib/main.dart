@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hachingu/Notifiers/email_sender.dart';
 import 'package:hachingu/Notifiers/notifications_provider.dart';
+import 'package:hachingu/Screens/SettingsScreen.dart';
 import 'Screens/HomeScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -11,7 +12,7 @@ import 'package:hachingu/Utils/preferences.dart';
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
     FlutterLocalNotificationsPlugin();
 
-void main() async {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
 
   await HachinguPreferences.init();
@@ -25,8 +26,7 @@ class Hachingu extends StatefulWidget {
 
 class _HachinguState extends State<Hachingu> {
   DarkThemeProvider themeChangeProvider = new DarkThemeProvider();
-  NotificationsProvider notificationsChangeProvider =
-      new NotificationsProvider();
+  NotificationsProvider notificationsChangeProvider = new NotificationsProvider();
   EmailProvider emailChangeProvider = new EmailProvider();
   FlutterLocalNotificationsPlugin localNotification;
 
@@ -38,21 +38,14 @@ class _HachinguState extends State<Hachingu> {
     getEmailStatus();
     getNotificationStatus();
   }
-
   void getCurrentAppTheme() async {
-    themeChangeProvider.darkTheme =
-        await themeChangeProvider.hachinguPreferences.getTheme();
+    themeChangeProvider.darkTheme = await themeChangeProvider.hachinguPreferences.getTheme();
   }
-
   void getEmailStatus() async {
-    emailChangeProvider.email =
-        await emailChangeProvider.hachinguPreferences.getEmails();
+    emailChangeProvider.email = await emailChangeProvider.hachinguPreferences.getEmails();
   }
-
   void getNotificationStatus() async {
-    notificationsChangeProvider.notifications =
-        await notificationsChangeProvider.hachinguPreferences
-            .getNotifications();
+    notificationsChangeProvider.notifications = await notificationsChangeProvider.hachinguPreferences.getNotifications();
   }
 
   @override
@@ -60,20 +53,23 @@ class _HachinguState extends State<Hachingu> {
     return MultiProvider(
         providers: [
           ChangeNotifierProvider<DarkThemeProvider>(
-              create: (_) => themeChangeProvider),
+            create: (_) => themeChangeProvider
+          ),
           ChangeNotifierProvider<NotificationsProvider>(
-              create: (_) => notificationsChangeProvider),
+              create: (_) => notificationsChangeProvider
+          ),
           ChangeNotifierProvider<EmailProvider>(
             create: (_) => emailChangeProvider,
           ),
         ],
         child: Consumer<DarkThemeProvider>(
             builder: (BuildContext context, value, Widget child) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            theme: Styles.themeData(themeChangeProvider.darkTheme, context),
-            home: HomeScreen(),
-          );
-        }));
+              return MaterialApp(
+                theme: Styles.themeData(themeChangeProvider.darkTheme, context),
+                home: HomeScreen(),
+              );
+            }
+        )
+    );
   }
 }

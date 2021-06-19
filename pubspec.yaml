@@ -36,6 +36,7 @@ dependencies:
   logger: ^1.0.0
   image_picker: ^0.8.0+3
 
+
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
@@ -73,15 +74,6 @@ flutter:
     - assets/tflite-models/
 
   fonts:
-    - family: Open Sans 
-      fonts:
-        - asset: assets/fonts/OpenSans-Light.ttf
-        - asset: assets/fonts/OpenSans-Regular.ttf
-        - asset: assets/fonts/OpenSans-SemiBold.ttf
-        - asset: assets/fonts/OpenSans-Bold.ttf
-        - asset: assets/fonts/OpenSans-ExtraBold.ttf
-
-
     - family: Oswald
       fonts:
         - asset: assets/fonts/Oswald-Regular.ttf

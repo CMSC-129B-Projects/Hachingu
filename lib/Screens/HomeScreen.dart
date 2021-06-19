@@ -482,7 +482,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     return ScopedModel<AppModel>(
         model: AppModel(),
         child:
-            ScopedModelDescendant<AppModel>(builder: (context, child, model) {
+        ScopedModelDescendant<AppModel>(builder: (context, child, model) {
           return Scaffold(
             body: Container(
               color: Theme.of(context).backgroundColor,
@@ -516,13 +516,12 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     fontSize: 40,
                                   ))
                             ])),
+
                         Container(
                           width: sWidth,
-                          height: sHeight * 0.62,
+                          height: sHeight * 0.66,
                           child: Stack(
-                            children: this.currentFocus == "write"
-                                ? stackChildren2
-                                : stackChildren,
+                            children: this.currentFocus == "write" ? stackChildren2 : stackChildren,
                           ),
                         )
                       ],
@@ -571,12 +570,3 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         }));
   }
 }
-
-/*class HomeScreen extends StatelessWidget {
-  var sWidth, sHeight;
-  @override
-  Widget build(BuildContext context) {
-    sWidth = MediaQuery.of(context).size.width;
-    sHeight = MediaQuery.of(context).size.height;
-
-}*/
