@@ -1,4 +1,3 @@
-import 'package:android_alarm_manager/android_alarm_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:hachingu/Notifiers/dark_theme_provider.dart';
 import 'package:hachingu/Notifiers/notifications_provider.dart';
@@ -6,7 +5,6 @@ import 'package:hachingu/Notifiers/email_sender.dart';
 import 'package:hachingu/Utils/preferences.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:workmanager/workmanager.dart';
 
 class SettingsScreen extends StatefulWidget {
   @override
