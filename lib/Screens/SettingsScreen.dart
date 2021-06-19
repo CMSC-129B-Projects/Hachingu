@@ -53,33 +53,32 @@ class _SettingsScreenState extends State<SettingsScreen> {
       NotificationsProvider notificationsProvider,
       EmailProvider emailProvider) {
     return Scaffold(
-        backgroundColor: Theme
-            .of(context)
-            .backgroundColor,
-        appBar: AppBar(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(24),
-                    topRight: Radius.circular(24),
-                    bottomLeft: Radius.circular(36),
-                    bottomRight: Radius.circular(10))),
-            backgroundColor: Theme
-                .of(context)
-                .accentColor,
-            elevation: 1,
-            title: new Text(
-              "Settings",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 26,
-                  fontFamily: 'Open Sans',
-                  fontWeight: FontWeight.bold),
-            ),
-            leading: IconButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                icon: Icon(Icons.arrow_back, color: Colors.white, size: 30))),
+        backgroundColor: Theme.of(context).backgroundColor,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(60),
+          child: AppBar(
+              backgroundColor: Theme.of(context).accentColor,
+              elevation: 3,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(24),
+                      topRight: Radius.circular(24),
+                      bottomLeft: Radius.circular(36),
+                      bottomRight: Radius.circular(16))),
+              title: new Text(
+                "Settings",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 26,
+                    fontFamily: 'Open Sans',
+                    fontWeight: FontWeight.bold),
+              ),
+              leading: IconButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  icon: Icon(Icons.arrow_back, color: Colors.white, size: 30))),
+        ),
         body: Container(
             padding: EdgeInsets.only(left: 1, top: 25, right: 1, bottom: 25),
             child: ListView(children: [

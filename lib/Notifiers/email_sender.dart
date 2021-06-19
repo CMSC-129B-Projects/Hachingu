@@ -71,7 +71,7 @@ class EmailProvider with ChangeNotifier {
     EmailNotificationsEnabled(user_email, scheduled, value);
   }
 
-  double toDouble(TimeOfDay myTime) => myTime.hour + myTime.minute/60.0;
+  double toDouble(TimeOfDay myTime) => myTime.hour + myTime.minute / 60.0;
 
   EmailNotificationsDisabled() async {
     String username = 'hachinguemailtest@gmail.com';
@@ -84,7 +84,8 @@ class EmailProvider with ChangeNotifier {
       ..recipients.add('ardsbontilao2013@gmail.com')
       ..subject = 'Hachingu Email Notifications Status'
       ..text = 'This is plain text'
-      ..html = "<h1>Hey there!</h1><h2>Looks like you disabled email notifications.</h2>";
+      ..html =
+          "<h1>Hey there!</h1><h2>Looks like you disabled email notifications.</h2>";
 
     try {
       final sendReport = await send(message, smtpServer);
