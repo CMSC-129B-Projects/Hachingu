@@ -1,0 +1,142 @@
+[
+    {
+        "question": "Which of the following is the correct translation of “thing”?",
+        "answer": "10",
+        "choices": [
+            "집 ",
+            "침대",
+            "것",
+            "시간"
+        ]
+    },
+    {
+        "question": "Which of the following is not a valid Korean sentence structure?",
+        "answer": "Subject-Verb (SV)",
+        "choices": [
+            "Subject-Adjective (SA)",
+            "Subject-Object-Verb (SOV)",
+            "Subject-Verb (SV)",
+            "Subject-Noun (SN)"
+        ]
+    },
+    {
+        "question": "Which of the following are pronouns?",
+        "answer": "나",
+        "choices": [
+            "나",
+            "사",
+            "시",
+            "다 "
+        ]
+    },
+    {
+        "question": "Which of the following is the english translation of  행복하다?",
+        "answer": "happy",
+        "choices": [
+            "sad",
+            "smart",
+            "handsome",
+            "happy"
+        ]
+    },
+    {
+        "question": "Which of the following is the correct sequence of time in chronological order?",
+        "answer": "아침, 점심, 저녁",
+        "choices": [
+            "점심, 저녁, 아침",
+            "아침, 점심, 저녁",
+            "저녁, 아침, 점심 ",
+            "아침,, 저녁,점심"
+        ]
+    },
+    {
+        "question": "This word particle is used if the last letter of the subject is a consonant",
+        "answer": "는",
+        "choices": [
+            "를",
+            "은",
+            "을",
+            "는"
+        ]
+    },
+    {
+        "question": "Which of the following is the correct translation of “eat food”?",
+        "answer": "먹다 음식",
+        "choices": [
+            "먹다 음식",
+            "먹다 사과",
+            "길물",
+            "음식을 먹다"
+        ]
+    },
+    {
+        "question": "What particle is to be use in “여자__”",
+        "answer": "는",
+        "choices": [
+            "는",
+            "나",
+            "은",
+            "을"
+        ]
+    },
+    {
+        "question": "Which of the following is the correct translation of “sad”?",
+        "answer": "슬프다",
+        "choices": [
+            "아름답다",
+            "통통하다",
+            "슬프다",
+            "행복하다"
+        ]
+    },
+    {
+        "question": "Which of the following corresponds to “house, bed, window”?",
+        "answer": "집, 침대, 창문",
+        "choices": [
+            "집, 침대, 창문",
+            "창문, 사과, 침대",
+            "것, 침대, 창문",
+            "사다, 써다, 읽다"
+        ]
+    },
+    {
+        "question": "Which of the following is the correct translation of “time”",
+        "answer": "시간",
+        "choices": [
+            "아침",
+            "점심",
+            "저녁",
+            "시간"
+        ]
+    },
+    {
+        "question": "Which of the following is the correct translation of “hate”?",
+        "answer": "싫어하다",
+        "choices": [
+            "싫어하다",
+            "아름답다 ",
+            "좋아하다",
+            "마시다"
+        ]
+    },
+    {
+        "question": "Which of the following is the english translation of “통통하다 ”?",
+        "answer": "plump",
+        "choices": [
+            "happy",
+            "sad",
+            "plump",
+            "tasty"
+        ]
+    },
+    {
+        "question": "Which of the following is the english translation of “바나나”?",
+        "answer": "banana",
+        "choices": [
+            "plump",
+            "banana",
+            "happy",
+            "handsome"
+        ]
+    }
+]

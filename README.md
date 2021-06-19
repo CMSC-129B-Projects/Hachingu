@@ -1,6 +1,6 @@
 # hachingu
 
-A new Flutter project.
+A new Flutter project for learning basic Korean.
 
 ## Getting Started
 

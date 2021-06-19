@@ -1,0 +1,120 @@
+[
+    {
+        "roman": "b",
+        "hangul": "ㅂ",
+        "type":"character"
+    },
+    {
+        "roman": "ch",
+        "hangul": "ㅊ",
+        "type":"character"
+    },
+    {
+        "roman": "d",
+        "hangul": "ㄷ",
+        "type":"character"
+    },
+    {
+        "roman": "g",
+        "hangul": "ㄱ",
+        "type":"character"
+    },
+    {
+        "roman": "j",
+        "hangul": "ㅈ",
+        "type":"character"
+    },
+    {
+        "roman": "k",
+        "hangul": "ㅋ",
+        "type":"character"
+    },
+    {
+        "roman": "r",
+        "hangul": "ㄹ",
+        "type":"character"
+    },
+    {
+        "roman": "m",
+        "hangul": "ㅁ",
+        "type":"character"
+    },
+    {
+        "roman": "n",
+        "hangul": "ㄴ",
+        "type":"character"
+    },
+    {
+        "roman": "ng",
+        "hangul": "ㅇ",
+        "type":"character"
+    },
+    {
+        "roman": "p",
+        "hangul": "ㅍ",
+        "type":"character"
+    },
+    {
+        "roman": "s",
+        "hangul": "ㅅ",
+        "type":"character"
+    },
+    {
+        "roman": "t",
+        "hangul": "ㅌ",
+        "type":"character"
+    },
+    {
+        "roman": "a",
+        "hangul": "ㅏ",
+        "type":"character"
+    },
+
+    {
+        "roman": "ya",
+        "hangul": "ㅑ",
+        "type":"character"
+    },
+
+    {
+        "roman": "eo",
+        "hangul": "ㅓ",
+        "type":"character"
+    },
+
+    {
+        "roman": "yeo",
+        "hangul": "ㅕ",
+        "type":"character"
+    },
+
+    {
+        "roman": "eu",
+        "hangul": "ㅡ",
+        "type":"character"
+    },
+
+    {
+        "roman": "i",
+        "hangul": "ㅣ",
+        "type":"character"
+    },
+
+    {
+        "roman": "o",
+        "hangul": "ㅗ",
+        "type":"character"
+    },
+
+    {
+        "roman": "yo",
+        "hangul": "ㅛ",
+        "type":"character"
+    },
+
+    {
+        "roman": "u",
+        "hangul": "ㅜ",
+        "type":"character"
+    }
+]
