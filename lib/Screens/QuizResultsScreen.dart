@@ -93,9 +93,15 @@ class _QuizResultsScreenState extends State<QuizResultsScreen> {
             padding: EdgeInsets.only(bottom: 20),
             decoration: BoxDecoration(
                 color: getColor(),
+                boxShadow: [
+                  BoxShadow(
+                      blurRadius: 3.0,
+                      offset: Offset(0.0, 3.0),
+                      color: Colors.grey),
+                ],
                 borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(20),
-                    bottomRight: Radius.circular(20))),
+                    bottomLeft: Radius.circular(40),
+                    bottomRight: Radius.circular(40))),
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[

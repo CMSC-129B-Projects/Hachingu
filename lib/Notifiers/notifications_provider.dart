@@ -71,8 +71,9 @@ class NotificationsProvider with ChangeNotifier {
     var android  = AndroidNotificationDetails("id", "channel", "description", styleInformation: bigPicture);
     var platform = new NotificationDetails(android: android);
 
+    //await _flutterLocalNotificationsPlugin.zonedSchedule(0, "This is your daily reminder", "Practice now!", scheduledDate, notificationDetails, uiLocalNotificationDateInterpretation: uiLocalNotificationDateInterpretation, androidAllowWhileIdle: androidAllowWhileIdle)
     await _flutterLocalNotificationsPlugin.showDailyAtTime(
-      0, "This is your daily reminder", "Practice now!", scheduled, platform
+      1, "This is your daily reminder", "Practice now!", scheduled, platform
     );
 
   }

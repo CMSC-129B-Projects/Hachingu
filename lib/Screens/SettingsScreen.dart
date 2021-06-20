@@ -1,4 +1,3 @@
-import 'package:android_alarm_manager/android_alarm_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:hachingu/Notifiers/dark_theme_provider.dart';
 import 'package:hachingu/Notifiers/notifications_provider.dart';
@@ -6,7 +5,7 @@ import 'package:hachingu/Notifiers/email_sender.dart';
 import 'package:hachingu/Utils/preferences.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:workmanager/workmanager.dart';
+import 'package:email_validator/email_validator.dart';
 
 class SettingsScreen extends StatefulWidget {
   @override
@@ -17,6 +16,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   var sWidth, sHeight;
   final _formKey = GlobalKey<FormState>();
   bool showToggles = false;
+  bool isValidEmail;
   TimeOfDay _timeLocal, _timeEmail;
   TimeOfDay pickedLocal, pickedEmail;
   Time converted;
@@ -27,22 +27,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   void initState() {
+    Provider.of<NotificationsProvider>(context, listen: false).initialize();
     super.initState();
     user_email = HachinguPreferences.getUserEmail();
     _timeLocal = HachinguPreferences.getLocalReminder();
     _timeEmail = HachinguPreferences.getEmailReminder();
+    isValidEmail = EmailValidator.validate(user_email);
+    converted = Time(_timeLocal.hour, _timeLocal.minute, 0);
   }
 
   @override
   Widget build(BuildContext context) {
-    sWidth = MediaQuery
-        .of(context)
-        .size
-        .width;
-    sHeight = MediaQuery
-        .of(context)
-        .size
-        .height;
+    sWidth = MediaQuery.of(context).size.width;
+    sHeight = MediaQuery.of(context).size.height;
     final themeProvider = Provider.of<DarkThemeProvider>(context);
     final notificationsProvider = Provider.of<NotificationsProvider>(context);
     final emailProvider = Provider.of<EmailProvider>(context);
@@ -53,33 +50,32 @@ class _SettingsScreenState extends State<SettingsScreen> {
       NotificationsProvider notificationsProvider,
       EmailProvider emailProvider) {
     return Scaffold(
-        backgroundColor: Theme
-            .of(context)
-            .backgroundColor,
-        appBar: AppBar(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(24),
-                    topRight: Radius.circular(24),
-                    bottomLeft: Radius.circular(36),
-                    bottomRight: Radius.circular(10))),
-            backgroundColor: Theme
-                .of(context)
-                .accentColor,
-            elevation: 1,
-            title: new Text(
-              "Settings",
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 26,
-                  fontFamily: 'Open Sans',
-                  fontWeight: FontWeight.bold),
-            ),
-            leading: IconButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                icon: Icon(Icons.arrow_back, color: Colors.white, size: 30))),
+        backgroundColor: Theme.of(context).backgroundColor,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(60),
+          child: AppBar(
+              backgroundColor: Theme.of(context).accentColor,
+              elevation: 3,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(24),
+                      topRight: Radius.circular(24),
+                      bottomLeft: Radius.circular(36),
+                      bottomRight: Radius.circular(16))),
+              title: new Text(
+                "Settings",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 26,
+                    fontFamily: 'Open Sans',
+                    fontWeight: FontWeight.bold),
+              ),
+              leading: IconButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  icon: Icon(Icons.arrow_back, color: Colors.white, size: 30))),
+        ),
         body: Container(
             padding: EdgeInsets.only(left: 1, top: 25, right: 1, bottom: 25),
             child: ListView(children: [
@@ -206,8 +202,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                   value: emailProvider.email,
                                   onChanged: (bool value) {
                                     emailProvider.email = value;
-                                    value
-                                        ? model.EmailNotificationsEnabled(user_email, _timeEmail, false) : value;
+                                    value ? model.EmailNotificationsEnabled(user_email, _timeEmail): value;
                                   },
                                   activeColor: Colors.green,
                                   activeTrackColor: Colors.lightGreen,
@@ -217,8 +212,81 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ],
                 ),
               ),
-              showEmailAddress(emailProvider.email, user_email),
-              showEmailNotificationTime(emailProvider.email),
+              Visibility(
+                child: Column( children: [
+                  Container(
+                    height: 60,
+                    color: Theme.of(context).shadowColor,
+                    child: Container(
+                      child: TextField(
+                        controller: TextEditingController(text: user_email),
+                        decoration: InputDecoration(
+                          border: OutlineInputBorder(),
+                          labelText: 'Email Address',
+                        ),
+                        onSubmitted: (String text) async {
+                          isValidEmail = EmailValidator.validate(text);
+                          if(isValidEmail == true){
+                            await HachinguPreferences.setUserEmail(text);
+                            user_email = text;
+                            model.EmailNotificationsEnabled(user_email, _timeEmail);
+                          }
+                        },
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: sWidth,
+                    color: Theme.of(context).shadowColor,
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text(isValidEmail ? 'Email is valid.' : 'Email is not valid.'),
+                  ),
+                ]
+                ),
+                visible: emailProvider.email,
+              ),
+
+            Visibility(
+                child: Container(
+                    height: 60,
+                    color: Theme.of(context).shadowColor,
+                    child:
+                    Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                      Container(
+                          margin: const EdgeInsets.only(left: 50.0, right: 20.0),
+                          child: Text(
+                            "Daily Email",
+                            textAlign: TextAlign.right,
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.black,
+                              fontFamily: 'Open Sans',
+                              fontWeight: FontWeight.bold,
+                            ),
+                          )),
+                      Container(
+                          margin: const EdgeInsets.only(left: 20.0, right: 10.0),
+                          child: FlatButton(
+                              onPressed: () {
+                                selectEmailTime(context);
+                                _timeEmail = HachinguPreferences.getEmailReminder();
+                                model.EmailNotificationsEnabled(user_email, _timeEmail);
+                              },
+                              child: Text(
+                                timeFormatString(_timeEmail),
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 24,
+                                  color: Colors.black,
+                                  fontFamily: 'OpenSans',
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ))),
+                    ]
+                    )
+                ),
+                visible: emailProvider.email,
+            ),
             ]),
       );
     } else {
@@ -230,8 +298,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     }
   }
 
-  Consumer showAlertToggle(bool val,
-      NotificationsProvider notificationsProvider) {
+  Consumer showAlertToggle(bool val, NotificationsProvider notificationsProvider) {
     if (val == true) {
       return Consumer<NotificationsProvider>(
         builder: (context, model, _) =>
@@ -267,8 +334,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                                   value: notificationsProvider.notifications,
                                   onChanged: (bool value) {
                                     notificationsProvider.notifications = value;
-                                    value ? model.scheduledNotification(
-                                        converted) : model.cancelNotification();
+                                    value ? model.scheduledNotification(converted) : model.cancelNotification();
                                   },
                                   activeColor: Colors.green,
                                   activeTrackColor: Colors.lightGreen,
@@ -287,79 +353,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
               Container(
                 height: 0,
               ));
-    }
-  }
-
-  Container showEmailAddress(bool value, String email) {
-    if (value == true) {
-      return Container(
-        height: 60,
-        color: Theme
-            .of(context)
-            .shadowColor,
-        //child: Row(
-        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        //children: [
-        child: Container(
-          child: TextFormField(
-            initialValue: email,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Email Address',
-            ),
-            onChanged: (String text) async {
-              await HachinguPreferences.setUserEmail(text);
-              user_email = text;
-              EmailProvider().EmailNotificationsEnabled(user_email, _timeEmail, false);
-            },
-          ),
-        ),
-      );
-    } else {
-      return Container(height: 0);
-    }
-  }
-
-  Container showEmailNotificationTime(bool value) {
-    if (value == true) {
-      return Container(
-          height: 60,
-          color: Theme
-              .of(context)
-              .shadowColor,
-          child:
-          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            Container(
-                margin: const EdgeInsets.only(left: 50.0, right: 20.0),
-                child: Text(
-                  "Daily Email",
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.black,
-                    fontFamily: 'Open Sans',
-                    fontWeight: FontWeight.bold,
-                  ),
-                )),
-            Container(
-                margin: const EdgeInsets.only(left: 20.0, right: 10.0),
-                child: FlatButton(
-                    onPressed: () {
-                      selectEmailTime(context);
-                    },
-                    child: Text(
-                      timeFormatString(_timeEmail),
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 24,
-                        color: Colors.black,
-                        fontFamily: 'OpenSans',
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ))),
-          ]));
-    } else {
-      return Container(height: 0);
     }
   }
 
@@ -411,6 +404,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
     hour = time.hour.toString();
     minute = time.minute.toString();
+    print("Hour ${hour}, Minute ${minute}");
     if (time.minute < 10) {
       minute = '0' + minute;
     }
@@ -447,7 +441,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
     }
   }
 
-
   Future<Null> selectEmailTime(BuildContext context) async {
     final TimeOfDay pickedEmail = await showTimePicker(
       context: context,
@@ -457,8 +450,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
       setState(() {
         _timeEmail = pickedEmail;
         HachinguPreferences().setEmailReminder(_timeEmail);
-        EmailProvider().EmailNotificationsEnabled(user_email, _timeEmail, false);
       });
     }
   }
 }
+
+
+

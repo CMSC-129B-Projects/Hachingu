@@ -180,9 +180,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   color: Color(0xff01AFE0),
                   boxShadow: [
                     BoxShadow(
-                        blurRadius: 6.0,
-                        offset: Offset(-3.0, 3.0),
-                        color: Colors.grey),
+                        blurRadius: 5.0,
+                        offset: Offset(0.0, 3.0),
+                        color: Colors.grey[400]),
                   ],
                   borderRadius: BorderRadius.all(Radius.circular(26))),
               child: Column(
@@ -270,9 +270,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   color: Color(0xffF34F4E),
                   boxShadow: [
                     BoxShadow(
-                        blurRadius: 6.0,
-                        offset: Offset(-3.0, 3.0),
-                        color: Colors.grey),
+                        blurRadius: 5.0,
+                        offset: Offset(0.0, 3.0),
+                        color: Colors.grey[400]),
                   ],
                   borderRadius: BorderRadius.all(Radius.circular(26)),
                 ),
@@ -360,9 +360,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   color: Color(0xffF34F4E),
                   boxShadow: [
                     BoxShadow(
-                        blurRadius: 6.0,
-                        offset: Offset(-3.0, 3.0),
-                        color: Colors.grey),
+                        blurRadius: 5.0,
+                        offset: Offset(0.0, 3.0),
+                        color: Colors.grey[400]),
                   ],
                   borderRadius: BorderRadius.all(Radius.circular(26)),
                 ),
@@ -449,9 +449,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   color: Color(0xff01AFE0),
                   boxShadow: [
                     BoxShadow(
-                        blurRadius: 6.0,
-                        offset: Offset(-3.0, 3.0),
-                        color: Colors.grey),
+                        blurRadius: 5.0,
+                        offset: Offset(0.0, 3.0),
+                        color: Colors.grey[400]),
                   ],
                   borderRadius: BorderRadius.all(Radius.circular(26))),
               child: Column(
@@ -533,9 +533,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     bottom: 0,
                     right: 0,
                     child: MaterialButton(
-                      splashColor: Colors.white.withAlpha(0),
+                      splashColor: Color(0xffFFEDBF),
                       focusColor: Colors.white.withAlpha(0),
-                      highlightColor: Colors.white.withAlpha(0),
+                      highlightColor: Color(0xffFFEDBF),
                       height: 77,
                       minWidth: 77,
                       color: Color(0xfffAB316),

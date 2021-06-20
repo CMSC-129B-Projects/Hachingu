@@ -1,0 +1,158 @@
+[33mcommit 3cfb6ab73d4f11cb8bcbc66d17fd618165529a63[m[33m ([m[1;36mHEAD -> [m[1;32mother-pages[m[33m)[m
+Merge: 03b7234 ce6862a
+Author: Kent Leo Makibulan <leomakibulan@gmail.com>
+Date:   Thu May 20 09:59:07 2021 +0800
+
+    Merge branch 'other-pages' into other-pages
+
+[33mcommit 03b723419998002f09d23da1908e1678a611c569[m
+Merge: 2d6df8b a7b0426
+Author: ards678 <45665876+ards678@users.noreply.github.com>
+Date:   Thu May 20 01:26:56 2021 +0800
+
+    Merge branch 'other-pages' of https://github.com/ards678/Hachingu into other-pages
+
+[33mcommit 2d6df8b0fa04e7a8b944e96c8cb2eba87c98e0d5[m
+Author: ards678 <45665876+ards678@users.noreply.github.com>
+Date:   Thu May 20 01:03:17 2021 +0800
+
+    Added local notifications and email notifications
+
+[33mcommit ce6862a203aacf14594c1476fa9b4d203bc25e7e[m
+Author: iamkentleom <leomakibulan@gmail.com>
+Date:   Tue May 18 22:23:46 2021 +0800
+
+    fix(LearnScreen): change from ListView to CustomScrollView
+    
+    - change to SliverAppbar from AppBar
+    - change to SliverList
+    - title now make use of slivers
+    - fixes issues on varying screen sizes
+
+[33mcommit bc8f3eaa9b17b76bb5d619892252f6e3363baa4a[m
+Author: kokongjanea <jjanea@up.edu.ph>
+Date:   Thu May 13 11:12:19 2021 +0800
+
+    added quiz screen
+
+[33mcommit b544316ad5b9b2a9dfc6661ec57ea1d2ef3a1e5f[m
+Author: iamkentleom <leomakibulan@gmail.com>
+Date:   Wed May 12 21:50:53 2021 +0800
+
+    fix(LearnScreen, TrainScreen): font, bgColor, images, positioned->container
+
+[33mcommit f3bedb2dbf481e160746a83b9d577a6b823f763d[m
+Author: iamkentleom <leomakibulan@gmail.com>
+Date:   Wed May 12 21:33:48 2021 +0800
+
+    style(assets): additional iamge assets
+
+[33mcommit 408c714e27bbbe736f41c3c571ea74b321e25ddf[m
+Merge: a2c3a5e a7b0426
+Author: Kent Leo Makibulan <leomakibulan@gmail.com>
+Date:   Wed May 12 15:17:26 2021 +0800
+
+    Merge pull request #3 from ards678/other-pages
+    
+    Added Dark Mode
+
+[33mcommit a7b0426a41e44fff2bf426e469ac2df240d1f605[m
+Merge: 1686195 a2c3a5e
+Author: Kent Leo Makibulan <leomakibulan@gmail.com>
+Date:   Wed May 12 15:17:04 2021 +0800
+
+    Merge branch 'other-pages' into other-pages
+
+[33mcommit 168619581e5023a01b26c611829b4dce11758f91[m
+Author: ards678 <45665876+ards678@users.noreply.github.com>
+Date:   Wed May 12 14:18:18 2021 +0800
+
+    Added Dark Mode
+
+[33mcommit a2c3a5e273a39cba202a68796beb92b40a423fd8[m
+Author: iamkentleom <leomakibulan@gmail.com>
+Date:   Thu Apr 29 14:44:11 2021 +0800
+
+    feat(LearnScreen): navigation to LessonScreen
+    
+    - navigate to the LessonScreen
+    - font change from Oswald to OpenSans
+    - lesson card title, description, and illustration changes
+
+[33mcommit dc16c2cbf42379102c7069db80baf47ef9b01627[m
+Author: iamkentleom <leomakibulan@gmail.com>
+Date:   Thu Apr 29 14:43:29 2021 +0800
+
+    feat(Screens): added bare Lesson and Quiz Screen
+
+[33mcommit 17fd5e3a92daaa7664cb4888881a7bf3b24e55c9[m
+Author: iamkentleom <leomakibulan@gmail.com>
+Date:   Thu Apr 29 14:38:54 2021 +0800
+
+    style(images): added new illustrations
+
+[33mcommit 530eebaa88d157d5b17cb8bfa3bf23c81bd193cd[m
+Author: iamkentleom <leomakibulan@gmail.com>
+Date:   Thu Apr 29 12:36:08 2021 +0800
+
+    style(font): added OpenSans font
+
+[33mcommit 6e1b44217f3eda56c8f1ed0548b7aaad1ee0e999[m
+Author: iamkentleom <leomakibulan@gmail.com>
+Date:   Thu Apr 22 11:56:22 2021 +0800
+
+    fix(LearnScreen): lesson page title position
+    
+    - the "Lessons" title page is now positioned in the upper left portion
+      of the screen
+
+[33mcommit c5ab675d849807d66785690a9f43b8c216ab3585[m
+Author: iamkentleom <leomakibulan@gmail.com>
+Date:   Wed Apr 21 20:46:51 2021 +0800
+
+    feat(LearnScreen): mvp lesson list page
+    
+    - Lesson cards for each lessons (with illustrations, title, and brief
+      description
+
+[33mcommit 65dd26685797c9fe65913cc329741b28a876b9f7[m
+Merge: b979990 14cf2a4
+Author: Kent Leo Makibulan <leomakibulan@gmail.com>
+Date:   Wed Apr 21 17:35:27 2021 +0800
+
+    Merge pull request #2 from ards678/other-pages
+    
+    update settings screen
+
+[33mcommit 14cf2a41abb2abaa54f632627ab6895fe718b4dd[m
+Author: ards678 <45665876+ards678@users.noreply.github.com>
+Date:   Wed Apr 21 15:39:33 2021 +0800
+
+    update settings screen
+
+[33mcommit b979990970febf8d21779e36cbcb8e8a54422171[m
+Merge: 3752d3b ec6c113
+Author: James Casia <jzcasia@up.edu.ph>
+Date:   Tue Apr 13 22:39:33 2021 +0800
+
+    Merge pull request #1 from ards678/other-pages
+    
+    added screens
+
+[33mcommit ec6c113f198d3f810dc5f8aca2862b76a04a0cd8[m[33m ([m[1;32msettings-screen[m[33m, [m[1;32mdev[m[33m)[m
+Author: ards678 <45665876+ards678@users.noreply.github.com>
+Date:   Tue Apr 13 20:43:11 2021 +0800
+
+    added screens
+
+[33mcommit 3752d3b6bc56b103846a42c4471c7a9a0eca55b2[m
+Author: ards678 <45665876+ards678@users.noreply.github.com>
+Date:   Tue Apr 13 20:36:26 2021 +0800
+
+    Add the Train and Learn screens
+
+[33mcommit 4c92a6bd782140d21c54146fb27dd3037c5d98f9[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/dev[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: jamescasia <wayperwayp@gmail.com>
+Date:   Tue Apr 13 13:08:42 2021 +0800
+
+    first commit
