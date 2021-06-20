@@ -4,17 +4,26 @@
         "choices": [
             "읽는다 ",
             "그녀",
-            "읽는다",
+            "아무래도",
             "먹는다"
         ]
     },
     {
+        "question": "You are talking to your teacher. Fill in the blank with the best conjugation. 선생님, 저는 어젯빔에 공부____",
+        "answer": "했습니다",
+        "choices": [
+            "했어",
+            "하습니다",
+            "했습니다",
+            "하야"
+        ]
+    }, {
         "question": "Which of the following is the correct translation of “to read”?",
         "answer": "읽는다",
         "choices": [
             "읽는다 ",
             "그녀",
-            "읽는다",
+            "이러나다",
             "먹는다"
         ]
     },
@@ -26,6 +35,15 @@
             "간다",
             "공부한다",
             "먹는다"
+        ]
+    }, {
+        "question": "Which of the following is the correct translation of “will study”?",
+        "answer": "공부하겠습니다",
+        "choices": [
+            "가겠습니다",
+            "갔습니다",
+            "공부하겠습니다",
+            "먹겠습니다"
         ]
     },
     {
@@ -39,23 +57,53 @@
         ]
     },
     {
+        "question": "You are telling your boss that you finished your job. Fill in the blank with the best word conjugation. 부장님, 저는 일을 ___.",
+        "answer": "했습니다",
+        "choices": [
+            "했어",
+            "했습니다",
+            "구구 가가?",
+            "제와이피"
+        ]
+    }, {
+        "question": "Which of the following is the correct translation of “was cute?",
+        "answer": "괴여웠습니다",
+        "choices": [
+            "괴여웠습니다",
+            "갔습니다",
+            "공부했습니다",
+            "가겠다"
+        ]
+    },
+    {
         "question": "Which of the following is the correct translation of “will eat”?",
         "answer": "먹겠다",
         "choices": [
             "먹었다",
-            "d먹는다",
+            "먹는다",
             "먹겠다",
             "먹는다 "
         ]
     },
     {
         "question": "Which of the following is the correct translation of “will walk”?",
-        "answer": "ch",
+        "answer": "걷겠다",
         "choices": [
-            "가겠다",
+            "걷겠다",
             "가다 겠",
             "사겠다",
             "먹겠다"
+        ]
+    },
+
+    {
+        "question": "You are telling your friend that you ate kimchi. Fill in the blank with the best word conjugation. 나는 김치를 먹__",
+        "answer": "었어",
+        "choices": [
+            "어습니다",
+            "을 거야",
+            "었어",
+            "어야"
         ]
     },
     {
@@ -87,45 +135,7 @@
             "괴여웠습니다",
             "가겠다"
         ]
-    },
-    {
-        "question": "Which of the following is the correct translation of “was cute?",
-        "answer": "괴여웠습니다 ",
-        "choices": [
-            "괴여웠습니다",
-            "갔습니다",
-            "공부했습니다",
-            "가겠다"
-        ]
-    },
-    {
-        "question": "Which of the following is the correct translation of “will study”?",
-        "answer": "공부하겠습니다",
-        "choices": [
-            "가겠습니다",
-            "갔습니다",
-            "공부하겠습니다",
-            "먹겠습니다"
-        ]
-    },
-    {
-        "question": "You are telling your boss that you finished your job. Fill in the blank with the best word conjugation. 부장님, 저는 일을 ___.",
-        "answer": "했습니다",
-        "choices": [
-            "했어",
-            "했습니다",
-            "구구 가가?",
-            "제와이피"
-        ]
-    },
-    {
-        "question": "You are talking to your teacher. Fill in the blank with the best conjugation. 선생님, 저는 어젯빔에 공부____",
-        "answer": "했습니다",
-        "choices": [
-            "했어",
-            "하습니다",
-            "했습니다",
-            "하야"
-        ]
     }
+
+
 ]

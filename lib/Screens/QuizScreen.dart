@@ -64,6 +64,7 @@ class _QuizScreenState extends State<QuizScreen> {
   }
 
   Widget QuizBody(DarkThemeProvider themeProvider) {
+    bool shortText = _items[indx]["question"].toString().length < 70;
     return Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
         appBar: AppBar(
@@ -100,8 +101,10 @@ class _QuizScreenState extends State<QuizScreen> {
                           style: TextStyle(
                               fontFamily: 'Open Sans',
                               color: Theme.of(context).primaryColor,
-                              fontSize: 28,
-                              fontWeight: FontWeight.w600),
+                              fontSize: shortText ? 28 : 23,
+                              fontWeight: shortText
+                                  ? FontWeight.w600
+                                  : FontWeight.w500),
                         ),
                       )),
                 ),
@@ -132,6 +135,7 @@ class QuizCard extends StatelessWidget {
   const QuizCard(this.description, this.hClick);
   @override
   Widget build(BuildContext context) {
+    bool shortText = description.length < 16;
     return Container(
       height: 76,
       margin: const EdgeInsets.symmetric(vertical: 8),
@@ -155,8 +159,9 @@ class QuizCard extends StatelessWidget {
                     style: TextStyle(
                         fontFamily: 'Open Sans',
                         color: Color(0xFF424242),
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold)),
+                        fontSize: shortText ? 24 : 20,
+                        fontWeight:
+                            shortText ? FontWeight.bold : FontWeight.w500)),
               ))),
       decoration: BoxDecoration(
         color: Color(0xFFDBF0C8),

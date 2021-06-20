@@ -7,8 +7,58 @@
             "것",
             "시간"
         ]
+    }, {
+        "question": "Fill in the blanks.지효는 물_ 마시다.",
+        "answer": "을",
+        "choices": [
+            "를",
+            "은",
+            "을",
+            "는"
+        ]
+    },
+
+    {
+        "question": "Fill in the blanks.나연_ 괴여워요!",
+        "answer": "는",
+        "choices": [
+            "를",
+            "가",
+            "언니",
+            "는"
+        ]
+    },
+
+    {
+        "question": "Translate this sentence. She walks to school",
+        "answer": "그녀는 학교에 걷는다",
+        "choices": [
+            "그녀가 교실에 간다",
+            "그녀는 학교에 걷는다",
+            "그는 은행에 사다",
+            "그는 고기를 먹고싶어"
+        ]
     },
     {
+        "question": "Translate this sentence. 미나는 똑똑해요.",
+        "answer": "Mina is smart.",
+        "choices": [
+            "Mina is chubby.",
+            "Mina is smart.",
+            "Mina is cute.",
+            "Mina is beautiful."
+        ]
+    },
+    {
+        "question": "Translate this sentence. 나연는 어젯밤에 소주를 마셨어.",
+        "answer": "Nayeon drank soju last night.",
+        "choices": [
+            "Nayeon ate supper last night.",
+            "Nayeon prayed to god last night.",
+            "Nayeon drank soju last night.",
+            "Nayeon told Tzuyu a bedtime story last night."
+        ]
+    }, {
         "question": "Which of the following is not a valid Korean sentence structure?",
         "answer": "Subject-Noun (SN)",
         "choices": [
@@ -137,56 +187,6 @@
             "happy",
             "handsome"
         ]
-    },
-    {
-        "question": "Fill in the blanks.나연_ 괴여워요!",
-        "answer": "는",
-        "choices": [
-            "를",
-            "가",
-            "언니",
-            "누나"
-        ]
-    },
-
-    {
-        "question": "You are telling your friend that you ate kimchi. Fill in the blank with the best word conjugation. 나는 김치를 먹__",
-        "answer": "었다",
-        "choices": [
-            "했어",
-            "을 거야",
-            "었다",
-            "어야"
-        ]
-    },
-    {
-        "question": "Translate this sentence. She walks to school",
-        "answer": "그녀는 학교에 걷는다",
-        "choices": [
-            "그녀가 교실에 간다",
-            "그녀는 학교에 걷는다",
-            "그는 은행에 사다",
-            "그는 고기를 먹고싶어"
-        ]
-    },
-    {
-        "question": "Translate this sentence. 미나는 똑똑해요.",
-        "answer": "Mina is smart.",
-        "choices": [
-            "Mina is chubby.",
-            "Mina is smart.",
-            "Mina is love.",
-            "Mina is beautiful."
-        ]
-    },
-    {
-        "question": "Translate this sentence. 나연는 어젯밤에 소주를 마셨어.",
-        "answer": "Nayeon drank soju last night.",
-        "choices": [
-            "Nayeon ate supper last night.",
-            "Nayeon prayed to god last night.",
-            "Nayeon drank soju last night.",
-            "Nayeon told Tzuyu a bedtime story last night."
-        ]
     }
+
 ]
