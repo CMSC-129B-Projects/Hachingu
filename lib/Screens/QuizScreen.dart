@@ -101,7 +101,7 @@ class _QuizScreenState extends State<QuizScreen> {
                           style: TextStyle(
                               fontFamily: 'Open Sans',
                               color: Theme.of(context).primaryColor,
-                              fontSize: shortText ? 28 : 25,
+                              fontSize: shortText ? 28 : 23,
                               fontWeight: shortText
                                   ? FontWeight.w600
                                   : FontWeight.w500),
