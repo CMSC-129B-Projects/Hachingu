@@ -110,8 +110,8 @@
     },
 
     {
-        "roman": "악",
-        "hangul": "ak",
+        "roman": "ak",
+        "hangul": "악",
         "type": "syllable"
     },
 
@@ -296,14 +296,8 @@
     },
 
     {
-        "roman": "yeok",
+        "roman": "yeog",
         "hangul": "역",
-        "type": "syllable"
-    },
-
-    {
-        "roman": "ols",
-        "hangul": "옰",
         "type": "syllable"
     },
 
@@ -349,17 +343,7 @@
         "type": "syllable"
     },
 
-    {
-        "roman": "kkom",
-        "hangul": "꼼",
-        "type": "syllable"
-    },
 
-    {
-        "roman": "ppuk",
-        "hangul": "뿍",
-        "type": "syllable"
-    },
 
     {
         "roman": "nad",
@@ -367,11 +351,6 @@
         "type": "syllable"
     },
 
-    {
-        "roman": "pyep",
-        "hangul": "폡",
-        "type": "syllable"
-    },
 
     {
         "roman": "bwa",
@@ -433,17 +412,7 @@
         "type": "syllable"
     },
 
-    {
-        "roman": "kkwae",
-        "hangul": "꽤",
-        "type": "syllable"
-    },
 
-    {
-        "roman": "jjwi",
-        "hangul": "쮜",
-        "type": "syllable"
-    },
 
     {
         "roman": "kyeol",
@@ -457,11 +426,6 @@
         "type": "syllable"
     },
 
-    {
-        "roman": "kaess",
-        "hangul": "캤",
-        "type": "syllable"
-    },
 
     {
         "roman": "lig",
