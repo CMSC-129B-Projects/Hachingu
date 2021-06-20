@@ -1,5 +1,4 @@
-[
-    {
+[{
         "question": "Which of the following is the correct translation of “to eat”?",
         "answer": "먹는다",
         "choices": [
@@ -78,8 +77,7 @@
             "겠",
             "가겠다"
         ]
-    }
-    ,
+    },
     {
         "question": "Which of the following is the correct translation of “studied”?",
         "answer": "공부했습니다 ",
@@ -108,6 +106,26 @@
             "갔습니다",
             "공부하겠습니다",
             "먹겠습니다"
+        ]
+    },
+    {
+        "question": "You are telling your boss that you finished your job. Fill in the blank with the best word conjugation. 부장님, 저는 일을 ___.",
+        "answer": "했습니다",
+        "choices": [
+            "했어",
+            "했습니다",
+            "구구 가가?",
+            "제와이피"
+        ]
+    },
+    {
+        "question": "You are talking to your teacher. Fill in the blank with the best conjugation. 선생님, 저는 어젯빔에 공부____",
+        "answer": "했습니다",
+        "choices": [
+            "했어",
+            "하습니다",
+            "했습니다",
+            "하야"
         ]
     }
 ]
