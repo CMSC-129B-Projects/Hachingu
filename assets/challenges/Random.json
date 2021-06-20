@@ -1,9 +1,4 @@
 [{
-        "roman": "yu",
-        "hangul": "ㅠ",
-        "type": "syllable"
-    },
-    {
         "roman": "ba",
         "hangul": "바",
         "type": "syllable"
@@ -364,11 +359,6 @@
         "type": "syllable"
     },
 
-    {
-        "roman": "gi",
-        "hangul": "기",
-        "type": "syllable"
-    },
 
     {
         "roman": "kyeong",
@@ -431,8 +421,7 @@
         "roman": "lig",
         "hangul": "릭",
         "type": "syllable"
-    },
-    {
+    }, {
         "roman": "b",
         "hangul": "ㅂ",
         "type": "character"
