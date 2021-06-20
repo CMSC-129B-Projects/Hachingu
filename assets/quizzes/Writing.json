@@ -1,5 +1,4 @@
-[
-    {
+[{
         "question": "How many vowels are there in Korean language?",
         "answer": "10",
         "choices": [
@@ -111,7 +110,7 @@
     },
     {
         "question": "How many ways are there to write a block?",
-        "answer": "2",
+        "answer": "4",
         "choices": [
             "2",
             "5",
