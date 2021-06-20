@@ -9,23 +9,13 @@
         ]
     },
     {
-        "question": "How many consonants are there in Korean language?",
+        "question": "How many simple consonants are there in Korean language?",
         "answer": "14",
         "choices": [
             "5",
             "10",
             "21",
             "14"
-        ]
-    },
-    {
-        "question": "The following sounds are not present in the Korean language except",
-        "answer": "V",
-        "choices": [
-            "K",
-            "Z",
-            "V",
-            "R"
         ]
     },
     {

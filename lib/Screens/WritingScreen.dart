@@ -148,21 +148,21 @@ class _WritingScreenState extends State<WritingScreen> {
                     borderRadius: BorderRadius.all(Radius.circular(8)),
                     child: new Painter(_controller)),
               ),
-              Text(
-                  indx - 1 >= 0
-                      ? "real: " + _items[indx - 1]["hangul"].toString()
-                      : "",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w200)),
-              Text(
-                  this.category.label != null
-                      ? "pred: " + this.category.label
-                      : "",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w200)),
-              Text(
-                  this.category.score.toString() != null
-                      ? this.category.score.toString()
-                      : "",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w200)),
+              // Text(
+              //     indx - 1 >= 0
+              //         ? "real: " + _items[indx - 1]["hangul"].toString()
+              //         : "",
+              //     style: TextStyle(fontSize: 18, fontWeight: FontWeight.w200)),
+              // Text(
+              //     this.category.label != null
+              //         ? "pred: " + this.category.label
+              //         : "",
+              //     style: TextStyle(fontSize: 18, fontWeight: FontWeight.w200)),
+              // Text(
+              //     this.category.score.toString() != null
+              //         ? this.category.score.toString()
+              //         : "",
+              //     style: TextStyle(fontSize: 18, fontWeight: FontWeight.w200)),
               // test_image != null ? Image.memory(test_image) : SizedBox()
             ])));
   }
