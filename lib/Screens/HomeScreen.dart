@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:scoped_model/scoped_model.dart';
 import 'package:hachingu/ScopedModels/AppModel.dart';
 import 'package:hachingu/Screens/SettingsScreen.dart';
@@ -482,7 +481,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     return ScopedModel<AppModel>(
         model: AppModel(),
         child:
-        ScopedModelDescendant<AppModel>(builder: (context, child, model) {
+            ScopedModelDescendant<AppModel>(builder: (context, child, model) {
           return Scaffold(
             body: Container(
               color: Theme.of(context).backgroundColor,
@@ -516,12 +515,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     fontSize: 40,
                                   ))
                             ])),
-
                         Container(
                           width: sWidth,
                           height: sHeight * 0.66,
                           child: Stack(
-                            children: this.currentFocus == "write" ? stackChildren2 : stackChildren,
+                            children: this.currentFocus == "write"
+                                ? stackChildren2
+                                : stackChildren,
                           ),
                         )
                       ],
