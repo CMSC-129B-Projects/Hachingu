@@ -76,10 +76,8 @@ class _WritingScreenState extends State<WritingScreen> {
       this.category = pred;
       print(category.label);
       print(category.score);
-      _items[indx]["score"] = category.label ==
-              _items[indx]["roman"] + " - " + _items[indx]["hangul"]
-          ? category.score
-          : 0.0;
+      _items[indx]["score"] =
+          category.label == _items[indx]["hangul"] ? category.score : 0.0;
       _items[indx]["img"] = imgg;
       indx++;
 

@@ -84,35 +84,43 @@ class _QuizScreenState extends State<QuizScreen> {
         ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          child: Flex(direction: Axis.vertical, children: <Widget>[
-            Expanded(
-              flex: 4,
-              child: Container(
-                  // height: ,
-                  alignment: Alignment.centerLeft,
-                  padding: EdgeInsets.symmetric(vertical: 30, horizontal: 10),
-                  margin: EdgeInsets.only(bottom: 20),
-                  child: Text(
-                    _items[indx]["question"].toString(),
-                    style: TextStyle(
-                        fontFamily: 'Open Sans',
-                        color: Theme.of(context).primaryColor,
-                        fontSize: 28,
-                        fontWeight: FontWeight.w600),
-                  )),
-            ),
-            Expanded(
-              flex: 6,
-              child: Column(
-                children: [
-                  QuizCard(_items[indx]["choices"][0].toString(), handleClick),
-                  QuizCard(_items[indx]["choices"][1].toString(), handleClick),
-                  QuizCard(_items[indx]["choices"][2].toString(), handleClick),
-                  QuizCard(_items[indx]["choices"][3].toString(), handleClick)
-                ],
-              ),
-            )
-          ]),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                      alignment: Alignment.centerLeft,
+                      padding:
+                          EdgeInsets.symmetric(vertical: 30, horizontal: 4),
+                      margin: EdgeInsets.only(bottom: 20),
+                      child: Center(
+                        child: Text(
+                          _items[indx]["question"].toString(),
+                          style: TextStyle(
+                              fontFamily: 'Open Sans',
+                              color: Theme.of(context).primaryColor,
+                              fontSize: 28,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      )),
+                ),
+                Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      QuizCard(
+                          _items[indx]["choices"][0].toString(), handleClick),
+                      QuizCard(
+                          _items[indx]["choices"][1].toString(), handleClick),
+                      QuizCard(
+                          _items[indx]["choices"][2].toString(), handleClick),
+                      QuizCard(
+                          _items[indx]["choices"][3].toString(), handleClick)
+                    ],
+                  ),
+                )
+              ]),
         ));
   }
 }

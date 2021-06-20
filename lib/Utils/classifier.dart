@@ -46,7 +46,7 @@ abstract class Classifier {
       print("character");
       print(modelName);
     } else if (modelType == "syllable") {
-      modelName = 'tflite-models/syllable-model.tflite';
+      modelName = 'tflite-models/syllable-model620-2.tflite';
       labelsDir = 'assets/model-labels/syllable-labels.txt';
       labelsLength = 2350;
       print("syllable");
@@ -153,7 +153,7 @@ abstract class Classifier {
         rgb2grayf(_inputImage.tensorBuffer.buffer.asUint8List())
             .buffer
             .asFloat32List()
-            .reshape([1, 28, 28, 1]),
+            .reshape([1, _inputShape[1], _inputShape[2], 1]),
         _outputBuffer.getBuffer());
     final run = DateTime.now().millisecondsSinceEpoch - runs;
 
