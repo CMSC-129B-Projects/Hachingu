@@ -43,7 +43,7 @@
         "answer": "먹겠다",
         "choices": [
             "먹었다",
-            "d먹는다",
+            "먹는다",
             "먹겠다",
             "먹는다 "
         ]
@@ -56,6 +56,17 @@
             "가다 겠",
             "사겠다",
             "먹겠다"
+        ]
+    },
+
+    {
+        "question": "You are telling your friend that you ate kimchi. Fill in the blank with the best word conjugation. 나는 김치를 먹__",
+        "answer": "었어",
+        "choices": [
+            "어습니다",
+            "을 거야",
+            "었어",
+            "어야"
         ]
     },
     {

@@ -139,26 +139,27 @@
         ]
     },
     {
+        "question": "Fill in the blanks.지효는 물_ 마시다.",
+        "answer": "을",
+        "choices": [
+            "를",
+            "은",
+            "을",
+            "는"
+        ]
+    },
+
+    {
         "question": "Fill in the blanks.나연_ 괴여워요!",
         "answer": "는",
         "choices": [
             "를",
             "가",
             "언니",
-            "누나"
+            "는"
         ]
     },
 
-    {
-        "question": "You are telling your friend that you ate kimchi. Fill in the blank with the best word conjugation. 나는 김치를 먹__",
-        "answer": "었다",
-        "choices": [
-            "했어",
-            "을 거야",
-            "었다",
-            "어야"
-        ]
-    },
     {
         "question": "Translate this sentence. She walks to school",
         "answer": "그녀는 학교에 걷는다",
@@ -175,7 +176,7 @@
         "choices": [
             "Mina is chubby.",
             "Mina is smart.",
-            "Mina is love.",
+            "Mina is cute.",
             "Mina is beautiful."
         ]
     },

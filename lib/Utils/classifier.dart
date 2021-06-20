@@ -46,7 +46,7 @@ abstract class Classifier {
       print("character");
       print(modelName);
     } else if (modelType == "syllable") {
-      modelName = 'tflite-models/syllable-model620-2.tflite';
+      modelName = 'tflite-models/syllable-model28620-2.tflite';
       labelsDir = 'assets/model-labels/syllable-labels.txt';
       labelsLength = 2350;
       print("syllable");
