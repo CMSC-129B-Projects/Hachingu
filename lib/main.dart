@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hachingu/Notifiers/email_sender.dart';
 import 'package:hachingu/Notifiers/notifications_provider.dart';
-import 'package:hachingu/Screens/SettingsScreen.dart';
 import 'Screens/HomeScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
